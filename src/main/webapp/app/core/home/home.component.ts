@@ -18,4 +18,9 @@ export default class Home extends Vue {
   public get username(): string {
     return this.$store.getters.account?.login ?? '';
   }
+
+  public get action(): void {
+    return;
+    //TODO call backend (how)
+  }
 }
