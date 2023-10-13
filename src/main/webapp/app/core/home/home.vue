@@ -1,7 +1,7 @@
 <template>
   <div class="home row">
     <div class="col-md-3">
-      <button type="button" class="btn btn-primary" @click="action">Clique</button>
+      <button type="button" class="btn btn-primary" v-on:click="action()">Clique</button>
     </div>
     <div class="col-md-3">
       <span class="hipster img-fluid rounded"></span>
