@@ -1,0 +1,27 @@
+{
+  "ecom02App": {
+    "medecin": {
+      "home": {
+        "title": "Medecins",
+        "refreshListLabel": "Liste aktualisieren",
+        "createLabel": "Medecin erstellen",
+        "createOrEditLabel": "Medecin erstellen oder bearbeiten",
+        "notFound": "Keine Medecins gefunden"
+      },
+      "created": "Medecin erstellt mit ID { param }",
+      "updated": "Medecin aktualisiert mit ID { param }",
+      "deleted": "Medecin gelöscht mit ID { param }",
+      "delete": {
+        "question": "Soll Medecin { id } wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Medecin"
+      },
+      "id": "ID",
+      "idMedecin": "Id Medecin",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "idMedecin": "Id Medecin"
+    }
+  }
+}

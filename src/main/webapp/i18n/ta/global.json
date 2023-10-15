@@ -7,7 +7,13 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "பொருள்கள்",
-        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
+        "patient": "Patient",
+        "aideSoignant": "Aide Soignant",
+        "infirmiere": "Infirmiere",
+        "admin": "Admin",
+        "repas": "Repas",
+        "medecin": "Medecin"
       },
       "account": {
         "main": "கணக்கு",
@@ -83,7 +89,7 @@
     "ribbon": {
       "dev": "Development"
     },
-    "item-count": "Showing {{first}} - {{second}} of {{total}} items."
+    "item-count": "Showing { first } - { second } of { total } items."
   },
   "entity": {
     "action": {
@@ -96,7 +102,7 @@
       "open": "Open",
       "save": "சேமி",
       "view": "பார்",
-      "show": "Show {{otherEntity}}"
+      "show": "Show { otherEntity }"
     },
     "detail": {
       "field": "களம்",
@@ -107,13 +113,13 @@
     },
     "validation": {
       "required": "இந்த களம் தேவை.",
-      "minlength": "இந்த களத்தில் குறைந்தது {{min}} எழுத்துக்கள் இருக்க வேண்டும்.",
-      "maxlength": "இது களத்தில் {{max}} க்கும் மேற்பட்டு இருக்க முடியாது.",
-      "min": "இந்த களத்தில் {{min}} விட அதிகமாக இருக்க வேண்டும்.",
-      "max": "இது களத்தில் {{max}} விட அதிகமாக இருக்க முடியாது.",
-      "minbytes": "இந்த களம் {{min}} பைட்ஸ் விட அதிகமாக இருக்க வேண்டும்.",
-      "maxbytes": "இந்த களம் {{max}} பைட்ஸ் விட அதிகமாக இருக்க முடியாது.",
-      "pattern": "இந்த களம் {{pattern}} -ஐ பின்பற்ற வேண்டும்.",
+      "minlength": "இந்த களத்தில் குறைந்தது { min } எழுத்துக்கள் இருக்க வேண்டும்.",
+      "maxlength": "இது களத்தில் { max } க்கும் மேற்பட்டு இருக்க முடியாது.",
+      "min": "இந்த களத்தில் { min } விட அதிகமாக இருக்க வேண்டும்.",
+      "max": "இது களத்தில் { max } விட அதிகமாக இருக்க முடியாது.",
+      "minbytes": "இந்த களம் { min } பைட்ஸ் விட அதிகமாக இருக்க வேண்டும்.",
+      "maxbytes": "இந்த களம் { max } பைட்ஸ் விட அதிகமாக இருக்க முடியாது.",
+      "pattern": "இந்த களம் { pattern } -ஐ பின்பற்ற வேண்டும்.",
       "number": "இந்த களம் எண்ணாக இருக்க வேண்டும்.",
       "datetimelocal": "இது களம் ஒரு தேதி மற்றும் நேரமாக இருக்க வேண்டும்."
     },
@@ -127,17 +133,17 @@
     "internalServerError": "Internal server error",
     "server.not.reachable": "சர்வரை அடைய முடியவில்லை",
     "url.not.found": "Not found",
-    "NotNull": "களம் {{fieldName}} காலியாக இருக்க கூடாது!",
-    "Size": "களம் {{fieldName}} தேவைகள் பூர்த்தி செய்யவில்லை!",
+    "NotNull": "களம் { fieldName } காலியாக இருக்க கூடாது!",
+    "Size": "களம் { fieldName } தேவைகள் பூர்த்தி செய்யவில்லை!",
     "userexists": "உள் நுழை பெயர் எடுக்கப்பட்டது!",
     "emailexists": "மின்னஞ்சல் உபயோகிக்கப்பட்டது!",
-    "idexists": "புது {{entityName}} -க்கு ஐ.டி இருக்கமுடியாது",
+    "idexists": "புது { entityName } -க்கு ஐ.டி இருக்கமுடியாது",
     "idnull": "Invalid ID",
     "idinvalid": "Invalid Id",
     "idnotfound": "ID cannot be found",
     "file": {
       "could.not.extract": "Could not extract file",
-      "not.image": "File was expected to be an image but was found to be \"{{ fileType }}\""
+      "not.image": "File was expected to be an image but was found to be \"{ fileType }\""
     }
   },
   "footer": "இது உங்கள் முடிப்பு"

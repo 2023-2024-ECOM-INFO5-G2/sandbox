@@ -1,0 +1,26 @@
+{
+  "ecom02App": {
+    "admin": {
+      "home": {
+        "title": "Admins",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Buat Admin baru",
+        "createOrEditLabel": "Buat atau edit Admin",
+        "notFound": "No Admins found"
+      },
+      "created": "Admin dengan id { param } telah dibuat",
+      "updated": "Admin dengan id { param } telah diperbaharui",
+      "deleted": "Admin dengan id { param } telah dihapus",
+      "delete": {
+        "question": "Apakah anda yakin ingin menghapus Admin { id }?"
+      },
+      "detail": {
+        "title": "Admin"
+      },
+      "id": "ID",
+      "idAdmin": "Id Admin",
+      "prenom": "Prenom",
+      "nom": "Nom"
+    }
+  }
+}

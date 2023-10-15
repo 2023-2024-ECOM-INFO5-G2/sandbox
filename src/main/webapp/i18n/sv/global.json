@@ -7,7 +7,13 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entiter",
-        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
+        "patient": "Patient",
+        "aideSoignant": "Aide Soignant",
+        "infirmiere": "Infirmiere",
+        "admin": "Admin",
+        "repas": "Repas",
+        "medecin": "Medecin"
       },
       "account": {
         "main": "Konto",
@@ -83,7 +89,7 @@
     "ribbon": {
       "dev": "Development"
     },
-    "item-count": "Visar {{first}} - {{second}} av {{total}} träffar."
+    "item-count": "Visar { first } - { second } av { total } träffar."
   },
   "entity": {
     "action": {
@@ -96,7 +102,7 @@
       "open": "Open",
       "save": "Spara",
       "view": "Titta",
-      "show": "Show {{otherEntity}}"
+      "show": "Show { otherEntity }"
     },
     "detail": {
       "field": "Fält",
@@ -107,13 +113,13 @@
     },
     "validation": {
       "required": "Du måste fylla i detta fält",
-      "minlength": "Detta fält måste vara {{min}} tecken",
-      "maxlength": "Detta fält kan inte vara längre än {{max}} tecken",
-      "min": "Detta fält måste vara större än {{min}}",
-      "max": "Detta fält måste vara mindre än {{max}}",
-      "minbytes": "Detta fält måste vara större än {{min}} bytes",
-      "maxbytes": "Detta fält måste vara mindre än {{max}} bytes",
-      "pattern": "Detta fält måste följa mönstret {{pattern}}",
+      "minlength": "Detta fält måste vara { min } tecken",
+      "maxlength": "Detta fält kan inte vara längre än { max } tecken",
+      "min": "Detta fält måste vara större än { min }",
+      "max": "Detta fält måste vara mindre än { max }",
+      "minbytes": "Detta fält måste vara större än { min } bytes",
+      "maxbytes": "Detta fält måste vara mindre än { max } bytes",
+      "pattern": "Detta fält måste följa mönstret { pattern }",
       "number": "Detta fält måste vara ett tal",
       "datetimelocal": "Detta fält måste vara ett datum och en tid"
     },
@@ -127,17 +133,17 @@
     "internalServerError": "Internal server error",
     "server.not.reachable": "Servern kan inte nås",
     "url.not.found": "Not found",
-    "NotNull": "Fält {{fieldName}} kan inte vara tomt!",
-    "Size": "Fält {{fieldName}} uppfyller inte min/max-storlekskravet!",
+    "NotNull": "Fält { fieldName } kan inte vara tomt!",
+    "Size": "Fält { fieldName } uppfyller inte min/max-storlekskravet!",
     "userexists": "Användarnamnet är upptaget!",
     "emailexists": "E-postadressen är redan registrerad!",
-    "idexists": "En ny {{entityName}} kan inte redan ha ett ID",
+    "idexists": "En ny { entityName } kan inte redan ha ett ID",
     "idnull": "Invalid ID",
     "idinvalid": "Invalid Id",
     "idnotfound": "ID cannot be found",
     "file": {
       "could.not.extract": "Could not extract file",
-      "not.image": "File was expected to be an image but was found to be \"{{ fileType }}\""
+      "not.image": "File was expected to be an image but was found to be \"{ fileType }\""
     }
   },
   "footer": "Detta är din footer"

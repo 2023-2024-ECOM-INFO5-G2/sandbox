@@ -1,0 +1,27 @@
+{
+  "ecom02App": {
+    "infirmiere": {
+      "home": {
+        "title": "Infirmieres",
+        "refreshListLabel": "Listeyi yenile",
+        "createLabel": "Yeni Infirmiere ekle",
+        "createOrEditLabel": "Yeni Infirmiere ekle veya guncelle",
+        "notFound": "Infirmieres kaydi bulunamadi"
+      },
+      "created": "{ param } ID ile bir Infirmiere eklendi",
+      "updated": "{ param } nolu Infirmiere guncellendi",
+      "deleted": "{ param } nolu Infirmiere silindi",
+      "delete": {
+        "question": "{ id } nolu Infirmiere silinecek. Devem etmek istiyor musunuz?"
+      },
+      "detail": {
+        "title": "Infirmiere"
+      },
+      "id": "ID",
+      "idInfirmiere": "Id Infirmiere",
+      "prenom": "Prenom",
+      "nom": "Nom",
+      "idInfirmiere": "Id Infirmiere"
+    }
+  }
+}

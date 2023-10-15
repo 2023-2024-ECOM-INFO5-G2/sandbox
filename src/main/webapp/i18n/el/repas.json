@@ -1,0 +1,28 @@
+{
+  "ecom02App": {
+    "repas": {
+      "home": {
+        "title": "Repas",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Δημιουργήστε ένα νέο Repas",
+        "createOrEditLabel": "Δημιουργήστε η επεξεργαστείτε ένα Repas",
+        "notFound": "No Repas found"
+      },
+      "created": "Ένα νέο Repas έχει δημιουργηθεί με αναγνωριστικό { param }",
+      "updated": "Ένα Repas έχει ενημερωθεί με αναγνωριστικό { param }",
+      "deleted": "Ένα Repas έχει διαγραφτεί με αναγνωριστικό { param }",
+      "delete": {
+        "question": "Είστε βέβαιοι όταν θέλετε να διαγράψετε το ακόλουθο Repas { id };"
+      },
+      "detail": {
+        "title": "Repas"
+      },
+      "id": "ID",
+      "idRepas": "Id Repas",
+      "nom": "Nom",
+      "description": "Description",
+      "apportCalorique": "Apport Calorique",
+      "idRepas": "Id Repas"
+    }
+  }
+}

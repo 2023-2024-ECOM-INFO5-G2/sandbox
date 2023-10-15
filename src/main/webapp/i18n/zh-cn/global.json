@@ -7,7 +7,13 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "数据",
-        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
+        "patient": "Patient",
+        "aideSoignant": "Aide Soignant",
+        "infirmiere": "Infirmiere",
+        "admin": "Admin",
+        "repas": "Repas",
+        "medecin": "Medecin"
       },
       "account": {
         "main": "账号",
@@ -85,7 +91,7 @@
     "ribbon": {
       "dev": "Development"
     },
-    "item-count": "显示第 {{first}} - {{second}} 条，共 {{total}} 条"
+    "item-count": "显示第 { first } - { second } 条，共 { total } 条"
   },
   "entity": {
     "action": {
@@ -98,7 +104,7 @@
       "open": "Open",
       "save": "保存",
       "view": "查看",
-      "show": "Show {{otherEntity}}"
+      "show": "Show { otherEntity }"
     },
     "detail": {
       "field": "字段",
@@ -109,13 +115,13 @@
     },
     "validation": {
       "required": "本字段不能为空.",
-      "minlength": "本字段最短长度为 {{min}} 个字符.",
-      "maxlength": "本字段最大长度为 {{max}} 个字符.",
-      "min": "本字段不能小于 {{min}}.",
-      "max": "本字段不能大于 {{max}}.",
-      "minbytes": "本字段不少于 {{min}} 字符.",
-      "maxbytes": "本字段不多余 {{max}} 字符.",
-      "pattern": "本字段必须符合模式 {{pattern}}.",
+      "minlength": "本字段最短长度为 { min } 个字符.",
+      "maxlength": "本字段最大长度为 { max } 个字符.",
+      "min": "本字段不能小于 { min }.",
+      "max": "本字段不能大于 { max }.",
+      "minbytes": "本字段不少于 { min } 字符.",
+      "maxbytes": "本字段不多余 { max } 字符.",
+      "pattern": "本字段必须符合模式 { pattern }.",
       "number": "本字段必须为数字.",
       "datetimelocal": "本字段必须为日期和时间."
     },
@@ -129,17 +135,17 @@
     "internalServerError": "Internal server error",
     "server.not.reachable": "服务器无法访问",
     "url.not.found": "Not found",
-    "NotNull": "域 {{fieldName}} 不能为空!",
-    "Size": "域 {{fieldName}} 不满足最大/最小值限制!",
+    "NotNull": "域 { fieldName } 不能为空!",
+    "Size": "域 { fieldName } 不满足最大/最小值限制!",
     "userexists": "该用户名已存在!",
     "emailexists": "该邮箱已被使用!",
-    "idexists": "新建的 {{entityName}} 不能包含ID",
+    "idexists": "新建的 { entityName } 不能包含ID",
     "idnull": "Invalid ID",
     "idinvalid": "Invalid Id",
     "idnotfound": "ID cannot be found",
     "file": {
       "could.not.extract": "Could not extract file",
-      "not.image": "File was expected to be an image but was found to be \"{{ fileType }}\""
+      "not.image": "File was expected to be an image but was found to be \"{ fileType }\""
     }
   },
   "footer": "这里是页脚"

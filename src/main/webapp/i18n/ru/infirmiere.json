@@ -1,0 +1,27 @@
+{
+  "ecom02App": {
+    "infirmiere": {
+      "home": {
+        "title": "Infirmieres",
+        "refreshListLabel": "Обновить список",
+        "createLabel": "Создать новый Infirmiere",
+        "createOrEditLabel": "Создать или отредактировать Infirmiere",
+        "notFound": "Infirmieres не найдено"
+      },
+      "created": "Новый Infirmiere создан с идентификатором { param }",
+      "updated": "Infirmiere обновлен с идентификатором { param }",
+      "deleted": "Infirmiere удален с идентификатором { param }",
+      "delete": {
+        "question": "Вы уверены что хотите удалить Infirmiere { id }?"
+      },
+      "detail": {
+        "title": "Infirmiere"
+      },
+      "id": "ID",
+      "idInfirmiere": "Id Infirmiere",
+      "prenom": "Prenom",
+      "nom": "Nom",
+      "idInfirmiere": "Id Infirmiere"
+    }
+  }
+}

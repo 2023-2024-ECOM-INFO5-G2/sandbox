@@ -1,0 +1,26 @@
+{
+  "ecom02App": {
+    "admin": {
+      "home": {
+        "title": "Admins",
+        "refreshListLabel": "Обновить список",
+        "createLabel": "Создать новый Admin",
+        "createOrEditLabel": "Создать или отредактировать Admin",
+        "notFound": "Admins не найдено"
+      },
+      "created": "Новый Admin создан с идентификатором { param }",
+      "updated": "Admin обновлен с идентификатором { param }",
+      "deleted": "Admin удален с идентификатором { param }",
+      "delete": {
+        "question": "Вы уверены что хотите удалить Admin { id }?"
+      },
+      "detail": {
+        "title": "Admin"
+      },
+      "id": "ID",
+      "idAdmin": "Id Admin",
+      "prenom": "Prenom",
+      "nom": "Nom"
+    }
+  }
+}

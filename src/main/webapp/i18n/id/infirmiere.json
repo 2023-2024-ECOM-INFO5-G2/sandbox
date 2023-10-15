@@ -1,0 +1,27 @@
+{
+  "ecom02App": {
+    "infirmiere": {
+      "home": {
+        "title": "Infirmieres",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Buat Infirmiere baru",
+        "createOrEditLabel": "Buat atau edit Infirmiere",
+        "notFound": "No Infirmieres found"
+      },
+      "created": "Infirmiere dengan id { param } telah dibuat",
+      "updated": "Infirmiere dengan id { param } telah diperbaharui",
+      "deleted": "Infirmiere dengan id { param } telah dihapus",
+      "delete": {
+        "question": "Apakah anda yakin ingin menghapus Infirmiere { id }?"
+      },
+      "detail": {
+        "title": "Infirmiere"
+      },
+      "id": "ID",
+      "idInfirmiere": "Id Infirmiere",
+      "prenom": "Prenom",
+      "nom": "Nom",
+      "idInfirmiere": "Id Infirmiere"
+    }
+  }
+}

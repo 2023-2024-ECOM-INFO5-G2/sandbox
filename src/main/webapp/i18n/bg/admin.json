@@ -1,0 +1,26 @@
+{
+  "ecom02App": {
+    "admin": {
+      "home": {
+        "title": "Admins",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Създайте нов Admin",
+        "createOrEditLabel": "Създайте или редактирайте Admin",
+        "notFound": "Admins не са намерени"
+      },
+      "created": "Създаден е нов Admin с идентификатор { param }",
+      "updated": "Admin с идентификатор { param } e oбновен",
+      "deleted": "Admin с идентификатор { param } е изтрит",
+      "delete": {
+        "question": "Наистина ли искате да изтриете Admin { id }?"
+      },
+      "detail": {
+        "title": "Admin"
+      },
+      "id": "ID",
+      "idAdmin": "Id Admin",
+      "prenom": "Prenom",
+      "nom": "Nom"
+    }
+  }
+}

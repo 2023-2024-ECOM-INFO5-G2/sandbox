@@ -1,0 +1,35 @@
+{
+  "ecom02App": {
+    "patient": {
+      "home": {
+        "title": "Patients",
+        "refreshListLabel": "Listeyi yenile",
+        "createLabel": "Yeni Patient ekle",
+        "createOrEditLabel": "Yeni Patient ekle veya guncelle",
+        "notFound": "Patients kaydi bulunamadi"
+      },
+      "created": "{ param } ID ile bir Patient eklendi",
+      "updated": "{ param } nolu Patient guncellendi",
+      "deleted": "{ param } nolu Patient silindi",
+      "delete": {
+        "question": "{ id } nolu Patient silinecek. Devem etmek istiyor musunuz?"
+      },
+      "detail": {
+        "title": "Patient"
+      },
+      "id": "ID",
+      "idPatient": "Id Patient",
+      "prenom": "Prenom",
+      "nom": "Nom",
+      "sexe": "Sexe",
+      "dateDeNaissance": "Date De Naissance",
+      "chambre": "Chambre",
+      "poids": "Poids",
+      "dateArrivee": "Date Arrivee",
+      "idMedecin": "Id Medecin",
+      "idPatient": "Id Patient",
+      "idPatient": "Id Patient",
+      "idPatient": "Id Patient"
+    }
+  }
+}

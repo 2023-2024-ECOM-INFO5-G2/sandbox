@@ -7,7 +7,13 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Varlıklar",
-        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
+        "patient": "Patient",
+        "aideSoignant": "Aide Soignant",
+        "infirmiere": "Infirmiere",
+        "admin": "Admin",
+        "repas": "Repas",
+        "medecin": "Medecin"
       },
       "account": {
         "main": "Hesap",
@@ -85,7 +91,7 @@
     "ribbon": {
       "dev": "Development"
     },
-    "item-count": "Toplam {{total}} kaydın {{first}} - {{second}} arası gösteriliyor."
+    "item-count": "Toplam { total } kaydın { first } - { second } arası gösteriliyor."
   },
   "entity": {
     "action": {
@@ -98,7 +104,7 @@
       "open": "Aç",
       "save": "Kaydet",
       "view": "Görüntüle",
-      "show": "Show {{otherEntity}}"
+      "show": "Show { otherEntity }"
     },
     "detail": {
       "field": "Alan",
@@ -109,13 +115,13 @@
     },
     "validation": {
       "required": "Bu alan gerekli.",
-      "minlength": "Bu alan en az {{min}} karakterden oluşabilir.",
-      "maxlength": "Bu alan en fazla {{max}} karakterden oluşabilir.",
-      "min": "Bu alan en az {{min}} olmalı.",
-      "max": "Bu alan en fazla {{max}} olmalı.",
-      "minbytes": "Bu alanan en az {{min}} byte olmalı.",
-      "maxbytes": "Bu alan en fazla {{max}} byte olmalı.",
-      "pattern": "Bu alan {{pattern}} şablonuna uymuyor.",
+      "minlength": "Bu alan en az { min } karakterden oluşabilir.",
+      "maxlength": "Bu alan en fazla { max } karakterden oluşabilir.",
+      "min": "Bu alan en az { min } olmalı.",
+      "max": "Bu alan en fazla { max } olmalı.",
+      "minbytes": "Bu alanan en az { min } byte olmalı.",
+      "maxbytes": "Bu alan en fazla { max } byte olmalı.",
+      "pattern": "Bu alan { pattern } şablonuna uymuyor.",
       "number": "Bu alan numara içermeli.",
       "datetimelocal": "Bu alan tarih veya zaman içermeli.",
       "patternLogin": "Bu alan harf, rakam veya e-posta adresi içermeli."
@@ -130,17 +136,17 @@
     "internalServerError": "Internal server error",
     "server.not.reachable": "Sunucuya ulaşılamıyor",
     "url.not.found": "Bulunamadı",
-    "NotNull": "{{fieldName}} alanı boş bırakılamaz!",
-    "Size": "{{fieldName}} alanı min/max gerekliliklere uymuyor!",
+    "NotNull": "{ fieldName } alanı boş bırakılamaz!",
+    "Size": "{ fieldName } alanı min/max gerekliliklere uymuyor!",
     "userexists": "Kullanıcı adı daha önce alınmış!",
     "emailexists": "E-posta adresi zaten kullanılıyor!",
-    "idexists": "A new {{entityName}} cannot already have an ID",
+    "idexists": "A new { entityName } cannot already have an ID",
     "idnull": "Invalid ID",
     "idinvalid": "Invalid Id",
     "idnotfound": "ID cannot be found",
     "file": {
       "could.not.extract": "Could not extract file",
-      "not.image": "File was expected to be an image but was found to be \"{{ fileType }}\""
+      "not.image": "File was expected to be an image but was found to be \"{ fileType }\""
     }
   },
   "footer": "Burası sayfa alt bilgisi"

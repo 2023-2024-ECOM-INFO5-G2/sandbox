@@ -7,7 +7,13 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entities",
-        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
+        "patient": "Patient",
+        "aideSoignant": "Aide Soignant",
+        "infirmiere": "Infirmiere",
+        "admin": "Admin",
+        "repas": "Repas",
+        "medecin": "Medecin"
       },
       "account": {
         "main": "บัญชี",
@@ -76,7 +82,7 @@
     "ribbon": {
       "dev": "Development"
     },
-    "item-count": "Showing {{first}} - {{second}} of {{total}} items."
+    "item-count": "Showing { first } - { second } of { total } items."
   },
   "entity": {
     "action": {
@@ -89,7 +95,7 @@
       "open": "เปิด",
       "save": "บันทึก",
       "view": "ดู",
-      "show": "Show {{otherEntity}}"
+      "show": "Show { otherEntity }"
     },
     "detail": {
       "field": "ฟิลด์",
@@ -100,13 +106,13 @@
     },
     "validation": {
       "required": "จะต้องใส่ข้อมูลฟิลด์นี้.",
-      "minlength": "ข้อมูลฟิลด์นี้จะต้องใส่อย่างน้อย {{ min }} อักษร.",
-      "maxlength": "ข้อมูลฟิลด์นี้ไม่สามารถยาวมากกว่า {{ max }} อักษร.",
-      "min": "จำนวนอักษรของฟิลด์นี้จะต้องมากกว่า {{ min }}.",
-      "max": "จำนวนอักษรของฟิลด์นี้จะต้องไม่มากกว่า {{ max }}.",
-      "minbytes": "ขนาดของฟิลด์นี้จะต้องมากกว่า  {{ min }} ไบต์.",
-      "maxbytes": "ขนาดของฟิลด์นี้จะต้องไม่มากกว่า{{ max }} ไบต์.",
-      "pattern": "ฟิลด์นี้จะต้องทำตามรูปแบบ {{ pattern }}.",
+      "minlength": "ข้อมูลฟิลด์นี้จะต้องใส่อย่างน้อย { min } อักษร.",
+      "maxlength": "ข้อมูลฟิลด์นี้ไม่สามารถยาวมากกว่า { max } อักษร.",
+      "min": "จำนวนอักษรของฟิลด์นี้จะต้องมากกว่า { min }.",
+      "max": "จำนวนอักษรของฟิลด์นี้จะต้องไม่มากกว่า { max }.",
+      "minbytes": "ขนาดของฟิลด์นี้จะต้องมากกว่า  { min } ไบต์.",
+      "maxbytes": "ขนาดของฟิลด์นี้จะต้องไม่มากกว่า{ max } ไบต์.",
+      "pattern": "ฟิลด์นี้จะต้องทำตามรูปแบบ { pattern }.",
       "number": "ฟิลด์นี้จะต้องเป็นตัวเลขเท่านั้น.",
       "datetimelocal": "ฟิลด์นี้จะต้องเป็นวันที่และเวลาเท่านั้น."
     },
@@ -119,17 +125,17 @@
   "error": {
     "server.not.reachable": "ไม่สามารถติดต่อเซิร์ฟเวอร์ได้",
     "url.not.found": "ไม่พบข้อมูล",
-    "NotNull": "ฟิลด์ {{ fieldName }} ต้องใส่ข้อมูล!",
-    "Size": "ฟิลด์ {{ fieldName }} ไม่ตรงกับขนาด มาก/น้อย ที่ต้องการ!",
+    "NotNull": "ฟิลด์ { fieldName } ต้องใส่ข้อมูล!",
+    "Size": "ฟิลด์ { fieldName } ไม่ตรงกับขนาด มาก/น้อย ที่ต้องการ!",
     "userexists": "ชื่อผู้ใช้นี้ถูกใช้ไปแล้ว!",
     "emailexists": "อีเมลนี้ถูกใช้ไปแล้ว!",
-    "idexists": "{{ entityName }} ไม่สามารถใช้ ID ที่ถูกใช้ไปแล้ว",
+    "idexists": "{ entityName } ไม่สามารถใช้ ID ที่ถูกใช้ไปแล้ว",
     "idnull": "Invalid ID",
     "idinvalid": "Invalid Id",
     "idnotfound": "ID cannot be found",
     "file": {
       "could.not.extract": "Could not extract file",
-      "not.image": "File was expected to be an image but was found to be \"{{ fileType }}\""
+      "not.image": "File was expected to be an image but was found to be \"{ fileType }\""
     }
   },
   "footer": "นี่คือส่วนท้าย"

@@ -1,0 +1,28 @@
+{
+  "ecom02App": {
+    "repas": {
+      "home": {
+        "title": "Repas",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "สร้าง Repas",
+        "createOrEditLabel": "สร้างหรือแก้ไข Repas",
+        "notFound": "No Repas found"
+      },
+      "created": "Repas ถูกสร้างด้วย { param }",
+      "updated": "Repas ถูกแก้ไขด้วย { param }",
+      "deleted": "Repas ถูกลบด้วย { param }",
+      "delete": {
+        "question": "คุณต้องการที่จะลบ Repas { id }?"
+      },
+      "detail": {
+        "title": "Repas"
+      },
+      "id": "ID",
+      "idRepas": "Id Repas",
+      "nom": "Nom",
+      "description": "Description",
+      "apportCalorique": "Apport Calorique",
+      "idRepas": "Id Repas"
+    }
+  }
+}

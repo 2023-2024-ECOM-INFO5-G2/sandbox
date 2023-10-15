@@ -1,0 +1,27 @@
+{
+  "ecom02App": {
+    "aideSoignant": {
+      "home": {
+        "title": "Aide Soignants",
+        "refreshListLabel": "Обновить список",
+        "createLabel": "Создать новый Aide Soignant",
+        "createOrEditLabel": "Создать или отредактировать Aide Soignant",
+        "notFound": "Aide Soignants не найдено"
+      },
+      "created": "Новый Aide Soignant создан с идентификатором { param }",
+      "updated": "Aide Soignant обновлен с идентификатором { param }",
+      "deleted": "Aide Soignant удален с идентификатором { param }",
+      "delete": {
+        "question": "Вы уверены что хотите удалить Aide Soignant { id }?"
+      },
+      "detail": {
+        "title": "Aide Soignant"
+      },
+      "id": "ID",
+      "idSoignant": "Id Soignant",
+      "prenom": "Prenom",
+      "nom": "Nom",
+      "idSoignant": "Id Soignant"
+    }
+  }
+}

@@ -7,7 +7,13 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entidades",
-        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
+        "patient": "Patient",
+        "aideSoignant": "Aide Soignant",
+        "infirmiere": "Infirmiere",
+        "admin": "Admin",
+        "repas": "Repas",
+        "medecin": "Medecin"
       },
       "account": {
         "main": "Conta",
@@ -85,7 +91,7 @@
     "ribbon": {
       "dev": "Desenvolvimento"
     },
-    "item-count": "Mostrando {{first}} - {{second}} de {{total}} resultados."
+    "item-count": "Mostrando { first } - { second } de { total } resultados."
   },
   "entity": {
     "action": {
@@ -98,7 +104,7 @@
       "open": "Abrir",
       "save": "Guardar",
       "view": "Visualizar",
-      "show": "Show {{otherEntity}}"
+      "show": "Show { otherEntity }"
     },
     "detail": {
       "field": "Campo",
@@ -109,13 +115,13 @@
     },
     "validation": {
       "required": "O campo é obrigatório.",
-      "minlength": "Este campo deve ter pelo menos {{min}} caracteres.",
-      "maxlength": "Este campo não pode ter mais que {{max}} caracteres.",
-      "min": "Este campo deve ser maior que {{min}}.",
-      "max": "Este campo não pode ser maior que {{max}}.",
-      "minbytes": "Este campo deve ter pelo menos {{min}} bytes.",
-      "maxbytes": "Este campo não pode ter mais que {{max}} bytes.",
-      "pattern": "Este campo deve estar dentro do seguinte padrão {{pattern}}.",
+      "minlength": "Este campo deve ter pelo menos { min } caracteres.",
+      "maxlength": "Este campo não pode ter mais que { max } caracteres.",
+      "min": "Este campo deve ser maior que { min }.",
+      "max": "Este campo não pode ser maior que { max }.",
+      "minbytes": "Este campo deve ter pelo menos { min } bytes.",
+      "maxbytes": "Este campo não pode ter mais que { max } bytes.",
+      "pattern": "Este campo deve estar dentro do seguinte padrão { pattern }.",
       "number": "Este campo é do tipo número.",
       "datetimelocal": "Este campo é do tipo data/hora."
     },
@@ -129,17 +135,17 @@
     "internalServerError": "Erro interno do servidor",
     "server.not.reachable": "Servidor inacessível",
     "url.not.found": "Não encontrado",
-    "NotNull": "Campo {{fieldName}} não pode estar vazio!",
-    "Size": "Campo {{fieldName}} não atende aos requisitos de tamanho mínimo/máximo!",
+    "NotNull": "Campo { fieldName } não pode estar vazio!",
+    "Size": "Campo { fieldName } não atende aos requisitos de tamanho mínimo/máximo!",
     "userexists": "Nome de Utilizador em uso!",
     "emailexists": "E-mail em uso!",
-    "idexists": "Um novo {{entityName}} não pode ter um ID",
+    "idexists": "Um novo { entityName } não pode ter um ID",
     "idnull": "ID inválido",
     "idinvalid": "Invalid Id",
     "idnotfound": "ID cannot be found",
     "file": {
       "could.not.extract": "Could not extract file",
-      "not.image": "File was expected to be an image but was found to be \"{{ fileType }}\""
+      "not.image": "File was expected to be an image but was found to be \"{ fileType }\""
     }
   },
   "footer": "Este é o seu rodapé"

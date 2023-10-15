@@ -1,0 +1,28 @@
+{
+  "ecom02App": {
+    "repas": {
+      "home": {
+        "title": "Repas",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Buat Repas baru",
+        "createOrEditLabel": "Buat atau edit Repas",
+        "notFound": "No Repas found"
+      },
+      "created": "Repas dengan id { param } telah dibuat",
+      "updated": "Repas dengan id { param } telah diperbaharui",
+      "deleted": "Repas dengan id { param } telah dihapus",
+      "delete": {
+        "question": "Apakah anda yakin ingin menghapus Repas { id }?"
+      },
+      "detail": {
+        "title": "Repas"
+      },
+      "id": "ID",
+      "idRepas": "Id Repas",
+      "nom": "Nom",
+      "description": "Description",
+      "apportCalorique": "Apport Calorique",
+      "idRepas": "Id Repas"
+    }
+  }
+}

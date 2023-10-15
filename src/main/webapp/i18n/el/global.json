@@ -7,7 +7,13 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entities",
-        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
+        "patient": "Patient",
+        "aideSoignant": "Aide Soignant",
+        "infirmiere": "Infirmiere",
+        "admin": "Admin",
+        "repas": "Repas",
+        "medecin": "Medecin"
       },
       "account": {
         "main": "Λογαριασμός",
@@ -85,7 +91,7 @@
     "ribbon": {
       "dev": "Development"
     },
-    "item-count": "Εμφάνιση {{first}} - {{second}} του {{total}} αντικείμενα."
+    "item-count": "Εμφάνιση { first } - { second } του { total } αντικείμενα."
   },
   "entity": {
     "action": {
@@ -98,7 +104,7 @@
       "open": "Ανοιγμα",
       "save": "Αποθήκευση",
       "view": "Λεπτομέρειες",
-      "show": "Show {{otherEntity}}"
+      "show": "Show { otherEntity }"
     },
     "detail": {
       "field": "Πεδίο",
@@ -109,13 +115,13 @@
     },
     "validation": {
       "required": "Αυτό το πεδίο είναι υποχρεωτικό.",
-      "minlength": "Αυτό το πεδίο πρέπει να περιέχει τουλάχιστον {{ min }} χαρακτήρες.",
-      "maxlength": "Αυτό το πεδίο δεν μπορεί να περιέχει πάνω από {{ max }} χαρακτήρες.",
-      "min": "Αυτό το πεδίο πρέπει να είναι παραπάνω από {{ min }}.",
-      "max": "Αυτό το πεδίο δεν πρέπει να είναι παραπάνω από {{ max }}.",
-      "minbytes": "Αυτό το πεδίο πρέπει να είναι μεγαλύτερο από {{ min }} bytes.",
-      "maxbytes": "Αυτό το πεδίο δεν πρέπει να είναι μεγαλύτερο από {{ max }} bytes.",
-      "pattern": "Πρέπει να ακολουθήσετε το ακόλουθο υπόδειγμα {{ pattern }}.",
+      "minlength": "Αυτό το πεδίο πρέπει να περιέχει τουλάχιστον { min } χαρακτήρες.",
+      "maxlength": "Αυτό το πεδίο δεν μπορεί να περιέχει πάνω από { max } χαρακτήρες.",
+      "min": "Αυτό το πεδίο πρέπει να είναι παραπάνω από { min }.",
+      "max": "Αυτό το πεδίο δεν πρέπει να είναι παραπάνω από { max }.",
+      "minbytes": "Αυτό το πεδίο πρέπει να είναι μεγαλύτερο από { min } bytes.",
+      "maxbytes": "Αυτό το πεδίο δεν πρέπει να είναι μεγαλύτερο από { max } bytes.",
+      "pattern": "Πρέπει να ακολουθήσετε το ακόλουθο υπόδειγμα { pattern }.",
       "number": "Αυτό το πεδίο πρέπει να περιέχει μονο ψηφία.",
       "datetimelocal": "Αυτό το πεδίο πρέπει να περιέχει ημερομηνία και ώρα."
     },
@@ -129,17 +135,17 @@
     "internalServerError": "Internal server error",
     "server.not.reachable": "Ο διακομιστής δεν είναι προσβάσιμος",
     "url.not.found": "Not found",
-    "NotNull": "Το ακόλουθο πεδίο δεν μπορεί να είναι κενό: {{ fieldName }}",
-    "Size": "Το ακόλουθο πεδίο δεν τηρεί της προϋποθέσεις μήκους/χωρητικότητας: {{ fieldName }}",
+    "NotNull": "Το ακόλουθο πεδίο δεν μπορεί να είναι κενό: { fieldName }",
+    "Size": "Το ακόλουθο πεδίο δεν τηρεί της προϋποθέσεις μήκους/χωρητικότητας: { fieldName }",
     "userexists": "Αυτό το όνομα σύνδεσης είναι ήδη εγγεγραμμένο!",
     "emailexists": "Αυτό το email είναι ήδη εγγεγραμμένο!",
-    "idexists": "Ένα καινούργιο {{ entityName }} δεν μπορεί να έχει είδη ένα ID.",
+    "idexists": "Ένα καινούργιο { entityName } δεν μπορεί να έχει είδη ένα ID.",
     "idnull": "Invalid ID",
     "idinvalid": "Invalid Id",
     "idnotfound": "ID cannot be found",
     "file": {
       "could.not.extract": "Could not extract file",
-      "not.image": "File was expected to be an image but was found to be \"{{ fileType }}\""
+      "not.image": "File was expected to be an image but was found to be \"{ fileType }\""
     }
   },
   "footer": "Αυτό είναι το υποσέλιδο σας"

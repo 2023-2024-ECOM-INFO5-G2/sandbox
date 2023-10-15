@@ -1,0 +1,28 @@
+{
+  "ecom02App": {
+    "repas": {
+      "home": {
+        "title": "Repas",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Repas-ஐ உருவாக்கு",
+        "createOrEditLabel": "Repas -ஐ மாற்று (அ) உருவாக்கு",
+        "notFound": "No Repas found"
+      },
+      "created": "Repas புதிதாக உருவாக்கப்பட்டது, அடையாளம் { param }",
+      "updated": "Repas மாற்றப்பட்டது, அடையாளம்  { param }",
+      "deleted": "A Repas நீக்கப்பட்டது, அடையாளம { param }",
+      "delete": {
+        "question": "நீக்குவதற்கு உறுதி செய் Repas { id }?"
+      },
+      "detail": {
+        "title": "Repas"
+      },
+      "id": "ID",
+      "idRepas": "Id Repas",
+      "nom": "Nom",
+      "description": "Description",
+      "apportCalorique": "Apport Calorique",
+      "idRepas": "Id Repas"
+    }
+  }
+}

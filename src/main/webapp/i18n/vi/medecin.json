@@ -1,0 +1,27 @@
+{
+  "ecom02App": {
+    "medecin": {
+      "home": {
+        "title": "Medecins",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Thêm mới một Medecin",
+        "createOrEditLabel": "Thêm mới hoặc cập nhật Medecin",
+        "notFound": "No Medecins found"
+      },
+      "created": "Một Medecin mới được tạo với định danh { param }",
+      "updated": "Một Medecin cập nhật với định danh { param }",
+      "deleted": "Một Medecin đã xóa với định danh { param }",
+      "delete": {
+        "question": "Bạn có chắc là muốn xóa Medecin { id }?"
+      },
+      "detail": {
+        "title": "Medecin"
+      },
+      "id": "ID",
+      "idMedecin": "Id Medecin",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "idMedecin": "Id Medecin"
+    }
+  }
+}

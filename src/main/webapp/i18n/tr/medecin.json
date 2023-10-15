@@ -1,0 +1,27 @@
+{
+  "ecom02App": {
+    "medecin": {
+      "home": {
+        "title": "Medecins",
+        "refreshListLabel": "Listeyi yenile",
+        "createLabel": "Yeni Medecin ekle",
+        "createOrEditLabel": "Yeni Medecin ekle veya guncelle",
+        "notFound": "Medecins kaydi bulunamadi"
+      },
+      "created": "{ param } ID ile bir Medecin eklendi",
+      "updated": "{ param } nolu Medecin guncellendi",
+      "deleted": "{ param } nolu Medecin silindi",
+      "delete": {
+        "question": "{ id } nolu Medecin silinecek. Devem etmek istiyor musunuz?"
+      },
+      "detail": {
+        "title": "Medecin"
+      },
+      "id": "ID",
+      "idMedecin": "Id Medecin",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "idMedecin": "Id Medecin"
+    }
+  }
+}

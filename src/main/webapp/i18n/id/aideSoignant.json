@@ -1,0 +1,27 @@
+{
+  "ecom02App": {
+    "aideSoignant": {
+      "home": {
+        "title": "Aide Soignants",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Buat Aide Soignant baru",
+        "createOrEditLabel": "Buat atau edit Aide Soignant",
+        "notFound": "No Aide Soignants found"
+      },
+      "created": "Aide Soignant dengan id { param } telah dibuat",
+      "updated": "Aide Soignant dengan id { param } telah diperbaharui",
+      "deleted": "Aide Soignant dengan id { param } telah dihapus",
+      "delete": {
+        "question": "Apakah anda yakin ingin menghapus Aide Soignant { id }?"
+      },
+      "detail": {
+        "title": "Aide Soignant"
+      },
+      "id": "ID",
+      "idSoignant": "Id Soignant",
+      "prenom": "Prenom",
+      "nom": "Nom",
+      "idSoignant": "Id Soignant"
+    }
+  }
+}

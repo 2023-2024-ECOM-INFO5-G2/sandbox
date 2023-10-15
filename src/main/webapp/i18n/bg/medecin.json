@@ -1,0 +1,27 @@
+{
+  "ecom02App": {
+    "medecin": {
+      "home": {
+        "title": "Medecins",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Създайте нов Medecin",
+        "createOrEditLabel": "Създайте или редактирайте Medecin",
+        "notFound": "Medecins не са намерени"
+      },
+      "created": "Създаден е нов Medecin с идентификатор { param }",
+      "updated": "Medecin с идентификатор { param } e oбновен",
+      "deleted": "Medecin с идентификатор { param } е изтрит",
+      "delete": {
+        "question": "Наистина ли искате да изтриете Medecin { id }?"
+      },
+      "detail": {
+        "title": "Medecin"
+      },
+      "id": "ID",
+      "idMedecin": "Id Medecin",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "idMedecin": "Id Medecin"
+    }
+  }
+}

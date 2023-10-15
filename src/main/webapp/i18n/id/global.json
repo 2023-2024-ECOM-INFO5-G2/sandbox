@@ -1,0 +1,14 @@
+{
+  "global": {
+    "menu": {
+      "entities": {
+        "patient": "Patient",
+        "aideSoignant": "Aide Soignant",
+        "infirmiere": "Infirmiere",
+        "admin": "Admin",
+        "repas": "Repas",
+        "medecin": "Medecin"
+      }
+    }
+  }
+}

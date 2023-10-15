@@ -1,0 +1,28 @@
+{
+  "ecom02App": {
+    "repas": {
+      "home": {
+        "title": "Repas",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Skapa en ny Repas",
+        "createOrEditLabel": "Skapa eller ändra en Repas",
+        "notFound": "No Repas found"
+      },
+      "created": "En ny Repas är skapad med id { param }",
+      "updated": "En Repas är uppdaterad med id  { param }",
+      "deleted": "En Repas är borttagen med id  { param }",
+      "delete": {
+        "question": "Är du säker på att du vill ta bort Repas { id }?"
+      },
+      "detail": {
+        "title": "Repas"
+      },
+      "id": "ID",
+      "idRepas": "Id Repas",
+      "nom": "Nom",
+      "description": "Description",
+      "apportCalorique": "Apport Calorique",
+      "idRepas": "Id Repas"
+    }
+  }
+}

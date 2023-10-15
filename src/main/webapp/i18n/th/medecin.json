@@ -1,0 +1,27 @@
+{
+  "ecom02App": {
+    "medecin": {
+      "home": {
+        "title": "Medecins",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "สร้าง Medecin",
+        "createOrEditLabel": "สร้างหรือแก้ไข Medecin",
+        "notFound": "No Medecins found"
+      },
+      "created": "Medecin ถูกสร้างด้วย { param }",
+      "updated": "Medecin ถูกแก้ไขด้วย { param }",
+      "deleted": "Medecin ถูกลบด้วย { param }",
+      "delete": {
+        "question": "คุณต้องการที่จะลบ Medecin { id }?"
+      },
+      "detail": {
+        "title": "Medecin"
+      },
+      "id": "ID",
+      "idMedecin": "Id Medecin",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "idMedecin": "Id Medecin"
+    }
+  }
+}

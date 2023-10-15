@@ -38,6 +38,17 @@ public class CacheConfiguration {
         return cm -> {
             createCache(cm, polytech.ecom.g02.repository.UserRepository.USERS_BY_LOGIN_CACHE);
             createCache(cm, polytech.ecom.g02.repository.UserRepository.USERS_BY_EMAIL_CACHE);
+            createCache(cm, polytech.ecom.g02.domain.Patient.class.getName());
+            createCache(cm, polytech.ecom.g02.domain.Patient.class.getName() + ".idPatients");
+            createCache(cm, polytech.ecom.g02.domain.AideSoignant.class.getName());
+            createCache(cm, polytech.ecom.g02.domain.AideSoignant.class.getName() + ".idSoignants");
+            createCache(cm, polytech.ecom.g02.domain.Infirmiere.class.getName());
+            createCache(cm, polytech.ecom.g02.domain.Infirmiere.class.getName() + ".idInfirmieres");
+            createCache(cm, polytech.ecom.g02.domain.Admin.class.getName());
+            createCache(cm, polytech.ecom.g02.domain.Repas.class.getName());
+            createCache(cm, polytech.ecom.g02.domain.Repas.class.getName() + ".idRepas");
+            createCache(cm, polytech.ecom.g02.domain.Medecin.class.getName());
+            createCache(cm, polytech.ecom.g02.domain.Medecin.class.getName() + ".idMedecins");
             // jhipster-needle-ehcache-add-entry
         };
     }

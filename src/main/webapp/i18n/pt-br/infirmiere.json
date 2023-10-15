@@ -1,0 +1,27 @@
+{
+  "ecom02App": {
+    "infirmiere": {
+      "home": {
+        "title": "Infirmieres",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Infirmiere",
+        "createOrEditLabel": "Criar ou editar Infirmiere",
+        "notFound": "Nenhum Infirmiere encontrado"
+      },
+      "created": "Um novo Infirmiere foi criado com o identificador { param }",
+      "updated": "Um Infirmiere foi atualizado com o identificador { param }",
+      "deleted": "Um Infirmiere foi excluído com o identificador { param }",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Infirmiere { id }?"
+      },
+      "detail": {
+        "title": "Infirmiere"
+      },
+      "id": "ID",
+      "idInfirmiere": "Id Infirmiere",
+      "prenom": "Prenom",
+      "nom": "Nom",
+      "idInfirmiere": "Id Infirmiere"
+    }
+  }
+}

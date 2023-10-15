@@ -1,0 +1,26 @@
+{
+  "ecom02App": {
+    "admin": {
+      "home": {
+        "title": "Admins",
+        "refreshListLabel": "Listeyi yenile",
+        "createLabel": "Yeni Admin ekle",
+        "createOrEditLabel": "Yeni Admin ekle veya guncelle",
+        "notFound": "Admins kaydi bulunamadi"
+      },
+      "created": "{ param } ID ile bir Admin eklendi",
+      "updated": "{ param } nolu Admin guncellendi",
+      "deleted": "{ param } nolu Admin silindi",
+      "delete": {
+        "question": "{ id } nolu Admin silinecek. Devem etmek istiyor musunuz?"
+      },
+      "detail": {
+        "title": "Admin"
+      },
+      "id": "ID",
+      "idAdmin": "Id Admin",
+      "prenom": "Prenom",
+      "nom": "Nom"
+    }
+  }
+}

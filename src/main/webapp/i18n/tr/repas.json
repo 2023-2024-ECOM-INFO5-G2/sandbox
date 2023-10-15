@@ -1,0 +1,28 @@
+{
+  "ecom02App": {
+    "repas": {
+      "home": {
+        "title": "Repas",
+        "refreshListLabel": "Listeyi yenile",
+        "createLabel": "Yeni Repas ekle",
+        "createOrEditLabel": "Yeni Repas ekle veya guncelle",
+        "notFound": "Repas kaydi bulunamadi"
+      },
+      "created": "{ param } ID ile bir Repas eklendi",
+      "updated": "{ param } nolu Repas guncellendi",
+      "deleted": "{ param } nolu Repas silindi",
+      "delete": {
+        "question": "{ id } nolu Repas silinecek. Devem etmek istiyor musunuz?"
+      },
+      "detail": {
+        "title": "Repas"
+      },
+      "id": "ID",
+      "idRepas": "Id Repas",
+      "nom": "Nom",
+      "description": "Description",
+      "apportCalorique": "Apport Calorique",
+      "idRepas": "Id Repas"
+    }
+  }
+}

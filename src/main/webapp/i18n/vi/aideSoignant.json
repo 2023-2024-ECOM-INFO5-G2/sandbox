@@ -1,0 +1,27 @@
+{
+  "ecom02App": {
+    "aideSoignant": {
+      "home": {
+        "title": "Aide Soignants",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Thêm mới một Aide Soignant",
+        "createOrEditLabel": "Thêm mới hoặc cập nhật Aide Soignant",
+        "notFound": "No Aide Soignants found"
+      },
+      "created": "Một Aide Soignant mới được tạo với định danh { param }",
+      "updated": "Một Aide Soignant cập nhật với định danh { param }",
+      "deleted": "Một Aide Soignant đã xóa với định danh { param }",
+      "delete": {
+        "question": "Bạn có chắc là muốn xóa Aide Soignant { id }?"
+      },
+      "detail": {
+        "title": "Aide Soignant"
+      },
+      "id": "ID",
+      "idSoignant": "Id Soignant",
+      "prenom": "Prenom",
+      "nom": "Nom",
+      "idSoignant": "Id Soignant"
+    }
+  }
+}

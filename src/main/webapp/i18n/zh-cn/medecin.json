@@ -1,0 +1,27 @@
+{
+  "ecom02App": {
+    "medecin": {
+      "home": {
+        "title": "Medecins",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "创建新 Medecin",
+        "createOrEditLabel": "创建或编辑 Medecin",
+        "notFound": "No Medecins found"
+      },
+      "created": "Medecin { param } 创建成功",
+      "updated": "Medecin { param } 更新成功",
+      "deleted": "Medecin { param } 删除成功",
+      "delete": {
+        "question": "你确定要删除 Medecin { id } 吗？"
+      },
+      "detail": {
+        "title": "Medecin"
+      },
+      "id": "ID",
+      "idMedecin": "Id Medecin",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "idMedecin": "Id Medecin"
+    }
+  }
+}

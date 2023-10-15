@@ -1,0 +1,27 @@
+{
+  "ecom02App": {
+    "infirmiere": {
+      "home": {
+        "title": "Infirmieres",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Skapa en ny Infirmiere",
+        "createOrEditLabel": "Skapa eller ändra en Infirmiere",
+        "notFound": "No Infirmieres found"
+      },
+      "created": "En ny Infirmiere är skapad med id { param }",
+      "updated": "En Infirmiere är uppdaterad med id  { param }",
+      "deleted": "En Infirmiere är borttagen med id  { param }",
+      "delete": {
+        "question": "Är du säker på att du vill ta bort Infirmiere { id }?"
+      },
+      "detail": {
+        "title": "Infirmiere"
+      },
+      "id": "ID",
+      "idInfirmiere": "Id Infirmiere",
+      "prenom": "Prenom",
+      "nom": "Nom",
+      "idInfirmiere": "Id Infirmiere"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "ecom02App": {
+    "admin": {
+      "home": {
+        "title": "Admins",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Admin-ஐ உருவாக்கு",
+        "createOrEditLabel": "Admin -ஐ மாற்று (அ) உருவாக்கு",
+        "notFound": "No Admins found"
+      },
+      "created": "Admin புதிதாக உருவாக்கப்பட்டது, அடையாளம் { param }",
+      "updated": "Admin மாற்றப்பட்டது, அடையாளம்  { param }",
+      "deleted": "A Admin நீக்கப்பட்டது, அடையாளம { param }",
+      "delete": {
+        "question": "நீக்குவதற்கு உறுதி செய் Admin { id }?"
+      },
+      "detail": {
+        "title": "Admin"
+      },
+      "id": "ID",
+      "idAdmin": "Id Admin",
+      "prenom": "Prenom",
+      "nom": "Nom"
+    }
+  }
+}

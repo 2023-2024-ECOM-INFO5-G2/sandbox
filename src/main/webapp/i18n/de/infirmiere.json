@@ -1,0 +1,27 @@
+{
+  "ecom02App": {
+    "infirmiere": {
+      "home": {
+        "title": "Infirmieres",
+        "refreshListLabel": "Liste aktualisieren",
+        "createLabel": "Infirmiere erstellen",
+        "createOrEditLabel": "Infirmiere erstellen oder bearbeiten",
+        "notFound": "Keine Infirmieres gefunden"
+      },
+      "created": "Infirmiere erstellt mit ID { param }",
+      "updated": "Infirmiere aktualisiert mit ID { param }",
+      "deleted": "Infirmiere gelöscht mit ID { param }",
+      "delete": {
+        "question": "Soll Infirmiere { id } wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Infirmiere"
+      },
+      "id": "ID",
+      "idInfirmiere": "Id Infirmiere",
+      "prenom": "Prenom",
+      "nom": "Nom",
+      "idInfirmiere": "Id Infirmiere"
+    }
+  }
+}

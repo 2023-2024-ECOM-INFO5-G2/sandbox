@@ -1,0 +1,27 @@
+{
+  "ecom02App": {
+    "aideSoignant": {
+      "home": {
+        "title": "Aide Soignants",
+        "refreshListLabel": "Listeyi yenile",
+        "createLabel": "Yeni Aide Soignant ekle",
+        "createOrEditLabel": "Yeni Aide Soignant ekle veya guncelle",
+        "notFound": "Aide Soignants kaydi bulunamadi"
+      },
+      "created": "{ param } ID ile bir Aide Soignant eklendi",
+      "updated": "{ param } nolu Aide Soignant guncellendi",
+      "deleted": "{ param } nolu Aide Soignant silindi",
+      "delete": {
+        "question": "{ id } nolu Aide Soignant silinecek. Devem etmek istiyor musunuz?"
+      },
+      "detail": {
+        "title": "Aide Soignant"
+      },
+      "id": "ID",
+      "idSoignant": "Id Soignant",
+      "prenom": "Prenom",
+      "nom": "Nom",
+      "idSoignant": "Id Soignant"
+    }
+  }
+}

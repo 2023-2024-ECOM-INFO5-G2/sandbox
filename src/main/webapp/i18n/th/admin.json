@@ -1,0 +1,26 @@
+{
+  "ecom02App": {
+    "admin": {
+      "home": {
+        "title": "Admins",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "สร้าง Admin",
+        "createOrEditLabel": "สร้างหรือแก้ไข Admin",
+        "notFound": "No Admins found"
+      },
+      "created": "Admin ถูกสร้างด้วย { param }",
+      "updated": "Admin ถูกแก้ไขด้วย { param }",
+      "deleted": "Admin ถูกลบด้วย { param }",
+      "delete": {
+        "question": "คุณต้องการที่จะลบ Admin { id }?"
+      },
+      "detail": {
+        "title": "Admin"
+      },
+      "id": "ID",
+      "idAdmin": "Id Admin",
+      "prenom": "Prenom",
+      "nom": "Nom"
+    }
+  }
+}

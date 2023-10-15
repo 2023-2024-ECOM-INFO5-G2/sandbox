@@ -1,0 +1,27 @@
+{
+  "ecom02App": {
+    "medecin": {
+      "home": {
+        "title": "Medecins",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Δημιουργήστε ένα νέο Medecin",
+        "createOrEditLabel": "Δημιουργήστε η επεξεργαστείτε ένα Medecin",
+        "notFound": "No Medecins found"
+      },
+      "created": "Ένα νέο Medecin έχει δημιουργηθεί με αναγνωριστικό { param }",
+      "updated": "Ένα Medecin έχει ενημερωθεί με αναγνωριστικό { param }",
+      "deleted": "Ένα Medecin έχει διαγραφτεί με αναγνωριστικό { param }",
+      "delete": {
+        "question": "Είστε βέβαιοι όταν θέλετε να διαγράψετε το ακόλουθο Medecin { id };"
+      },
+      "detail": {
+        "title": "Medecin"
+      },
+      "id": "ID",
+      "idMedecin": "Id Medecin",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "idMedecin": "Id Medecin"
+    }
+  }
+}

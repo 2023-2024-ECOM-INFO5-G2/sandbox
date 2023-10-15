@@ -7,7 +7,13 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Обекти",
-        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
+        "patient": "Patient",
+        "aideSoignant": "Aide Soignant",
+        "infirmiere": "Infirmiere",
+        "admin": "Admin",
+        "repas": "Repas",
+        "medecin": "Medecin"
       },
       "account": {
         "main": "Акаунт",
@@ -85,7 +91,7 @@
     "ribbon": {
       "dev": "Разработка"
     },
-    "item-count": "Показани {{first}} - {{second}} от {{total}} записа."
+    "item-count": "Показани { first } - { second } от { total } записа."
   },
   "entity": {
     "action": {
@@ -98,7 +104,7 @@
       "open": "Отваряне",
       "save": "Запазване",
       "view": "Преглед",
-      "show": "Show {{otherEntity}}"
+      "show": "Show { otherEntity }"
     },
     "detail": {
       "field": "Поле",
@@ -109,13 +115,13 @@
     },
     "validation": {
       "required": "Това поле е задължително.",
-      "minlength": "Това поле трябва да съдържа поне {{ min }} символа.",
-      "maxlength": "Това поле не може да бъде по-дълго от {{ max }} символа.",
-      "min": "Стойността на това поле трябва да бъде поне {{ min }}.",
-      "max": "Стойността на това поле не може да бъде повече от {{ max }}.",
-      "minbytes": "Това поле трябва да бъде поне {{ min }} байта.",
-      "maxbytes": "Това поле не може да бъде повече от {{ max }} байта.",
-      "pattern": "Това поле трябва да следва модела {{ pattern }}.",
+      "minlength": "Това поле трябва да съдържа поне { min } символа.",
+      "maxlength": "Това поле не може да бъде по-дълго от { max } символа.",
+      "min": "Стойността на това поле трябва да бъде поне { min }.",
+      "max": "Стойността на това поле не може да бъде повече от { max }.",
+      "minbytes": "Това поле трябва да бъде поне { min } байта.",
+      "maxbytes": "Това поле не може да бъде повече от { max } байта.",
+      "pattern": "Това поле трябва да следва модела { pattern }.",
       "number": "Това поле трябва да бъде число.",
       "datetimelocal": "Това поле трябва да бъде дата и час.",
       "patternLogin": "Това поле може да съдържа само букви, цифри и имейл адреси."
@@ -130,17 +136,17 @@
     "internalServerError": "Вътрешна грешка в сървъра",
     "server.not.reachable": "Сървърът е недостъпен",
     "url.not.found": "Не е намерен",
-    "NotNull": "Полето {{ fieldName }} не може да бъде празно!",
-    "Size": "Полето {{ fieldName }} не отговаря на минималните / максимални изисквания за размер!",
+    "NotNull": "Полето { fieldName } не може да бъде празно!",
+    "Size": "Полето { fieldName } не отговаря на минималните / максимални изисквания за размер!",
     "userexists": "Потребителското име вече се използва!",
     "emailexists": "Имейлът вече се използва!",
-    "idexists": "Новият обект {{ entityName }} не може вече да има ID",
+    "idexists": "Новият обект { entityName } не може вече да има ID",
     "idnull": "Невалидно ID",
     "idinvalid": "Invalid Id",
     "idnotfound": "ID cannot be found",
     "file": {
       "could.not.extract": "Файлът не може да бъде извлечен",
-      "not.image": "Файлът се очакваше да бъде изображение, но беше установено, че е \"{{ fileType }}\""
+      "not.image": "Файлът се очакваше да бъде изображение, но беше установено, че е \"{ fileType }\""
     }
   },
   "footer": "Това е долнището на вашата страница."

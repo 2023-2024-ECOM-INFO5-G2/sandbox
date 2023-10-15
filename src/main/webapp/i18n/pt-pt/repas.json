@@ -1,0 +1,28 @@
+{
+  "ecom02App": {
+    "repas": {
+      "home": {
+        "title": "Repas",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Criar novo(a) Repas",
+        "createOrEditLabel": "Criar ou editar Repas",
+        "notFound": "Nenhum Repas encontrado"
+      },
+      "created": "Um novo Repas foi criado com o identificador { param }",
+      "updated": "Repas com identificador { param } foi actualizado",
+      "deleted": "Repas com identificador { param } foi eliminado",
+      "delete": {
+        "question": "Tem a certeza que pretende eliminar o(a) Repas { id }?"
+      },
+      "detail": {
+        "title": "Repas"
+      },
+      "id": "ID",
+      "idRepas": "Id Repas",
+      "nom": "Nom",
+      "description": "Description",
+      "apportCalorique": "Apport Calorique",
+      "idRepas": "Id Repas"
+    }
+  }
+}

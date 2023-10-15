@@ -7,7 +7,13 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entità",
-        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
+        "patient": "Patient",
+        "aideSoignant": "Aide Soignant",
+        "infirmiere": "Infirmiere",
+        "admin": "Admin",
+        "repas": "Repas",
+        "medecin": "Medecin"
       },
       "account": {
         "main": "Utente",
@@ -85,7 +91,7 @@
     "ribbon": {
       "dev": "Development"
     },
-    "item-count": "Mostra {{first}} - {{second}} di {{total}} articoli."
+    "item-count": "Mostra { first } - { second } di { total } articoli."
   },
   "entity": {
     "action": {
@@ -98,7 +104,7 @@
       "open": "Open",
       "save": "Salva",
       "view": "Visualizza",
-      "show": "Show {{otherEntity}}"
+      "show": "Show { otherEntity }"
     },
     "detail": {
       "field": "Campo",
@@ -109,13 +115,13 @@
     },
     "validation": {
       "required": "Questo campo è obbligatorio.",
-      "minlength": "Questo campo deve essere di almeno {{ min }} caratteri.",
-      "maxlength": "Questo campo non può essere più di {{ max }} caratteri.",
-      "min": "Questo campo dovrebbe essere più di {{ min }}.",
-      "max": "Questo campo non può essere superiore a {{ max }}.",
-      "minbytes": "Questo campo dovrebbe essere più di {{ min }} byte.",
-      "maxbytes": "Questo campo non può essere superiore a {{ max }} byte.",
-      "pattern": "Questo campo dovrebbe corrispondere al modello {{ pattern }}.",
+      "minlength": "Questo campo deve essere di almeno { min } caratteri.",
+      "maxlength": "Questo campo non può essere più di { max } caratteri.",
+      "min": "Questo campo dovrebbe essere più di { min }.",
+      "max": "Questo campo non può essere superiore a { max }.",
+      "minbytes": "Questo campo dovrebbe essere più di { min } byte.",
+      "maxbytes": "Questo campo non può essere superiore a { max } byte.",
+      "pattern": "Questo campo dovrebbe corrispondere al modello { pattern }.",
       "number": "Questo campo dovrebbe essere un numero.",
       "datetimelocal": "Questo campo dovrebbe essere data e ora."
     },
@@ -129,17 +135,17 @@
     "internalServerError": "Internal server error",
     "server.not.reachable": "Server non raggiungibile",
     "url.not.found": "Non trovato",
-    "NotNull": "Il campo {{ fieldName }} non può essere vuoto!",
-    "Size": "Il campo {{ fieldName }} non è conforme ai requisiti di lunghezza min/max!",
+    "NotNull": "Il campo { fieldName } non può essere vuoto!",
+    "Size": "Il campo { fieldName } non è conforme ai requisiti di lunghezza min/max!",
     "userexists": "Il nome utente è già in uso!",
     "emailexists": "L'email è già in uso!",
-    "idexists": "Un(a) nuovo/a {{entityName}} non può già avere un ID",
+    "idexists": "Un(a) nuovo/a { entityName } non può già avere un ID",
     "idnull": "Invalid ID",
     "idinvalid": "Invalid Id",
     "idnotfound": "ID cannot be found",
     "file": {
       "could.not.extract": "Could not extract file",
-      "not.image": "File was expected to be an image but was found to be \"{{ fileType }}\""
+      "not.image": "File was expected to be an image but was found to be \"{ fileType }\""
     }
   },
   "footer": "Piè di pagina"

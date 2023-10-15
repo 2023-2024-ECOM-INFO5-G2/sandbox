@@ -1,0 +1,35 @@
+{
+  "ecom02App": {
+    "patient": {
+      "home": {
+        "title": "Patients",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Създайте нов Patient",
+        "createOrEditLabel": "Създайте или редактирайте Patient",
+        "notFound": "Patients не са намерени"
+      },
+      "created": "Създаден е нов Patient с идентификатор { param }",
+      "updated": "Patient с идентификатор { param } e oбновен",
+      "deleted": "Patient с идентификатор { param } е изтрит",
+      "delete": {
+        "question": "Наистина ли искате да изтриете Patient { id }?"
+      },
+      "detail": {
+        "title": "Patient"
+      },
+      "id": "ID",
+      "idPatient": "Id Patient",
+      "prenom": "Prenom",
+      "nom": "Nom",
+      "sexe": "Sexe",
+      "dateDeNaissance": "Date De Naissance",
+      "chambre": "Chambre",
+      "poids": "Poids",
+      "dateArrivee": "Date Arrivee",
+      "idMedecin": "Id Medecin",
+      "idPatient": "Id Patient",
+      "idPatient": "Id Patient",
+      "idPatient": "Id Patient"
+    }
+  }
+}
