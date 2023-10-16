@@ -33,7 +33,7 @@ describe('Service Tests', () => {
     beforeEach(() => {
       service = new PatientService();
       currentDate = new Date();
-      elemDefault = new Patient(123, 0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', currentDate, 0, 0, currentDate);
+      elemDefault = new Patient(123, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', currentDate, 0, 0, currentDate);
     });
 
     describe('Service methods', () => {
@@ -43,7 +43,7 @@ describe('Service Tests', () => {
             dateDeNaissance: dayjs(currentDate).format(DATE_FORMAT),
             dateArrivee: dayjs(currentDate).format(DATE_FORMAT),
           },
-          elemDefault
+          elemDefault,
         );
         axiosStub.get.resolves({ data: returnedFromService });
 
@@ -69,14 +69,14 @@ describe('Service Tests', () => {
             dateDeNaissance: dayjs(currentDate).format(DATE_FORMAT),
             dateArrivee: dayjs(currentDate).format(DATE_FORMAT),
           },
-          elemDefault
+          elemDefault,
         );
         const expected = Object.assign(
           {
             dateDeNaissance: currentDate,
             dateArrivee: currentDate,
           },
-          returnedFromService
+          returnedFromService,
         );
 
         axiosStub.post.resolves({ data: returnedFromService });
@@ -99,7 +99,6 @@ describe('Service Tests', () => {
       it('should update a Patient', async () => {
         const returnedFromService = Object.assign(
           {
-            idPatient: 1,
             prenom: 'BBBBBB',
             nom: 'BBBBBB',
             sexe: 'BBBBBB',
@@ -108,7 +107,7 @@ describe('Service Tests', () => {
             poids: 1,
             dateArrivee: dayjs(currentDate).format(DATE_FORMAT),
           },
-          elemDefault
+          elemDefault,
         );
 
         const expected = Object.assign(
@@ -116,7 +115,7 @@ describe('Service Tests', () => {
             dateDeNaissance: currentDate,
             dateArrivee: currentDate,
           },
-          returnedFromService
+          returnedFromService,
         );
         axiosStub.put.resolves({ data: returnedFromService });
 
@@ -142,10 +141,10 @@ describe('Service Tests', () => {
             prenom: 'BBBBBB',
             nom: 'BBBBBB',
             sexe: 'BBBBBB',
-            poids: 1,
+            dateDeNaissance: dayjs(currentDate).format(DATE_FORMAT),
             dateArrivee: dayjs(currentDate).format(DATE_FORMAT),
           },
-          new Patient()
+          new Patient(),
         );
         const returnedFromService = Object.assign(patchObject, elemDefault);
 
@@ -154,7 +153,7 @@ describe('Service Tests', () => {
             dateDeNaissance: currentDate,
             dateArrivee: currentDate,
           },
-          returnedFromService
+          returnedFromService,
         );
         axiosStub.patch.resolves({ data: returnedFromService });
 
@@ -177,7 +176,6 @@ describe('Service Tests', () => {
       it('should return a list of Patient', async () => {
         const returnedFromService = Object.assign(
           {
-            idPatient: 1,
             prenom: 'BBBBBB',
             nom: 'BBBBBB',
             sexe: 'BBBBBB',
@@ -186,14 +184,14 @@ describe('Service Tests', () => {
             poids: 1,
             dateArrivee: dayjs(currentDate).format(DATE_FORMAT),
           },
-          elemDefault
+          elemDefault,
         );
         const expected = Object.assign(
           {
             dateDeNaissance: currentDate,
             dateArrivee: currentDate,
           },
-          returnedFromService
+          returnedFromService,
         );
         axiosStub.get.resolves([returnedFromService]);
         return service.retrieve().then(res => {

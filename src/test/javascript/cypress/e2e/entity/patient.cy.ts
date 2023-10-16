@@ -16,13 +16,12 @@ describe('Patient e2e test', () => {
   const username = Cypress.env('E2E_USERNAME') ?? 'user';
   const password = Cypress.env('E2E_PASSWORD') ?? 'user';
   const patientSample = {
-    idPatient: 2018,
-    prenom: 'dans la mesure où tsoin-tsoin',
-    nom: 'si',
-    sexe: 'ding si',
-    dateDeNaissance: '2023-09-25',
-    chambre: 12234,
-    dateArrivee: '2023-09-26',
+    prenom: 'au moyen de bien',
+    nom: 'ouin ouf',
+    sexe: 'chialer copier en dépit de',
+    dateDeNaissance: '2023-09-19',
+    chambre: 8514,
+    dateArrivee: '2023-09-18',
   };
 
   let patient;
@@ -100,7 +99,7 @@ describe('Patient e2e test', () => {
             {
               statusCode: 200,
               body: [patient],
-            }
+            },
           ).as('entitiesRequestInternal');
         });
 
@@ -165,31 +164,28 @@ describe('Patient e2e test', () => {
     });
 
     it('should create an instance of Patient', () => {
-      cy.get(`[data-cy="idPatient"]`).type('1487');
-      cy.get(`[data-cy="idPatient"]`).should('have.value', '1487');
+      cy.get(`[data-cy="prenom"]`).type('ouch mieux à côté de');
+      cy.get(`[data-cy="prenom"]`).should('have.value', 'ouch mieux à côté de');
 
-      cy.get(`[data-cy="prenom"]`).type('pendant que baisser');
-      cy.get(`[data-cy="prenom"]`).should('have.value', 'pendant que baisser');
+      cy.get(`[data-cy="nom"]`).type('marron partager');
+      cy.get(`[data-cy="nom"]`).should('have.value', 'marron partager');
 
-      cy.get(`[data-cy="nom"]`).type('après que serviable peut-être');
-      cy.get(`[data-cy="nom"]`).should('have.value', 'après que serviable peut-être');
+      cy.get(`[data-cy="sexe"]`).type('crac doucement');
+      cy.get(`[data-cy="sexe"]`).should('have.value', 'crac doucement');
 
-      cy.get(`[data-cy="sexe"]`).type('plouf');
-      cy.get(`[data-cy="sexe"]`).should('have.value', 'plouf');
-
-      cy.get(`[data-cy="dateDeNaissance"]`).type('2023-09-25');
+      cy.get(`[data-cy="dateDeNaissance"]`).type('2023-09-19');
       cy.get(`[data-cy="dateDeNaissance"]`).blur();
-      cy.get(`[data-cy="dateDeNaissance"]`).should('have.value', '2023-09-25');
+      cy.get(`[data-cy="dateDeNaissance"]`).should('have.value', '2023-09-19');
 
-      cy.get(`[data-cy="chambre"]`).type('6625');
-      cy.get(`[data-cy="chambre"]`).should('have.value', '6625');
+      cy.get(`[data-cy="chambre"]`).type('14768');
+      cy.get(`[data-cy="chambre"]`).should('have.value', '14768');
 
-      cy.get(`[data-cy="poids"]`).type('19333.05');
-      cy.get(`[data-cy="poids"]`).should('have.value', '19333.05');
+      cy.get(`[data-cy="poids"]`).type('19116.43');
+      cy.get(`[data-cy="poids"]`).should('have.value', '19116.43');
 
-      cy.get(`[data-cy="dateArrivee"]`).type('2023-09-26');
+      cy.get(`[data-cy="dateArrivee"]`).type('2023-09-18');
       cy.get(`[data-cy="dateArrivee"]`).blur();
-      cy.get(`[data-cy="dateArrivee"]`).should('have.value', '2023-09-26');
+      cy.get(`[data-cy="dateArrivee"]`).should('have.value', '2023-09-18');
 
       cy.get(entityCreateSaveButtonSelector).click();
 

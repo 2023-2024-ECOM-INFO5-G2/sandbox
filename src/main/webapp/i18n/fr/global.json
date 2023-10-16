@@ -1,6 +1,6 @@
 {
   "global": {
-    "title": "Ecom02",
+    "title": "Blog",
     "browsehappy": "Vous utilisez un <strong>ancien</strong> navigateur. Veuillez <a href=\"http://browsehappy.com/?locale=fr\">mettre à jour votre navigateur</a> pour une meilleure expérience.",
     "menu": {
       "home": "Accueil",
@@ -8,12 +8,7 @@
       "entities": {
         "main": "Entités",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
-        "patient": "Patient",
-        "aideSoignant": "Aide Soignant",
-        "infirmiere": "Infirmiere",
-        "admin": "Admin",
-        "repas": "Repas",
-        "medecin": "Medecin"
+        "patient": "Patient"
       },
       "account": {
         "main": "Compte",

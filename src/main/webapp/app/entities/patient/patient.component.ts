@@ -51,7 +51,7 @@ export default defineComponent({
     const removePatient = async () => {
       try {
         await patientService().delete(removeId.value);
-        const message = t$('ecom02App.patient.deleted', { param: removeId.value }).toString();
+        const message = t$('blogApp.patient.deleted', { param: removeId.value }).toString();
         alertService.showInfo(message, { variant: 'danger' });
         removeId.value = null;
         retrievePatients();

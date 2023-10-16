@@ -1,0 +1,12 @@
+// Classes //
+
+entity Patient {
+    prenom String required
+    nom String required
+    sexe String required
+    dateDeNaissance LocalDate required
+    chambre Integer required
+    poids Float
+    dateArrivee LocalDate required
+}
+

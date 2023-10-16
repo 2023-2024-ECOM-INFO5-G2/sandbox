@@ -65,6 +65,10 @@ export const submitInitResetPasswordSelector = '[data-cy="submit"]';
 export const userManagementPageHeadingSelector = '[data-cy="userManagementPageHeading"]';
 export const swaggerFrameSelector = 'iframe[data-cy="swagger-frame"]';
 export const swaggerPageSelector = '[id="swagger-ui"]';
+export const metricsPageHeadingSelector = '[data-cy="metricsPageHeading"]';
+export const healthPageHeadingSelector = '[data-cy="healthPageHeading"]';
+export const logsPageHeadingSelector = '[data-cy="logsPageHeading"]';
+export const configurationPageHeadingSelector = '[data-cy="configurationPageHeading"]';
 
 // ***********************************************
 // End Specific Selector Attributes for Cypress
@@ -74,12 +78,15 @@ export const classInvalid = 'invalid';
 export const classValid = 'valid';
 Cypress.Commands.add('authenticatedRequest', data => {
   const bearerToken = sessionStorage.getItem(Cypress.env('jwtStorageName'));
-  return cy.request({
-    ...data,
-    auth: {
-      bearer: bearerToken,
-    },
-  });
+  if (bearerToken) {
+    return cy.request({
+      ...data,
+      auth: {
+        bearer: bearerToken,
+      },
+    });
+  }
+  return cy.request(data);
 });
 
 Cypress.Commands.add('login', (username: string, password: string) => {
@@ -103,7 +110,7 @@ Cypress.Commands.add('login', (username: string, password: string) => {
       validate() {
         cy.authenticatedRequest({ url: '/api/account' }).its('status').should('eq', 200);
       },
-    }
+    },
   );
 });
 
@@ -116,5 +123,6 @@ declare global {
   }
 }
 
+import 'cypress-audit/commands';
 // Convert this to a module instead of script (allows import/export)
 export {};

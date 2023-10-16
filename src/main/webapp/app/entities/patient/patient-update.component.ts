@@ -7,8 +7,6 @@ import PatientService from './patient.service';
 import { useValidation } from '@/shared/composables';
 import { useAlertService } from '@/shared/alert/alert.service';
 
-import MedecinService from '@/entities/medecin/medecin.service';
-import { type IMedecin } from '@/shared/model/medecin.model';
 import { type IPatient, Patient } from '@/shared/model/patient.model';
 
 export default defineComponent({
@@ -19,10 +17,6 @@ export default defineComponent({
     const alertService = inject('alertService', () => useAlertService(), true);
 
     const patient: Ref<IPatient> = ref(new Patient());
-
-    const medecinService = inject('medecinService', () => new MedecinService());
-
-    const medecins: Ref<IMedecin[]> = ref([]);
     const isSaving = ref(false);
     const currentLanguage = inject('currentLanguage', () => computed(() => navigator.language ?? 'fr'), true);
 
@@ -44,23 +38,9 @@ export default defineComponent({
       retrievePatient(route.params.patientId);
     }
 
-    const initRelationships = () => {
-      medecinService()
-        .retrieve()
-        .then(res => {
-          medecins.value = res.data;
-        });
-    };
-
-    initRelationships();
-
     const { t: t$ } = useI18n();
     const validations = useValidation();
     const validationRules = {
-      idPatient: {
-        required: validations.required(t$('entity.validation.required').toString()),
-        numeric: validations.numeric(t$('entity.validation.number').toString()),
-      },
       prenom: {
         required: validations.required(t$('entity.validation.required').toString()),
       },
@@ -81,10 +61,6 @@ export default defineComponent({
       dateArrivee: {
         required: validations.required(t$('entity.validation.required').toString()),
       },
-      idMedecin: {},
-      idPatients: {},
-      idPatients: {},
-      idPatients: {},
     };
     const v$ = useVuelidate(validationRules, patient as any);
     v$.value.$validate();
@@ -96,7 +72,6 @@ export default defineComponent({
       previousState,
       isSaving,
       currentLanguage,
-      medecins,
       v$,
       t$,
     };
@@ -111,7 +86,7 @@ export default defineComponent({
           .then(param => {
             this.isSaving = false;
             this.previousState();
-            this.alertService.showInfo(this.t$('ecom02App.patient.updated', { param: param.id }));
+            this.alertService.showInfo(this.t$('blogApp.patient.updated', { param: param.id }));
           })
           .catch(error => {
             this.isSaving = false;
@@ -123,7 +98,7 @@ export default defineComponent({
           .then(param => {
             this.isSaving = false;
             this.previousState();
-            this.alertService.showSuccess(this.t$('ecom02App.patient.created', { param: param.id }).toString());
+            this.alertService.showSuccess(this.t$('blogApp.patient.created', { param: param.id }).toString());
           })
           .catch(error => {
             this.isSaving = false;

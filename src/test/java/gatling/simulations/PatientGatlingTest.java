@@ -77,8 +77,7 @@ public class PatientGatlingTest extends Simulation {
                         .body(
                             StringBody(
                                 "{" +
-                                "\"idPatient\": 0" +
-                                ", \"prenom\": \"SAMPLE_TEXT\"" +
+                                "\"prenom\": \"SAMPLE_TEXT\"" +
                                 ", \"nom\": \"SAMPLE_TEXT\"" +
                                 ", \"sexe\": \"SAMPLE_TEXT\"" +
                                 ", \"dateDeNaissance\": \"2020-01-01T00:00:00.000Z\"" +

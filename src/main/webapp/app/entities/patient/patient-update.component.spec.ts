@@ -8,8 +8,6 @@ import PatientUpdate from './patient-update.vue';
 import PatientService from './patient.service';
 import AlertService from '@/shared/alert/alert.service';
 
-import MedecinService from '@/entities/medecin/medecin.service';
-
 type PatientUpdateComponentType = InstanceType<typeof PatientUpdate>;
 
 let route: Partial<RouteLocation>;
@@ -53,10 +51,6 @@ describe('Component Tests', () => {
         provide: {
           alertService,
           patientService: () => patientServiceStub,
-          medecinService: () =>
-            sinon.createStubInstance<MedecinService>(MedecinService, {
-              retrieve: sinon.stub().resolves({}),
-            } as any),
         },
       };
     });

@@ -1,5 +1,5 @@
 {
-  "ecom02App": {
+  "blogApp": {
     "patient": {
       "home": {
         "title": "Patients",
@@ -18,18 +18,13 @@
         "title": "Patient"
       },
       "id": "ID",
-      "idPatient": "Id Patient",
       "prenom": "Prenom",
       "nom": "Nom",
       "sexe": "Sexe",
       "dateDeNaissance": "Date De Naissance",
       "chambre": "Chambre",
       "poids": "Poids",
-      "dateArrivee": "Date Arrivee",
-      "idMedecin": "Id Medecin",
-      "idPatient": "Id Patient",
-      "idPatient": "Id Patient",
-      "idPatient": "Id Patient"
+      "dateArrivee": "Date Arrivee"
     }
   }
 }
