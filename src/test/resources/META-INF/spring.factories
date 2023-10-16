@@ -1,2 +1,2 @@
-org.springframework.test.context.ContextCustomizerFactory = polytech.g2.blog.\
+org.springframework.test.context.ContextCustomizerFactory = com.mycompany.myapp.\
     config.SqlTestContainersSpringContextCustomizerFactory

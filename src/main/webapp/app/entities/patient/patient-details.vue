@@ -3,47 +3,47 @@
     <div class="col-8">
       <div v-if="patient">
         <h2 class="jh-entity-heading" data-cy="patientDetailsHeading">
-          <span v-text="t$('blogApp.patient.detail.title')"></span> {{ patient.id }}
+          <span v-text="t$('polytechEcomG2App.patient.detail.title')"></span> {{ patient.id }}
         </h2>
         <dl class="row jh-entity-details">
           <dt>
-            <span v-text="t$('blogApp.patient.prenom')"></span>
+            <span v-text="t$('polytechEcomG2App.patient.prenom')"></span>
           </dt>
           <dd>
             <span>{{ patient.prenom }}</span>
           </dd>
           <dt>
-            <span v-text="t$('blogApp.patient.nom')"></span>
+            <span v-text="t$('polytechEcomG2App.patient.nom')"></span>
           </dt>
           <dd>
             <span>{{ patient.nom }}</span>
           </dd>
           <dt>
-            <span v-text="t$('blogApp.patient.sexe')"></span>
+            <span v-text="t$('polytechEcomG2App.patient.sexe')"></span>
           </dt>
           <dd>
             <span>{{ patient.sexe }}</span>
           </dd>
           <dt>
-            <span v-text="t$('blogApp.patient.dateDeNaissance')"></span>
+            <span v-text="t$('polytechEcomG2App.patient.dateDeNaissance')"></span>
           </dt>
           <dd>
             <span>{{ patient.dateDeNaissance }}</span>
           </dd>
           <dt>
-            <span v-text="t$('blogApp.patient.chambre')"></span>
+            <span v-text="t$('polytechEcomG2App.patient.chambre')"></span>
           </dt>
           <dd>
             <span>{{ patient.chambre }}</span>
           </dd>
           <dt>
-            <span v-text="t$('blogApp.patient.poids')"></span>
+            <span v-text="t$('polytechEcomG2App.patient.poids')"></span>
           </dt>
           <dd>
             <span>{{ patient.poids }}</span>
           </dd>
           <dt>
-            <span v-text="t$('blogApp.patient.dateArrivee')"></span>
+            <span v-text="t$('polytechEcomG2App.patient.dateArrivee')"></span>
           </dt>
           <dd>
             <span>{{ patient.dateArrivee }}</span>

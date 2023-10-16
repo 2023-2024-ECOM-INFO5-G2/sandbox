@@ -86,7 +86,7 @@ export default defineComponent({
           .then(param => {
             this.isSaving = false;
             this.previousState();
-            this.alertService.showInfo(this.t$('blogApp.patient.updated', { param: param.id }));
+            this.alertService.showInfo(this.t$('polytechEcomG2App.patient.updated', { param: param.id }));
           })
           .catch(error => {
             this.isSaving = false;
@@ -98,7 +98,7 @@ export default defineComponent({
           .then(param => {
             this.isSaving = false;
             this.previousState();
-            this.alertService.showSuccess(this.t$('blogApp.patient.created', { param: param.id }).toString());
+            this.alertService.showSuccess(this.t$('polytechEcomG2App.patient.created', { param: param.id }).toString());
           })
           .catch(error => {
             this.isSaving = false;

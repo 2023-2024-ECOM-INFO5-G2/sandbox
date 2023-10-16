@@ -138,11 +138,9 @@ describe('Service Tests', () => {
       it('should partial update a Patient', async () => {
         const patchObject = Object.assign(
           {
-            prenom: 'BBBBBB',
             nom: 'BBBBBB',
             sexe: 'BBBBBB',
-            dateDeNaissance: dayjs(currentDate).format(DATE_FORMAT),
-            dateArrivee: dayjs(currentDate).format(DATE_FORMAT),
+            poids: 1,
           },
           new Patient(),
         );

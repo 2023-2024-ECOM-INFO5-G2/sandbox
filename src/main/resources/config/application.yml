@@ -89,10 +89,10 @@ management:
 
 spring:
   application:
-    name: blog
+    name: polytech-ecom-g2
   profiles:
     # The commented value for `active` can be replaced with valid Spring profiles to load.
-    # Otherwise, it will be filled in by maven when building the JAR file
+    # Otherwise, it will be filled in by gradle when building the JAR file
     # Either way, it can be overridden by `--spring.profiles.active` value passed in the commandline or `-Dspring.profiles.active` set in `JAVA_OPTS`
     active: #spring.profiles.active#
     group:
@@ -138,13 +138,13 @@ spring:
       enabled: true
   task:
     execution:
-      thread-name-prefix: blog-task-
+      thread-name-prefix: polytech-ecom-g-2-task-
       pool:
         core-size: 2
         max-size: 50
         queue-capacity: 10000
     scheduling:
-      thread-name-prefix: blog-scheduling-
+      thread-name-prefix: polytech-ecom-g-2-scheduling-
       pool:
         size: 2
   thymeleaf:
@@ -175,7 +175,7 @@ info:
 
 jhipster:
   clientApp:
-    name: 'blogApp'
+    name: 'polytechEcomG2App'
   # By default CORS is disabled. Uncomment to enable.
   # cors:
   #   allowed-origins: "http://localhost:8100,http://localhost:9000"
@@ -185,12 +185,12 @@ jhipster:
   #   allow-credentials: true
   #   max-age: 1800
   mail:
-    from: blog@localhost
+    from: polytech-ecom-g2@localhost
   api-docs:
     default-include-pattern: /api/**
     management-include-pattern: /management/**
-    title: Blog API
-    description: Blog API documentation
+    title: Polytech Ecom G 2 API
+    description: Polytech Ecom G 2 API documentation
     version: 0.0.1
     terms-of-service-url:
     contact-name:

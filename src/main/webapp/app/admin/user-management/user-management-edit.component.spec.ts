@@ -93,8 +93,8 @@ describe('UserManagementEdit Component', () => {
       // GIVEN
       axiosStub.put.resolves({
         headers: {
-          'x-blogapp-alert': '',
-          'x-blogapp-params': '',
+          'x-polytechecomg2app-alert': '',
+          'x-polytechecomg2app-params': '',
         },
       });
       axiosStub.get.withArgs('api/admin/users/' + 123).resolves({
@@ -123,8 +123,8 @@ describe('UserManagementEdit Component', () => {
       // GIVEN
       axiosStub.post.resolves({
         headers: {
-          'x-blogapp-alert': '',
-          'x-blogapp-params': '',
+          'x-polytechecomg2app-alert': '',
+          'x-polytechecomg2app-params': '',
         },
       });
       axiosStub.get.resolves({});

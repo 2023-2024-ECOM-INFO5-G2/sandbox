@@ -1,6 +1,6 @@
-# blog
+# polytech-ecom-g2
 
-This application was generated using JHipster 7.9.4, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v7.9.4](https://www.jhipster.tech/documentation-archive/v7.9.4).
+This application was generated using JHipster 8.0.0-rc.1, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v8.0.0-rc.1](https://www.jhipster.tech/documentation-archive/v8.0.0-rc.1).
 
 ## Project Structure
 
@@ -40,7 +40,7 @@ Run the following commands in two separate terminals to create a blissful develo
 auto-refreshes when files change on your hard drive.
 
 ```
-./mvnw
+./gradlew -x webapp
 npm start
 ```
 
@@ -91,17 +91,17 @@ For further instructions on how to develop with JHipster, have a look at [Using 
 
 ### Packaging as jar
 
-To build the final jar and optimize the blog application for production, run:
+To build the final jar and optimize the polytech-ecom-g2 application for production, run:
 
 ```
-./mvnw -Pprod clean verify
+./gradlew -Pprod clean bootJar
 ```
 
 This will concatenate and minify the client CSS and JavaScript files. It will also modify `index.html` so it references these new files.
 To ensure everything worked, run:
 
 ```
-java -jar target/*.jar
+java -jar build/libs/*.jar
 ```
 
 Then navigate to [http://localhost:8080](http://localhost:8080) in your browser.
@@ -113,7 +113,7 @@ Refer to [Using JHipster in production][] for more details.
 To package your application as a war in order to deploy it to an application server, run:
 
 ```
-./mvnw -Pprod,war clean verify
+./gradlew -Pprod -Pwar clean bootWar
 ```
 
 ### JHipster Control Center
@@ -131,7 +131,7 @@ docker compose -f src/main/docker/jhipster-control-center.yml up
 To launch your application's tests, run:
 
 ```
-./mvnw verify
+./gradlew test integrationTest jacocoTestReport
 ```
 
 ### Client tests
@@ -140,25 +140,6 @@ Unit tests are run by [Jest][]. They're located in [src/test/javascript/](src/te
 
 ```
 npm test
-```
-
-UI end-to-end tests are powered by [Cypress][]. They're located in [src/test/javascript/cypress](src/test/javascript/cypress)
-and can be run by starting Spring Boot in one terminal (`./mvnw spring-boot:run`) and running the tests (`npm run e2e`) in a second one.
-
-#### Lighthouse audits
-
-You can execute automated [lighthouse audits][https://developers.google.com/web/tools/lighthouse/] with [cypress audits][https://github.com/mfrachet/cypress-audit] by running `npm run e2e:cypress:audits`.
-You should only run the audits when your application is packaged with the production profile.
-The lighthouse report is created in `target/cypress/lhreport.html`
-
-### Gatling
-
-Performance tests are run by [Gatling][] and written in Scala. They're located in [src/test/java/gatling/simulations](src/test/java/gatling/simulations).
-
-You can execute all Gatling tests with
-
-```
-./mvnw gatling:test
 ```
 
 ## Others
@@ -173,18 +154,12 @@ docker compose -f src/main/docker/sonar.yml up -d
 
 Note: we have turned off forced authentication redirect for UI in [src/main/docker/sonar.yml](src/main/docker/sonar.yml) for out of the box experience while trying out SonarQube, for real use cases turn it back on.
 
-You can run a Sonar analysis with using the [sonar-scanner](https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner) or by using the maven plugin.
+You can run a Sonar analysis with using the [sonar-scanner](https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner) or by using the gradle plugin.
 
 Then, run a Sonar analysis:
 
 ```
-./mvnw -Pprod clean verify sonar:sonar -Dsonar.login=admin -Dsonar.password=admin
-```
-
-If you need to re-run the Sonar phase, please be sure to specify at least the `initialize` phase since Sonar properties are loaded from the sonar-project.properties file.
-
-```
-./mvnw initialize sonar:sonar -Dsonar.login=admin -Dsonar.password=admin
+./gradlew -Pprod clean check jacocoTestReport sonarqube -Dsonar.login=admin -Dsonar.password=admin
 ```
 
 Additionally, Instead of passing `sonar.password` and `sonar.login` as CLI arguments, these parameters can be configured from [sonar-project.properties](sonar-project.properties) as shown below:
@@ -240,19 +215,17 @@ For more information refer to [Using Docker and Docker-Compose][], this page als
 To configure CI for your project, run the ci-cd sub-generator (`jhipster ci-cd`), this will let you generate configuration files for a number of Continuous Integration systems. Consult the [Setting up Continuous Integration][] page for more information.
 
 [JHipster Homepage and latest documentation]: https://www.jhipster.tech
-[JHipster 7.9.4 archive]: https://www.jhipster.tech/documentation-archive/v7.9.4
-[Using JHipster in development]: https://www.jhipster.tech/documentation-archive/v7.9.4/development/
-[Using Docker and Docker-Compose]: https://www.jhipster.tech/documentation-archive/v7.9.4/docker-compose
-[Using JHipster in production]: https://www.jhipster.tech/documentation-archive/v7.9.4/production/
-[Running tests page]: https://www.jhipster.tech/documentation-archive/v7.9.4/running-tests/
-[Code quality page]: https://www.jhipster.tech/documentation-archive/v7.9.4/code-quality/
-[Setting up Continuous Integration]: https://www.jhipster.tech/documentation-archive/v7.9.4/setting-up-ci/
+[JHipster 8.0.0-rc.1 archive]: https://www.jhipster.tech/documentation-archive/v8.0.0-rc.1
+[Using JHipster in development]: https://www.jhipster.tech/documentation-archive/v8.0.0-rc.1/development/
+[Using Docker and Docker-Compose]: https://www.jhipster.tech/documentation-archive/v8.0.0-rc.1/docker-compose
+[Using JHipster in production]: https://www.jhipster.tech/documentation-archive/v8.0.0-rc.1/production/
+[Running tests page]: https://www.jhipster.tech/documentation-archive/v8.0.0-rc.1/running-tests/
+[Code quality page]: https://www.jhipster.tech/documentation-archive/v8.0.0-rc.1/code-quality/
+[Setting up Continuous Integration]: https://www.jhipster.tech/documentation-archive/v8.0.0-rc.1/setting-up-ci/
 [Node.js]: https://nodejs.org/
 [NPM]: https://www.npmjs.com/
 [Webpack]: https://webpack.github.io/
 [BrowserSync]: https://www.browsersync.io/
 [Jest]: https://facebook.github.io/jest/
-[Cypress]: https://www.cypress.io/
 [Leaflet]: https://leafletjs.com/
 [DefinitelyTyped]: https://definitelytyped.org/
-[Gatling]: https://gatling.io/

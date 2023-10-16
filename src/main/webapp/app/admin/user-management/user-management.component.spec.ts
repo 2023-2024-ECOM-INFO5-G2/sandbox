@@ -85,8 +85,8 @@ describe('UserManagement Component', () => {
       // GIVEN
       axiosStub.delete.resolves({
         headers: {
-          'x-blogapp-alert': '',
-          'x-blogapp-params': '',
+          'x-polytechecomg2app-alert': '',
+          'x-polytechecomg2app-params': '',
         },
       });
 

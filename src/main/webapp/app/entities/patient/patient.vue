@@ -1,11 +1,11 @@
 <template>
   <div>
     <h2 id="page-heading" data-cy="PatientHeading">
-      <span v-text="t$('blogApp.patient.home.title')" id="patient-heading"></span>
+      <span v-text="t$('polytechEcomG2App.patient.home.title')" id="patient-heading"></span>
       <div class="d-flex justify-content-end">
         <button class="btn btn-info mr-2" v-on:click="handleSyncList" :disabled="isFetching">
           <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon>
-          <span v-text="t$('blogApp.patient.home.refreshListLabel')"></span>
+          <span v-text="t$('polytechEcomG2App.patient.home.refreshListLabel')"></span>
         </button>
         <router-link :to="{ name: 'PatientCreate' }" custom v-slot="{ navigate }">
           <button
@@ -15,27 +15,27 @@
             class="btn btn-primary jh-create-entity create-patient"
           >
             <font-awesome-icon icon="plus"></font-awesome-icon>
-            <span v-text="t$('blogApp.patient.home.createLabel')"></span>
+            <span v-text="t$('polytechEcomG2App.patient.home.createLabel')"></span>
           </button>
         </router-link>
       </div>
     </h2>
     <br />
     <div class="alert alert-warning" v-if="!isFetching && patients && patients.length === 0">
-      <span v-text="t$('blogApp.patient.home.notFound')"></span>
+      <span v-text="t$('polytechEcomG2App.patient.home.notFound')"></span>
     </div>
     <div class="table-responsive" v-if="patients && patients.length > 0">
       <table class="table table-striped" aria-describedby="patients">
         <thead>
           <tr>
             <th scope="row"><span v-text="t$('global.field.id')"></span></th>
-            <th scope="row"><span v-text="t$('blogApp.patient.prenom')"></span></th>
-            <th scope="row"><span v-text="t$('blogApp.patient.nom')"></span></th>
-            <th scope="row"><span v-text="t$('blogApp.patient.sexe')"></span></th>
-            <th scope="row"><span v-text="t$('blogApp.patient.dateDeNaissance')"></span></th>
-            <th scope="row"><span v-text="t$('blogApp.patient.chambre')"></span></th>
-            <th scope="row"><span v-text="t$('blogApp.patient.poids')"></span></th>
-            <th scope="row"><span v-text="t$('blogApp.patient.dateArrivee')"></span></th>
+            <th scope="row"><span v-text="t$('polytechEcomG2App.patient.prenom')"></span></th>
+            <th scope="row"><span v-text="t$('polytechEcomG2App.patient.nom')"></span></th>
+            <th scope="row"><span v-text="t$('polytechEcomG2App.patient.sexe')"></span></th>
+            <th scope="row"><span v-text="t$('polytechEcomG2App.patient.dateDeNaissance')"></span></th>
+            <th scope="row"><span v-text="t$('polytechEcomG2App.patient.chambre')"></span></th>
+            <th scope="row"><span v-text="t$('polytechEcomG2App.patient.poids')"></span></th>
+            <th scope="row"><span v-text="t$('polytechEcomG2App.patient.dateArrivee')"></span></th>
             <th scope="row"></th>
           </tr>
         </thead>
@@ -83,10 +83,10 @@
     </div>
     <b-modal ref="removeEntity" id="removeEntity">
       <template #modal-title>
-        <span id="blogApp.patient.delete.question" data-cy="patientDeleteDialogHeading" v-text="t$('entity.delete.title')"></span>
+        <span id="polytechEcomG2App.patient.delete.question" data-cy="patientDeleteDialogHeading" v-text="t$('entity.delete.title')"></span>
       </template>
       <div class="modal-body">
-        <p id="jhi-delete-patient-heading" v-text="t$('blogApp.patient.delete.question', { id: removeId })"></p>
+        <p id="jhi-delete-patient-heading" v-text="t$('polytechEcomG2App.patient.delete.question', { id: removeId })"></p>
       </div>
       <template #modal-footer>
         <div>
