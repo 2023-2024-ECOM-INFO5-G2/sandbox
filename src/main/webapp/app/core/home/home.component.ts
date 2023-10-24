@@ -14,7 +14,7 @@ export default defineComponent({
     const username = inject<ComputedRef<string>>('currentUsername');
     const patientService = inject('patientService', () => new PatientService());
 
-    let data = ref([]);
+    const data = ref([]);
 
     const openLogin = () => {
       loginService.openLogin();
