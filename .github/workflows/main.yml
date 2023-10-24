@@ -28,20 +28,6 @@ jobs:
           java-version: 17
       - name: Install node.js packages
         run: npm install
-      - name: Install Snyk CLI
-        run: |
-          curl -Lo ./snyk $(curl -s https://api.github.com/repos/snyk/snyk/releases/latest | grep "browser_download_url.*snyk-linux" | cut -d ':' -f 2,3 | tr -d \" | tr -d ' ')
-          chmod +x snyk
-      - name: Snyk test
-        continue-on-error: true
-        run: ./snyk test --all-projects
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-      - name: Snyk monitor
-        continue-on-error: true
-        run: ./snyk monitor --all-projects
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
       - name: Run backend test
         run: |
           chmod +x gradlew
@@ -61,11 +47,11 @@ jobs:
       - name: Package application
         run: npm run java:jar:prod
       - name: Build and publish docker image
-        if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/'))
+        if: github.event_name == 'push' && (github.ref == 'refs/heads/feature/addCICD' || startsWith(github.ref, 'refs/tags/'))
         run: |
           GIT_TAG=:${GITHUB_REF#refs/tags/}
-          DOCKER_TAG=${GIT_TAG#:refs/heads/main}
-          ./gradlew jib -Djib.to.image=jhipster/ecom-02${DOCKER_TAG} -Djib.to.auth.username="${{ secrets.DOCKER_USERNAME }}" -Djib.to.auth.password="${{ secrets.DOCKER_PASSWORD }}" -Pprod
+          DOCKER_TAG=${GIT_TAG#:refs/heads/feature/addCICD}
+          ./gradlew jib -Djib.to.image=sandbox${DOCKER_TAG} -Djib.to.auth.username="${{ secrets.DOCKER_USERNAME }}" -Djib.to.auth.password="${{ secrets.DOCKER_PASSWORD }}" -Pprod
       - name: 'E2E: Package'
         run: npm run ci:e2e:package
       - name: 'E2E: Prepare'
@@ -78,3 +64,33 @@ jobs:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
       - name: 'E2E: Teardown'
         run: npm run ci:e2e:teardown
+  deployment:
+    name: ecom02 deployment
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/feature/addCICD' || startsWith(github.ref, 'refs/tags/'))
+    needs: pipeline
+    steps:
+      - name: Add SSH key to agent
+        uses: webfactory/ssh-agent@v0.5.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: Rsync docker-compose.yml to server
+        uses: burnett01/rsync-deployments@v1.0.0
+        with:
+          switches: -avzr --delete
+          remote_path: /home/${{ secrets.REMOTE_USER }}/${{ secrets.REMOTE_PATH }}
+          remote_host: ${{ secrets.REMOTE_HOST }}
+          remote_user: ${{ secrets.REMOTE_USER }}
+          remote_port: ${{ secrets.REMOTE_PORT }}
+          local_path: docker-compose.yml
+      - name: Deploy docker stack
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.REMOTE_PORT }}
+          script: |
+            cd ${{ secrets.REMOTE_PATH }}
+            docker compose down || true
+            docker compose up -d
