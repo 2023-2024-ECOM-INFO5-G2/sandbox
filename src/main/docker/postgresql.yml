@@ -1,12 +1,12 @@
 # This configuration is intended for development purpose, it's **your** responsibility to harden it for production
-name: polytech-ecom-g2
+name: sandbox
 services:
   postgresql:
     image: postgres:16.0
     # volumes:
-    #   - ~/volumes/jhipster/polytech-ecom-g2/postgresql/:/var/lib/postgresql/data/
+    #   - ~/volumes/jhipster/sandbox/postgresql/:/var/lib/postgresql/data/
     environment:
-      - POSTGRES_USER=polytech-ecom-g2
+      - POSTGRES_USER=sandbox
       - POSTGRES_PASSWORD=
       - POSTGRES_HOST_AUTH_METHOD=trust
     healthcheck:

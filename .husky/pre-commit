@@ -2,17 +2,4 @@
 . "$(dirname "$0")/_/husky.sh"
 
 
-# "$(dirname "$0")/../npmw" exec --no-install lint-staged
-
-echo "Running tests..."
-
-# npm run ci:backend:test
-
-npm run ci:frontend:test
-
-if [ $? -ne 0 ]; then
-  echo "Tests failed!"
-  exit 1
-fi
-echo "All tests passed!"
-
+"$(dirname "$0")/../npmw" exec --no-install lint-staged

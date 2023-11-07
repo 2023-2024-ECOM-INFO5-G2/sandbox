@@ -125,7 +125,7 @@
     Navbar
     ========================================================================== */
 .navbar-version {
-  font-size: 10px;
+  font-size: 0.65em;
   color: #ccc;
 }
 
@@ -188,7 +188,6 @@
 
 .navbar-title {
   display: inline-block;
-  vertical-align: middle;
   color: white;
 }
 
@@ -196,14 +195,14 @@
     Logo styles
     ========================================================================== */
 .navbar-brand.logo {
-  padding: 5px 15px;
+  padding: 0 7px;
 }
 
 .logo .logo-img {
   height: 45px;
   display: inline-block;
   vertical-align: middle;
-  width: 70px;
+  width: 45px;
 }
 
 .logo-img {

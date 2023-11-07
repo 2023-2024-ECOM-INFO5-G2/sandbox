@@ -12,11 +12,12 @@ plugins {
     id "com.diffplug.spotless"
     id "io.spring.nohttp"
     id "com.github.andygoossens.gradle-modernizer-plugin"
+    id "io.gatling.gradle"
     id "org.liquibase.gradle"
     // jhipster-needle-gradle-plugins - JHipster will add additional gradle plugins here
 }
 
-group = "com.mycompany.myapp"
+group = "polytech.ecom.g02"
 version = "0.0.1-SNAPSHOT"
 
 description = ""
@@ -92,7 +93,7 @@ eclipse {
 defaultTasks "bootRun"
 
 springBoot {
-    mainClass = "com.mycompany.myapp.PolytechEcomG2App"
+    mainClass = "polytech.ecom.g02.SandboxApp"
 }
 
 test {
@@ -108,12 +109,48 @@ test {
     reports.html.required = false
 }
 
+sourceSets {
+    gatling {
+        java.srcDirs = ["src/test/java/gatling/simulations"]
+        resources.srcDirs = ["src/test/gatling/conf"]
+    }
+}
+
+gatling {
+    simulations = { include "**/*Test*.java" }
+}
+
 modernizer {
     failOnViolations = true
     includeTestClasses = true
 }
 
 
+
+task consoleLauncherTest(type: JavaExec) {
+    dependsOn(testClasses)
+    String cucumberReportsDir = file("$buildDir/reports/tests")
+    outputs.dir(reportsDir)
+    classpath = sourceSets["test"].runtimeClasspath
+    main = "org.junit.platform.console.ConsoleLauncher"
+    args("--scan-classpath")
+    args("--include-engine", "cucumber")
+    args("--reports-dir", cucumberReportsDir)
+}
+
+task cucumberTest(type: Test) {
+    dependsOn(consoleLauncherTest)
+    description = "Execute cucumber BDD tests."
+    group = "verification"
+    include "**/*CucumberIT*"
+
+    // uncomment if the tests reports are not generated
+    // see https://github.com/jhipster/generator-jhipster/pull/2771 and https://github.com/jhipster/generator-jhipster/pull/4484
+    // ignoreFailures true
+    reports.html.required = false
+}
+
+check.dependsOn cucumberTest
 
 check.dependsOn integrationTest
 task testReport(type: TestReport) {
@@ -124,6 +161,11 @@ task testReport(type: TestReport) {
 task integrationTestReport(type: TestReport) {
     destinationDirectory = file("$buildDir/reports/tests")
     testResults.from(integrationTest)
+}
+
+task cucumberTestReport(type: TestReport) {
+    destinationDirectory = file("$buildDir/reports/tests")
+    testResults.from(cucumberTest)
 }
 
 gitProperties {
@@ -204,6 +246,12 @@ dependencies {
     implementation "org.springframework.security:spring-security-data"
     implementation "io.micrometer:micrometer-registry-prometheus"
     implementation "io.dropwizard.metrics:metrics-core"
+    testImplementation "io.cucumber:cucumber-junit-platform-engine"
+    testImplementation "io.cucumber:cucumber-java"
+    testImplementation "io.cucumber:cucumber-spring"
+    testImplementation "org.junit.platform:junit-platform-console"
+    testImplementation "org.testng:testng"
+    testImplementation "io.gatling.highcharts:gatling-charts-highcharts:${gatlingVersion}"
     // jhipster-needle-gradle-dependency - JHipster will add additional dependencies here
 }
 
@@ -264,8 +312,8 @@ task webapp_test(type: NpmTask) {
 
 if (project.hasProperty("nodeInstall")) {
     node {
-        version = "18.18.1"
-        npmVersion = "10.2.0"
+        version = "18.18.2"
+        npmVersion = "10.2.2"
         download = true
     }
 

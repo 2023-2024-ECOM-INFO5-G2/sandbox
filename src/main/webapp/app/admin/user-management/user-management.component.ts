@@ -114,8 +114,8 @@ export default defineComponent({
         .remove(this.removeId)
         .then(res => {
           this.alertService.showInfo(
-            this.t$(res.headers['x-polytechecomg2app-alert'].toString(), {
-              param: decodeURIComponent(res.headers['x-polytechecomg2app-params'].replace(/\+/g, ' ')),
+            this.t$(res.headers['x-sandboxapp-alert'].toString(), {
+              param: decodeURIComponent(res.headers['x-sandboxapp-params'].replace(/\+/g, ' ')),
             }),
             { variant: 'danger' },
           );
