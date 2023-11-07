@@ -1,7 +1,7 @@
 sourceSets {
     test {
         java {
-            exclude 'com/mycompany/myapp//config/PostgreSqlTestContainer.java'
+            exclude 'polytech/g02/ecom//config/PostgreSqlTestContainer.java'
         }
     }
 }
@@ -87,6 +87,7 @@ task integrationTest(type: Test) {
     description = "Execute integration tests."
     group = "verification"
     include "**/*IT*", "**/*IntTest*"
+    exclude "**/*CucumberIT*"
     testLogging {
         events 'FAILED', 'SKIPPED'
     }

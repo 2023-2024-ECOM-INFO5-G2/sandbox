@@ -15,7 +15,7 @@
 
 spring:
   application:
-    name: polytech-ecom-g2
+    name: g2ecom
   # Replace by 'prod, faker' to add the faker context and have sample data loaded in production
   liquibase:
     contexts: test
@@ -30,13 +30,13 @@ spring:
     basename: i18n/messages
   task:
     execution:
-      thread-name-prefix: polytech-ecom-g-2-task-
+      thread-name-prefix: g-2-ecom-task-
       pool:
         core-size: 1
         max-size: 50
         queue-capacity: 10000
     scheduling:
-      thread-name-prefix: polytech-ecom-g-2-scheduling-
+      thread-name-prefix: g-2-ecom-scheduling-
       pool:
         size: 20
   thymeleaf:
@@ -53,9 +53,9 @@ server:
 # ===================================================================
 jhipster:
   clientApp:
-    name: 'polytechEcomG2App'
+    name: 'g2EcomApp'
   mail:
-    from: polytech-ecom-g2@localhost.com
+    from: g2ecom@localhost.com
     base-url: http://127.0.0.1:8080
   logging:
     # To test json console appender
@@ -69,7 +69,7 @@ jhipster:
     authentication:
       jwt:
         # This token must be encoded using Base64 (you can type `echo 'secret-key'|base64` on your command line)
-        base64-secret: MDExYjc1NGU0ZjRmZmM2OTJlNGNlYmY3NDlkYTQzMmQwZDE0ZGIyNjAwYzBhZDAzMmM1Y2EzZDU3YjYzYTRhY2EzOGQ2YTEyMzM0NGNkOWZkNGEzNzgwYjk3MjYwYWU1NTNhMDYyYzc0MTU1NzEwNTVlOGFlODc5Y2Q0NmYzNjc=
+        base64-secret: YTFjZGY2NWMzMWEyZTJkN2JjZmNiNDY1MmVmODkxMWY4Y2JlZDAyNmE5MzEzZDk0ZTRlMGU2MzE1ZWRmYjNlNDEyZjIzMjc5OGY1MzZmNmIzNzBlZmUyNmJmOWM3ZTZmMWY0MTk2YjI2ZGI4MmFlODRlNGI2OTljOWUzZTBmMWU=
         # Token is valid 24 hours
         token-validity-in-seconds: 86400
         token-validity-in-seconds-for-remember-me: 86400

@@ -9,7 +9,7 @@ jib {
         }
     }
     to {
-        image = "polytech-ecom-g2:latest"
+        image = "g2ecom:latest"
     }
     container {
         entrypoint = ["bash", "-c", "/entrypoint.sh"]

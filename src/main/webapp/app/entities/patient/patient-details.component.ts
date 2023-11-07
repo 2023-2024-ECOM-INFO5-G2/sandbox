@@ -3,6 +3,7 @@ import { useI18n } from 'vue-i18n';
 import { useRoute, useRouter } from 'vue-router';
 
 import PatientService from './patient.service';
+import useDataUtils from '@/shared/data/data-utils.service';
 import { type IPatient } from '@/shared/model/patient.model';
 import { useAlertService } from '@/shared/alert/alert.service';
 
@@ -12,6 +13,8 @@ export default defineComponent({
   setup() {
     const patientService = inject('patientService', () => new PatientService());
     const alertService = inject('alertService', () => useAlertService(), true);
+
+    const dataUtils = useDataUtils();
 
     const route = useRoute();
     const router = useRouter();
@@ -35,6 +38,8 @@ export default defineComponent({
     return {
       alertService,
       patient,
+
+      ...dataUtils,
 
       previousState,
       t$: useI18n().t,

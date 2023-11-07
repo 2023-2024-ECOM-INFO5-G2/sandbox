@@ -1,5 +1,5 @@
 {
-  "polytechEcomG2App": {
+  "g2EcomApp": {
     "patient": {
       "home": {
         "title": "Patients",
@@ -22,9 +22,18 @@
       "nom": "Nom",
       "sexe": "Sexe",
       "dateDeNaissance": "Date De Naissance",
-      "chambre": "Chambre",
-      "poids": "Poids",
-      "dateArrivee": "Date Arrivee"
+      "numChambre": "Num Chambre",
+      "taille": "Taille",
+      "dateArrivee": "Date Arrivee",
+      "infoComplementaires": "Info Complementaires",
+      "mesure": "Mesure",
+      "rappel": "Rappel",
+      "medecin": "Medecin",
+      "etablissement": "Etablissement",
+      "aideSoignant": "Aide Soignant",
+      "infirmiere": "Infirmiere",
+      "repas": "Repas",
+      "alerte": "Alerte"
     }
   }
 }

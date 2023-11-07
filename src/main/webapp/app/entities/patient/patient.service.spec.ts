@@ -33,7 +33,7 @@ describe('Service Tests', () => {
     beforeEach(() => {
       service = new PatientService();
       currentDate = new Date();
-      elemDefault = new Patient(123, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', currentDate, 0, 0, currentDate);
+      elemDefault = new Patient(123, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', currentDate, 0, 0, currentDate, 'AAAAAAA');
     });
 
     describe('Service methods', () => {
@@ -103,9 +103,10 @@ describe('Service Tests', () => {
             nom: 'BBBBBB',
             sexe: 'BBBBBB',
             dateDeNaissance: dayjs(currentDate).format(DATE_FORMAT),
-            chambre: 1,
-            poids: 1,
+            numChambre: 1,
+            taille: 1,
             dateArrivee: dayjs(currentDate).format(DATE_FORMAT),
+            infoComplementaires: 'BBBBBB',
           },
           elemDefault,
         );
@@ -138,9 +139,8 @@ describe('Service Tests', () => {
       it('should partial update a Patient', async () => {
         const patchObject = Object.assign(
           {
-            nom: 'BBBBBB',
             sexe: 'BBBBBB',
-            poids: 1,
+            dateDeNaissance: dayjs(currentDate).format(DATE_FORMAT),
           },
           new Patient(),
         );
@@ -178,9 +178,10 @@ describe('Service Tests', () => {
             nom: 'BBBBBB',
             sexe: 'BBBBBB',
             dateDeNaissance: dayjs(currentDate).format(DATE_FORMAT),
-            chambre: 1,
-            poids: 1,
+            numChambre: 1,
+            taille: 1,
             dateArrivee: dayjs(currentDate).format(DATE_FORMAT),
+            infoComplementaires: 'BBBBBB',
           },
           elemDefault,
         );

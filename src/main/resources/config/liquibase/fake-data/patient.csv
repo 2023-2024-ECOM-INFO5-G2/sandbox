@@ -1,11 +1,11 @@
-id;prenom;nom;sexe;date_de_naissance;chambre;poids;date_arrivee
-1;jamais voyager;marcher aussi parce que;à partir de bouger rectangulaire;2023-10-16;31892;7205.28;2023-10-16
-2;antagoniste autour de juriste;équipe de recherche;refermer;2023-10-15;12515;6297.67;2023-10-16
-3;tantôt large charitable;cadre détailler;coordonner;2023-10-15;19399;31021.59;2023-10-16
-4;brave;mieux adepte;tant à condition que;2023-10-16;3383;17958.28;2023-10-16
-5;par rapport à en decà de;avant;ouah dans la mesure où de façon que;2023-10-16;16434;30651.96;2023-10-16
-6;si bien que drelin;près errer areu areu;à peine;2023-10-16;30822;6554.9;2023-10-15
-7;vraiment;émettre;téméraire communauté étudiante;2023-10-16;10588;20067.03;2023-10-16
-8;terne;autrefois immense;sédentaire oups ronron;2023-10-16;1330;4144.52;2023-10-15
-9;miaou tandis que;contre bof jeune;présidence tchou tchouu;2023-10-15;24054;6878.48;2023-10-15
-10;contre vivace;aussitôt que;trop;2023-10-16;17249;12869.37;2023-10-15
+id;prenom;nom;sexe;date_de_naissance;num_chambre;taille;date_arrivee;info_complementaires
+1;demain a psitt;après que;membre titulaire isoler où;2023-11-07;27075;11072.09;2023-11-07;../fake-data/blob/hipster.txt
+2;articuler ferme zzzz;communauté étudiante hystérique;du fait que pas mal également;2023-11-06;17724;20227.75;2023-11-07;../fake-data/blob/hipster.txt
+3;tremper aigre;chef;cot cot;2023-11-06;8488;5975.71;2023-11-06;../fake-data/blob/hipster.txt
+4;corps enseignant lectorat;serviable bien;à même multiple;2023-11-07;11009;14814.08;2023-11-06;../fake-data/blob/hipster.txt
+5;personnel paf;aussitôt délectable;responsable;2023-11-07;12663;31169.24;2023-11-07;../fake-data/blob/hipster.txt
+6;de sorte que police;hormis retracer loin de;tchou tchouu;2023-11-06;30554;25394.14;2023-11-06;../fake-data/blob/hipster.txt
+7;chez paf équipe;en euh;cocorico terriblement ailleurs;2023-11-07;31045;4991.89;2023-11-06;../fake-data/blob/hipster.txt
+8;coac coac membre du personnel;pendant secouriste du côté de;sans que pendant que;2023-11-06;8256;8831.16;2023-11-06;../fake-data/blob/hipster.txt
+9;hier;bang miam ensuite;insolite vu que;2023-11-07;7919;32389.71;2023-11-07;../fake-data/blob/hipster.txt
+10;puis;cocorico;splendide;2023-11-07;15680;28474.59;2023-11-06;../fake-data/blob/hipster.txt

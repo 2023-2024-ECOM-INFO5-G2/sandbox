@@ -53,6 +53,22 @@
             <font-awesome-icon icon="users" />
             <span v-text="t$('global.menu.admin.userManagement')"></span>
           </b-dropdown-item>
+          <b-dropdown-item to="/admin/metrics" active-class="active">
+            <font-awesome-icon icon="tachometer-alt" />
+            <span v-text="t$('global.menu.admin.metrics')"></span>
+          </b-dropdown-item>
+          <b-dropdown-item to="/admin/health" active-class="active">
+            <font-awesome-icon icon="heart" />
+            <span v-text="t$('global.menu.admin.health')"></span>
+          </b-dropdown-item>
+          <b-dropdown-item to="/admin/configuration" active-class="active">
+            <font-awesome-icon icon="cogs" />
+            <span v-text="t$('global.menu.admin.configuration')"></span>
+          </b-dropdown-item>
+          <b-dropdown-item to="/admin/logs" active-class="active">
+            <font-awesome-icon icon="tasks" />
+            <span v-text="t$('global.menu.admin.logs')"></span>
+          </b-dropdown-item>
           <b-dropdown-item v-if="openAPIEnabled" to="/admin/docs" active-class="active">
             <font-awesome-icon icon="book" />
             <span v-text="t$('global.menu.admin.apidocs')"></span>
@@ -125,7 +141,7 @@
     Navbar
     ========================================================================== */
 .navbar-version {
-  font-size: 10px;
+  font-size: 0.65em;
   color: #ccc;
 }
 
@@ -188,7 +204,6 @@
 
 .navbar-title {
   display: inline-block;
-  vertical-align: middle;
   color: white;
 }
 
@@ -196,14 +211,14 @@
     Logo styles
     ========================================================================== */
 .navbar-brand.logo {
-  padding: 5px 15px;
+  padding: 0 7px;
 }
 
 .logo .logo-img {
   height: 45px;
   display: inline-block;
   vertical-align: middle;
-  width: 70px;
+  width: 45px;
 }
 
 .logo-img {

@@ -1,12 +1,12 @@
 # This configuration is intended for development purpose, it's **your** responsibility to harden it for production
-name: polytech-ecom-g2
+name: g2ecom
 services:
   postgresql:
     image: postgres:16.0
     # volumes:
-    #   - ~/volumes/jhipster/polytech-ecom-g2/postgresql/:/var/lib/postgresql/data/
+    #   - ~/volumes/jhipster/g2ecom/postgresql/:/var/lib/postgresql/data/
     environment:
-      - POSTGRES_USER=polytech-ecom-g2
+      - POSTGRES_USER=g2ecom
       - POSTGRES_PASSWORD=
       - POSTGRES_HOST_AUTH_METHOD=trust
     healthcheck:

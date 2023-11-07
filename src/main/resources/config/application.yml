@@ -89,7 +89,7 @@ management:
 
 spring:
   application:
-    name: polytech-ecom-g2
+    name: g2ecom
   profiles:
     # The commented value for `active` can be replaced with valid Spring profiles to load.
     # Otherwise, it will be filled in by gradle when building the JAR file
@@ -138,13 +138,13 @@ spring:
       enabled: true
   task:
     execution:
-      thread-name-prefix: polytech-ecom-g-2-task-
+      thread-name-prefix: g-2-ecom-task-
       pool:
         core-size: 2
         max-size: 50
         queue-capacity: 10000
     scheduling:
-      thread-name-prefix: polytech-ecom-g-2-scheduling-
+      thread-name-prefix: g-2-ecom-scheduling-
       pool:
         size: 2
   thymeleaf:
@@ -175,7 +175,7 @@ info:
 
 jhipster:
   clientApp:
-    name: 'polytechEcomG2App'
+    name: 'g2EcomApp'
   # By default CORS is disabled. Uncomment to enable.
   # cors:
   #   allowed-origins: "http://localhost:8100,http://localhost:9000"
@@ -185,12 +185,12 @@ jhipster:
   #   allow-credentials: true
   #   max-age: 1800
   mail:
-    from: polytech-ecom-g2@localhost
+    from: g2ecom@localhost
   api-docs:
     default-include-pattern: /api/**
     management-include-pattern: /management/**
-    title: Polytech Ecom G 2 API
-    description: Polytech Ecom G 2 API documentation
+    title: G 2 Ecom API
+    description: G 2 Ecom API documentation
     version: 0.0.1
     terms-of-service-url:
     contact-name:

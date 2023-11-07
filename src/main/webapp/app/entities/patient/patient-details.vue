@@ -3,50 +3,74 @@
     <div class="col-8">
       <div v-if="patient">
         <h2 class="jh-entity-heading" data-cy="patientDetailsHeading">
-          <span v-text="t$('polytechEcomG2App.patient.detail.title')"></span> {{ patient.id }}
+          <span v-text="t$('g2EcomApp.patient.detail.title')"></span> {{ patient.id }}
         </h2>
         <dl class="row jh-entity-details">
           <dt>
-            <span v-text="t$('polytechEcomG2App.patient.prenom')"></span>
+            <span v-text="t$('g2EcomApp.patient.prenom')"></span>
           </dt>
           <dd>
             <span>{{ patient.prenom }}</span>
           </dd>
           <dt>
-            <span v-text="t$('polytechEcomG2App.patient.nom')"></span>
+            <span v-text="t$('g2EcomApp.patient.nom')"></span>
           </dt>
           <dd>
             <span>{{ patient.nom }}</span>
           </dd>
           <dt>
-            <span v-text="t$('polytechEcomG2App.patient.sexe')"></span>
+            <span v-text="t$('g2EcomApp.patient.sexe')"></span>
           </dt>
           <dd>
             <span>{{ patient.sexe }}</span>
           </dd>
           <dt>
-            <span v-text="t$('polytechEcomG2App.patient.dateDeNaissance')"></span>
+            <span v-text="t$('g2EcomApp.patient.dateDeNaissance')"></span>
           </dt>
           <dd>
             <span>{{ patient.dateDeNaissance }}</span>
           </dd>
           <dt>
-            <span v-text="t$('polytechEcomG2App.patient.chambre')"></span>
+            <span v-text="t$('g2EcomApp.patient.numChambre')"></span>
           </dt>
           <dd>
-            <span>{{ patient.chambre }}</span>
+            <span>{{ patient.numChambre }}</span>
           </dd>
           <dt>
-            <span v-text="t$('polytechEcomG2App.patient.poids')"></span>
+            <span v-text="t$('g2EcomApp.patient.taille')"></span>
           </dt>
           <dd>
-            <span>{{ patient.poids }}</span>
+            <span>{{ patient.taille }}</span>
           </dd>
           <dt>
-            <span v-text="t$('polytechEcomG2App.patient.dateArrivee')"></span>
+            <span v-text="t$('g2EcomApp.patient.dateArrivee')"></span>
           </dt>
           <dd>
             <span>{{ patient.dateArrivee }}</span>
+          </dd>
+          <dt>
+            <span v-text="t$('g2EcomApp.patient.infoComplementaires')"></span>
+          </dt>
+          <dd>
+            <span>{{ patient.infoComplementaires }}</span>
+          </dd>
+          <dt>
+            <span v-text="t$('g2EcomApp.patient.medecin')"></span>
+          </dt>
+          <dd>
+            <div v-if="patient.medecin">
+              <router-link :to="{ name: 'MedecinView', params: { medecinId: patient.medecin.id } }">{{ patient.medecin.id }}</router-link>
+            </div>
+          </dd>
+          <dt>
+            <span v-text="t$('g2EcomApp.patient.etablissement')"></span>
+          </dt>
+          <dd>
+            <div v-if="patient.etablissement">
+              <router-link :to="{ name: 'EtablissementView', params: { etablissementId: patient.etablissement.id } }">{{
+                patient.etablissement.id
+              }}</router-link>
+            </div>
           </dd>
         </dl>
         <button type="submit" v-on:click.prevent="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">

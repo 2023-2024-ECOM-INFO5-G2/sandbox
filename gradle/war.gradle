@@ -1,7 +1,7 @@
 apply plugin: "war"
 
 bootWar {
-    mainClass = "com.mycompany.myapp.PolytechEcomG2App"
+    mainClass = "polytech.g02.ecom.G2EcomApp"
     includes = ["WEB-INF/**", "META-INF/**"]
     webXml = file("${project.rootDir}/src/main/webapp/WEB-INF/web.xml")
 }

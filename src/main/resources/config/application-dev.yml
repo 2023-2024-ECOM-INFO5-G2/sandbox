@@ -18,7 +18,7 @@ logging:
     ROOT: DEBUG
     tech.jhipster: DEBUG
     org.hibernate.SQL: DEBUG
-    com.mycompany.myapp: DEBUG
+    polytech.g02.ecom: DEBUG
 
 spring:
   devtools:
@@ -32,8 +32,8 @@ spring:
       indent-output: true
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:h2:mem:polytech-ecom-g2;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
-    username: polytech-ecom-g2
+    url: jdbc:h2:file:./build/h2db/db/g2ecom;DB_CLOSE_DELAY=-1
+    username: g2ecom
     password:
     hikari:
       poolName: Hikari
@@ -84,7 +84,7 @@ jhipster:
     authentication:
       jwt:
         # This token must be encoded using Base64 and be at least 256 bits long (you can type `openssl rand -base64 64` on your command line to generate a 512 bits one)
-        base64-secret: MDExYjc1NGU0ZjRmZmM2OTJlNGNlYmY3NDlkYTQzMmQwZDE0ZGIyNjAwYzBhZDAzMmM1Y2EzZDU3YjYzYTRhY2EzOGQ2YTEyMzM0NGNkOWZkNGEzNzgwYjk3MjYwYWU1NTNhMDYyYzc0MTU1NzEwNTVlOGFlODc5Y2Q0NmYzNjc=
+        base64-secret: YTFjZGY2NWMzMWEyZTJkN2JjZmNiNDY1MmVmODkxMWY4Y2JlZDAyNmE5MzEzZDk0ZTRlMGU2MzE1ZWRmYjNlNDEyZjIzMjc5OGY1MzZmNmIzNzBlZmUyNmJmOWM3ZTZmMWY0MTk2YjI2ZGI4MmFlODRlNGI2OTljOWUzZTBmMWU=
         # Token is valid 24 hours
         token-validity-in-seconds: 86400
         token-validity-in-seconds-for-remember-me: 2592000

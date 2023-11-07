@@ -4,9 +4,14 @@ import { useRoute, useRouter } from 'vue-router';
 import { useVuelidate } from '@vuelidate/core';
 
 import PatientService from './patient.service';
+import useDataUtils from '@/shared/data/data-utils.service';
 import { useValidation } from '@/shared/composables';
 import { useAlertService } from '@/shared/alert/alert.service';
 
+import MedecinService from '@/entities/medecin/medecin.service';
+import { type IMedecin } from '@/shared/model/medecin.model';
+import EtablissementService from '@/entities/etablissement/etablissement.service';
+import { type IEtablissement } from '@/shared/model/etablissement.model';
 import { type IPatient, Patient } from '@/shared/model/patient.model';
 
 export default defineComponent({
@@ -17,6 +22,14 @@ export default defineComponent({
     const alertService = inject('alertService', () => useAlertService(), true);
 
     const patient: Ref<IPatient> = ref(new Patient());
+
+    const medecinService = inject('medecinService', () => new MedecinService());
+
+    const medecins: Ref<IMedecin[]> = ref([]);
+
+    const etablissementService = inject('etablissementService', () => new EtablissementService());
+
+    const etablissements: Ref<IEtablissement[]> = ref([]);
     const isSaving = ref(false);
     const currentLanguage = inject('currentLanguage', () => computed(() => navigator.language ?? 'fr'), true);
 
@@ -38,6 +51,23 @@ export default defineComponent({
       retrievePatient(route.params.patientId);
     }
 
+    const initRelationships = () => {
+      medecinService()
+        .retrieve()
+        .then(res => {
+          medecins.value = res.data;
+        });
+      etablissementService()
+        .retrieve()
+        .then(res => {
+          etablissements.value = res.data;
+        });
+    };
+
+    initRelationships();
+
+    const dataUtils = useDataUtils();
+
     const { t: t$ } = useI18n();
     const validations = useValidation();
     const validationRules = {
@@ -53,14 +83,23 @@ export default defineComponent({
       dateDeNaissance: {
         required: validations.required(t$('entity.validation.required').toString()),
       },
-      chambre: {
+      numChambre: {
         required: validations.required(t$('entity.validation.required').toString()),
         numeric: validations.numeric(t$('entity.validation.number').toString()),
       },
-      poids: {},
+      taille: {},
       dateArrivee: {
         required: validations.required(t$('entity.validation.required').toString()),
       },
+      infoComplementaires: {},
+      mesures: {},
+      rappel: {},
+      medecin: {},
+      etablissement: {},
+      aideSoignants: {},
+      infirmieres: {},
+      repas: {},
+      alertes: {},
     };
     const v$ = useVuelidate(validationRules, patient as any);
     v$.value.$validate();
@@ -72,6 +111,9 @@ export default defineComponent({
       previousState,
       isSaving,
       currentLanguage,
+      medecins,
+      etablissements,
+      ...dataUtils,
       v$,
       t$,
     };
@@ -86,7 +128,7 @@ export default defineComponent({
           .then(param => {
             this.isSaving = false;
             this.previousState();
-            this.alertService.showInfo(this.t$('polytechEcomG2App.patient.updated', { param: param.id }));
+            this.alertService.showInfo(this.t$('g2EcomApp.patient.updated', { param: param.id }));
           })
           .catch(error => {
             this.isSaving = false;
@@ -98,7 +140,7 @@ export default defineComponent({
           .then(param => {
             this.isSaving = false;
             this.previousState();
-            this.alertService.showSuccess(this.t$('polytechEcomG2App.patient.created', { param: param.id }).toString());
+            this.alertService.showSuccess(this.t$('g2EcomApp.patient.created', { param: param.id }).toString());
           })
           .catch(error => {
             this.isSaving = false;

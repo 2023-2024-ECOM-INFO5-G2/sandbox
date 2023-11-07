@@ -3,6 +3,7 @@ import { useI18n } from 'vue-i18n';
 
 import PatientService from './patient.service';
 import { type IPatient } from '@/shared/model/patient.model';
+import useDataUtils from '@/shared/data/data-utils.service';
 import { useAlertService } from '@/shared/alert/alert.service';
 
 export default defineComponent({
@@ -10,6 +11,7 @@ export default defineComponent({
   name: 'Patient',
   setup() {
     const { t: t$ } = useI18n();
+    const dataUtils = useDataUtils();
     const patientService = inject('patientService', () => new PatientService());
     const alertService = inject('alertService', () => useAlertService(), true);
 
@@ -51,7 +53,7 @@ export default defineComponent({
     const removePatient = async () => {
       try {
         await patientService().delete(removeId.value);
-        const message = t$('polytechEcomG2App.patient.deleted', { param: removeId.value }).toString();
+        const message = t$('g2EcomApp.patient.deleted', { param: removeId.value }).toString();
         alertService.showInfo(message, { variant: 'danger' });
         removeId.value = null;
         retrievePatients();
@@ -73,6 +75,7 @@ export default defineComponent({
       closeDialog,
       removePatient,
       t$,
+      ...dataUtils,
     };
   },
 });

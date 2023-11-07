@@ -115,8 +115,8 @@ export default defineComponent({
     },
 
     getToastMessageFromHeader(res: any): string {
-      return this.t$(res.headers['x-polytechecomg2app-alert'], {
-        param: decodeURIComponent(res.headers['x-polytechecomg2app-params'].replace(/\+/g, ' ')),
+      return this.t$(res.headers['x-g2ecomapp-alert'], {
+        param: decodeURIComponent(res.headers['x-g2ecomapp-params'].replace(/\+/g, ' ')),
       }).toString();
     },
   },
