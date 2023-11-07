@@ -1,0 +1,49 @@
+name: Application CI
+on: [push, pull_request]
+jobs:
+  validation:
+    name: 'Gradle Wrapper Validation'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: gradle/wrapper-validation-action@v1
+  deploy:
+    name: Deployment to ${{ matrix.environment }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        environment:
+          - development
+          - production
+    environment:
+      name: ${{ matrix.environment }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        if: (matrix.environment == 'development' && github.ref == 'refs/heads/feature/addCICD') || (matrix.environment == 'production' && github.ref == 'refs/heads/main')
+
+      - name: Rsync deployments
+        uses: burnett01/rsync-deployments@6.0.0
+        with:
+          switches: -avzr --delete
+          path: docker-compose.yml
+          remote_path: ${{ secrets.REMOTE_PATH }}
+          remote_host: ${{ secrets.REMOTE_HOST }}
+          remote_user: ${{ secrets.REMOTE_USER }}
+          remote_key: ${{ secrets.SSH_KEY }}
+        if: (matrix.environment == 'development' && github.ref == 'refs/heads/feature/addCICD') || (matrix.environment == 'production' && github.ref == 'refs/heads/main')
+
+      - name: SSH into remote server and deploy
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.REMOTE_SSH_PORT }}
+          script: |
+            cd ${{secrets.REMOTE_PATH }}
+            docker compose --env-file .env -p ${{ matrix.environment }} down|| true
+            docker compose --env-file .env -p ${{ matrix.environment }} pull || true
+            docker compose --env-file .env -p ${{ matrix.environment }} up -d
+        if: (matrix.environment == 'development' && github.ref == 'refs/heads/feature/addCICD') || (matrix.environment == 'production' && github.ref == 'refs/heads/main')
