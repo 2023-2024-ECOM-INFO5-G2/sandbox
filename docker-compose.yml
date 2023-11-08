@@ -21,7 +21,6 @@ services:
     environment:
       - POSTGRES_USER=${DATABASE_USER}
       - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
-      - POSTGRES_HOST_AUTH_METHOD=trust
     volumes:
       - database-volume:/var/lib/postgresql/data
     networks:
