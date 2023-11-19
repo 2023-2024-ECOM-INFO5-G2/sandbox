@@ -2,23 +2,35 @@
   <div class="row">
     <div class="col-12 py-1">
       <font-awesome-icon icon="user"></font-awesome-icon>
-      <span class="h3">Robert CATTEAU</span>
+      <span class="h3">
+        {{ patient.prenom }}
+      </span>
+      &nbsp;
+      <span class="h3 text-uppercase">
+        <strong>
+          {{ patient.nom }}
+        </strong>
+      </span>
     </div>
     <div class="col-6 py-1">
       <font-awesome-icon :icon="['fas', 'cake-candles']" />
-      <span class="h6">01/01/1952</span>
+      <span class="h6">{{ patient.dateDeNaissance }}</span>
     </div>
     <div class="col-6 py-1">
       <font-awesome-icon :icon="['fas', 'genderless']" />
-      <span class="h6">Femme</span>
+      <span class="h6">{{ patient.sexe }}</span>
     </div>
     <div class="col-6 py-1">
       <font-awesome-icon :icon="['fas', 'location-dot']" />
-      <span class="h6">Chambre 213</span>
+      <span class="h6">Chambre {{ patient.numChambre }}</span>
     </div>
     <div class="col-6 py-1">
       <font-awesome-icon :icon="['fas', 'arrows-up-down']" />
-      <span class="h6">173cm</span>
+      <span class="h6">{{ patient.taille }}cm</span>
+    </div>
+    <div class="col-6 py-1">
+      <font-awesome-icon :icon="['fas', 'door-open']" />
+      <span class="h6">{{ patient.dateArrivee }}</span>
     </div>
   </div>
 
@@ -26,12 +38,9 @@
     <div class="col-12">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title">Informations complémentaire</h4>
+          <h4 class="card-title" v-text="t$('g2EcomApp.patient.infoComplementaires')"></h4>
           <p class="card-text">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean turpis nulla, commodo ut efficitur sed, consequat et nulla.
-            Aliquam ut lectus non mauris egestas maximus. In nec molestie sem, in sagittis felis. Vestibulum ultricies et nibh vel congue.
-            Duis varius finibus enim sit amet aliquet. Nunc quis ipsum blandit dolor euismod mollis. Pellentesque vulputate dapibus
-            ultrices. Nam ac eros non ante volutpat feugiat.
+            {{ patient.infoComplementaires }}
           </p>
         </div>
       </div>
@@ -42,7 +51,7 @@
       <div class="card">
         <h5 class="card-header">Poids</h5>
         <div class="card-body">
-          <h4>54kg</h4>
+          <h4>{{ poidsPatient[poidsPatient.length - 1].valeur }}kg</h4>
         </div>
       </div>
     </div>
@@ -50,7 +59,7 @@
       <div class="card">
         <h5 class="card-header">EPA</h5>
         <div class="card-body">
-          <h4>6</h4>
+          <h4>{{ EPAPatient[EPAPatient.length - 1].valeur }}</h4>
         </div>
       </div>
     </div>
@@ -58,7 +67,7 @@
       <div class="card">
         <h5 class="card-header">IMC</h5>
         <div class="card-body">
-          <h4>18</h4>
+          <h4>{{ patientIMC }}</h4>
         </div>
       </div>
     </div>
