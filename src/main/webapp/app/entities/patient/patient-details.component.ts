@@ -2,6 +2,8 @@ import { defineComponent, inject, ref, type Ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useRoute, useRouter } from 'vue-router';
 
+import { Line } from 'vue-chartjs';
+import { BarElement, CategoryScale, Chart as ChartJS, Legend, LinearScale, Title, Tooltip, PointElement, LineElement } from 'chart.js';
 import PatientService from './patient.service';
 import MesureService from '../mesure/mesure.service';
 import useDataUtils from '@/shared/data/data-utils.service';
@@ -10,9 +12,12 @@ import { useAlertService } from '@/shared/alert/alert.service';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faArrowsUpDown, faCakeCandles, faDoorOpen, faGenderless, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 
+ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale, PointElement, LineElement);
+
 export default defineComponent({
   compatConfig: { MODE: 3 },
   name: 'PatientDetails',
+  components: { Line },
   setup() {
     library.add(faLocationDot);
     library.add(faCakeCandles);
@@ -73,6 +78,13 @@ export default defineComponent({
       poidsPatient,
       EPAPatient,
       patientIMC,
+      chartData: {
+        labels: ['January', 'February', 'March'],
+        datasets: [{ data: [40, 20, 12] }],
+      },
+      chartOptions: {
+        responsive: true,
+      },
 
       ...dataUtils,
 
