@@ -6,11 +6,17 @@ import PatientService from './patient.service';
 import useDataUtils from '@/shared/data/data-utils.service';
 import { type IPatient } from '@/shared/model/patient.model';
 import { useAlertService } from '@/shared/alert/alert.service';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faLocationDot, faCakeCandles, faGenderless, faArrowsUpDown } from '@fortawesome/free-solid-svg-icons';
 
 export default defineComponent({
   compatConfig: { MODE: 3 },
   name: 'PatientDetails',
   setup() {
+    library.add(faLocationDot);
+    library.add(faCakeCandles);
+    library.add(faGenderless);
+    library.add(faArrowsUpDown);
     const patientService = inject('patientService', () => new PatientService());
     const alertService = inject('alertService', () => useAlertService(), true);
 

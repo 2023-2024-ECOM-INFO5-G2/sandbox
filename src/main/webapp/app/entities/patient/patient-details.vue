@@ -1,55 +1,65 @@
 <template>
   <div class="row">
-    <div class="col-2">
-      <img
-        src="https://this-person-does-not-exist.com/img/avatar-gen1157cd8fd17bddfbf222d6236f79640c.jpg"
-        alt="image patient"
-        height="250"
-        width="250"
-      />
+    <div class="col-12 py-1">
+      <font-awesome-icon icon="user"></font-awesome-icon>
+      <span class="h3">Robert CATTEAU</span>
     </div>
-    <div class="col-5">
-      <div class="row">
-        <div class="col-6 py-1">Nom : Robert</div>
-        <div class="col-6 py-1">Prénom : Robert</div>
-        <div class="col-6 py-1">Date de naissance : 01/01/1952</div>
-        <div class="col-6 py-1">Sexe: Femme</div>
-        <div class="col-6 py-1">Chambre: 123</div>
-        <div class="col-6 py-1">Taille : 173cm</div>
-      </div>
+    <div class="col-6 py-1">
+      <font-awesome-icon :icon="['fas', 'cake-candles']" />
+      <span class="h6">01/01/1952</span>
+    </div>
+    <div class="col-6 py-1">
+      <font-awesome-icon :icon="['fas', 'genderless']" />
+      <span class="h6">Femme</span>
+    </div>
+    <div class="col-6 py-1">
+      <font-awesome-icon :icon="['fas', 'location-dot']" />
+      <span class="h6">Chambre 213</span>
+    </div>
+    <div class="col-6 py-1">
+      <font-awesome-icon :icon="['fas', 'arrows-up-down']" />
+      <span class="h6">173cm</span>
     </div>
   </div>
 
   <div class="row justify-content-center mt-5">
-    <div class="col card">
-      <div class="card-body">
-        <h4 class="card-title">Informations complémentaire</h4>
-        <p class="card-text">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean turpis nulla, commodo ut efficitur sed, consequat et nulla.
-          Aliquam ut lectus non mauris egestas maximus. In nec molestie sem, in sagittis felis. Vestibulum ultricies et nibh vel congue.
-          Duis varius finibus enim sit amet aliquet. Nunc quis ipsum blandit dolor euismod mollis. Pellentesque vulputate dapibus ultrices.
-          Nam ac eros non ante volutpat feugiat.
-        </p>
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Informations complémentaire</h4>
+          <p class="card-text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean turpis nulla, commodo ut efficitur sed, consequat et nulla.
+            Aliquam ut lectus non mauris egestas maximus. In nec molestie sem, in sagittis felis. Vestibulum ultricies et nibh vel congue.
+            Duis varius finibus enim sit amet aliquet. Nunc quis ipsum blandit dolor euismod mollis. Pellentesque vulputate dapibus
+            ultrices. Nam ac eros non ante volutpat feugiat.
+          </p>
+        </div>
       </div>
     </div>
   </div>
-  <div class="row justify-content-center mt-5 text-center">
-    <div class="col card">
-      <h5 class="card-header">Poids</h5>
-      <div class="card-body">
-        <h4>54kg</h4>
+  <div class="row justify-content-center text-center mt-5">
+    <div class="col-4">
+      <div class="card">
+        <h5 class="card-header">Poids</h5>
+        <div class="card-body">
+          <h4>54kg</h4>
+        </div>
       </div>
     </div>
-    <div class="col card">
-      <h5 class="card-header">EPA</h5>
-      <div class="card-body">
-        <h4>6kg</h4>
+    <div class="col-4">
+      <div class="card">
+        <h5 class="card-header">EPA</h5>
+        <div class="card-body">
+          <h4>6</h4>
+        </div>
       </div>
     </div>
-    <div class="col card">
-      <h5 class="card-header">IMC</h5>
-      <div class="card-body">
-        <h4>18kg</h4>
+    <div class="col-4">
+      <div class="card">
+        <h5 class="card-header">IMC</h5>
+        <div class="card-body">
+          <h4>18</h4>
+        </div>
       </div>
     </div>
   </div>
