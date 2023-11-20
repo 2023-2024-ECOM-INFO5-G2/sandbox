@@ -24,15 +24,49 @@
     </div>
   </div>
   <div class="row mt-5">
-    <h2 id="page-heading" data-cy="PatientHeading">
-      <span v-text="t$('g2EcomApp.patient.home.title')" id="patient-heading"></span>
-      <div class="d-flex justify-content-end">
-        <button class="btn btn-info mr-2" v-on:click="handleSyncList" :disabled="isFetching">
-          <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon>
-          <span v-text="t$('g2EcomApp.patient.home.refreshListLabel')"></span>
-        </button>
-      </div>
-    </h2>
+    <div class="col">
+      <h2 id="page-heading" data-cy="PatientHeading">
+        <span v-text="t$('g2EcomApp.patient.home.title')" id="patient-heading"></span>
+        <!--        <div class="d-flex justify-content-end">-->
+        <!--          <button class="btn btn-info mr-2" v-on:click="handleSyncList" :disabled="isFetching">-->
+        <!--            <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon>-->
+        <!--            <span v-text="t$('g2EcomApp.patient.home.refreshListLabel')"></span>-->
+        <!--          </button>-->
+        <!--        </div>-->
+      </h2>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col">
+      <table class="table table-striped table-hover" aria-describedby="patients">
+        <thead>
+          <tr>
+            <th scope="row"><span v-text="t$('g2EcomApp.patient.prenom')"></span></th>
+            <th scope="row"><span v-text="t$('g2EcomApp.patient.nom')"></span></th>
+            <th scope="row"><span v-text="t$('g2EcomApp.patient.numChambre')"></span></th>
+            <th scope="row"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="patient in patients" :key="patient.id" data-cy="entityTable">
+            <!--          <td>-->
+            <!--            <router-link :to="{ name: 'PatientView', params: { patientId: patient.id } }">{{ patient.id }}</router-link>-->
+            <!--          </td>-->
+            <td>{{ patient.prenom }}</td>
+            <td>{{ patient.nom }}</td>
+            <td>{{ patient.numChambre }}</td>
+            <td>
+              <router-link :to="{ name: 'PatientView', params: { patientId: patient.id } }" custom v-slot="{ navigate }">
+                <button @click="navigate" class="btn btn-info btn-sm details" data-cy="entityDetailsButton">
+                  <font-awesome-icon icon="eye"></font-awesome-icon>
+                  <span class="d-none d-md-inline" v-text="t$('entity.action.view')"></span>
+                </button>
+              </router-link>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
   <!--  <div>-->
   <!--    <h2 id="page-heading" data-cy="PatientHeading">-->
@@ -60,77 +94,77 @@
   <!--      <span v-text="t$('g2EcomApp.patient.home.notFound')"></span>-->
   <!--    </div>-->
   <!--    <div class="table-responsive" v-if="patients && patients.length > 0">-->
-  <!--      <table class="table table-striped" aria-describedby="patients">-->
-  <!--        <thead>-->
-  <!--          <tr>-->
-  <!--            <th scope="row"><span v-text="t$('global.field.id')"></span></th>-->
-  <!--            <th scope="row"><span v-text="t$('g2EcomApp.patient.prenom')"></span></th>-->
-  <!--            <th scope="row"><span v-text="t$('g2EcomApp.patient.nom')"></span></th>-->
-  <!--            <th scope="row"><span v-text="t$('g2EcomApp.patient.sexe')"></span></th>-->
-  <!--            <th scope="row"><span v-text="t$('g2EcomApp.patient.dateDeNaissance')"></span></th>-->
-  <!--            <th scope="row"><span v-text="t$('g2EcomApp.patient.numChambre')"></span></th>-->
-  <!--            <th scope="row"><span v-text="t$('g2EcomApp.patient.taille')"></span></th>-->
-  <!--            <th scope="row"><span v-text="t$('g2EcomApp.patient.dateArrivee')"></span></th>-->
-  <!--            <th scope="row"><span v-text="t$('g2EcomApp.patient.infoComplementaires')"></span></th>-->
-  <!--            <th scope="row"><span v-text="t$('g2EcomApp.patient.medecin')"></span></th>-->
-  <!--            <th scope="row"><span v-text="t$('g2EcomApp.patient.etablissement')"></span></th>-->
-  <!--            <th scope="row"></th>-->
-  <!--          </tr>-->
-  <!--        </thead>-->
-  <!--        <tbody>-->
-  <!--          <tr v-for="patient in patients" :key="patient.id" data-cy="entityTable">-->
-  <!--            <td>-->
-  <!--              <router-link :to="{ name: 'PatientView', params: { patientId: patient.id } }">{{ patient.id }}</router-link>-->
-  <!--            </td>-->
-  <!--            <td>{{ patient.prenom }}</td>-->
-  <!--            <td>{{ patient.nom }}</td>-->
-  <!--            <td>{{ patient.sexe }}</td>-->
-  <!--            <td>{{ patient.dateDeNaissance }}</td>-->
-  <!--            <td>{{ patient.numChambre }}</td>-->
-  <!--            <td>{{ patient.taille }}</td>-->
-  <!--            <td>{{ patient.dateArrivee }}</td>-->
-  <!--            <td>{{ patient.infoComplementaires }}</td>-->
-  <!--            <td>-->
-  <!--              <div v-if="patient.medecin">-->
-  <!--                <router-link :to="{ name: 'MedecinView', params: { medecinId: patient.medecin.id } }">{{ patient.medecin.id }}</router-link>-->
-  <!--              </div>-->
-  <!--            </td>-->
-  <!--            <td>-->
-  <!--              <div v-if="patient.etablissement">-->
-  <!--                <router-link :to="{ name: 'EtablissementView', params: { etablissementId: patient.etablissement.id } }">{{-->
-  <!--                  patient.etablissement.id-->
-  <!--                }}</router-link>-->
-  <!--              </div>-->
-  <!--            </td>-->
-  <!--            <td class="text-right">-->
-  <!--              <div class="btn-group">-->
-  <!--                <router-link :to="{ name: 'PatientView', params: { patientId: patient.id } }" custom v-slot="{ navigate }">-->
-  <!--                  <button @click="navigate" class="btn btn-info btn-sm details" data-cy="entityDetailsButton">-->
-  <!--                    <font-awesome-icon icon="eye"></font-awesome-icon>-->
-  <!--                    <span class="d-none d-md-inline" v-text="t$('entity.action.view')"></span>-->
-  <!--                  </button>-->
-  <!--                </router-link>-->
-  <!--                <router-link :to="{ name: 'PatientEdit', params: { patientId: patient.id } }" custom v-slot="{ navigate }">-->
-  <!--                  <button @click="navigate" class="btn btn-primary btn-sm edit" data-cy="entityEditButton">-->
-  <!--                    <font-awesome-icon icon="pencil-alt"></font-awesome-icon>-->
-  <!--                    <span class="d-none d-md-inline" v-text="t$('entity.action.edit')"></span>-->
-  <!--                  </button>-->
-  <!--                </router-link>-->
-  <!--                <b-button-->
-  <!--                  v-on:click="prepareRemove(patient)"-->
-  <!--                  variant="danger"-->
-  <!--                  class="btn btn-sm"-->
-  <!--                  data-cy="entityDeleteButton"-->
-  <!--                  v-b-modal.removeEntity-->
-  <!--                >-->
-  <!--                  <font-awesome-icon icon="times"></font-awesome-icon>-->
-  <!--                  <span class="d-none d-md-inline" v-text="t$('entity.action.delete')"></span>-->
-  <!--                </b-button>-->
-  <!--              </div>-->
-  <!--            </td>-->
-  <!--          </tr>-->
-  <!--        </tbody>-->
-  <!--      </table>-->
+  <!--        <table class="table table-striped" aria-describedby="patients">-->
+  <!--          <thead>-->
+  <!--            <tr>-->
+  <!--              <th scope="row"><span v-text="t$('global.field.id')"></span></th>-->
+  <!--              <th scope="row"><span v-text="t$('g2EcomApp.patient.prenom')"></span></th>-->
+  <!--              <th scope="row"><span v-text="t$('g2EcomApp.patient.nom')"></span></th>-->
+  <!--              <th scope="row"><span v-text="t$('g2EcomApp.patient.sexe')"></span></th>-->
+  <!--              <th scope="row"><span v-text="t$('g2EcomApp.patient.dateDeNaissance')"></span></th>-->
+  <!--              <th scope="row"><span v-text="t$('g2EcomApp.patient.numChambre')"></span></th>-->
+  <!--              <th scope="row"><span v-text="t$('g2EcomApp.patient.taille')"></span></th>-->
+  <!--              <th scope="row"><span v-text="t$('g2EcomApp.patient.dateArrivee')"></span></th>-->
+  <!--              <th scope="row"><span v-text="t$('g2EcomApp.patient.infoComplementaires')"></span></th>-->
+  <!--              <th scope="row"><span v-text="t$('g2EcomApp.patient.medecin')"></span></th>-->
+  <!--              <th scope="row"><span v-text="t$('g2EcomApp.patient.etablissement')"></span></th>-->
+  <!--              <th scope="row"></th>-->
+  <!--            </tr>-->
+  <!--          </thead>-->
+  <!--          <tbody>-->
+  <!--            <tr v-for="patient in patients" :key="patient.id" data-cy="entityTable">-->
+  <!--              <td>-->
+  <!--                <router-link :to="{ name: 'PatientView', params: { patientId: patient.id } }">{{ patient.id }}</router-link>-->
+  <!--              </td>-->
+  <!--              <td>{{ patient.prenom }}</td>-->
+  <!--              <td>{{ patient.nom }}</td>-->
+  <!--              <td>{{ patient.sexe }}</td>-->
+  <!--              <td>{{ patient.dateDeNaissance }}</td>-->
+  <!--              <td>{{ patient.numChambre }}</td>-->
+  <!--              <td>{{ patient.taille }}</td>-->
+  <!--              <td>{{ patient.dateArrivee }}</td>-->
+  <!--              <td>{{ patient.infoComplementaires }}</td>-->
+  <!--              <td>-->
+  <!--                <div v-if="patient.medecin">-->
+  <!--                  <router-link :to="{ name: 'MedecinView', params: { medecinId: patient.medecin.id } }">{{ patient.medecin.id }}</router-link>-->
+  <!--                </div>-->
+  <!--              </td>-->
+  <!--              <td>-->
+  <!--                <div v-if="patient.etablissement">-->
+  <!--                  <router-link :to="{ name: 'EtablissementView', params: { etablissementId: patient.etablissement.id } }">{{-->
+  <!--                    patient.etablissement.id-->
+  <!--                  }}</router-link>-->
+  <!--                </div>-->
+  <!--              </td>-->
+  <!--              <td class="text-right">-->
+  <!--                <div class="btn-group">-->
+  <!--                  <router-link :to="{ name: 'PatientView', params: { patientId: patient.id } }" custom v-slot="{ navigate }">-->
+  <!--                    <button @click="navigate" class="btn btn-info btn-sm details" data-cy="entityDetailsButton">-->
+  <!--                      <font-awesome-icon icon="eye"></font-awesome-icon>-->
+  <!--                      <span class="d-none d-md-inline" v-text="t$('entity.action.view')"></span>-->
+  <!--                    </button>-->
+  <!--                  </router-link>-->
+  <!--                  <router-link :to="{ name: 'PatientEdit', params: { patientId: patient.id } }" custom v-slot="{ navigate }">-->
+  <!--                    <button @click="navigate" class="btn btn-primary btn-sm edit" data-cy="entityEditButton">-->
+  <!--                      <font-awesome-icon icon="pencil-alt"></font-awesome-icon>-->
+  <!--                      <span class="d-none d-md-inline" v-text="t$('entity.action.edit')"></span>-->
+  <!--                    </button>-->
+  <!--                  </router-link>-->
+  <!--                  <b-button-->
+  <!--                    v-on:click="prepareRemove(patient)"-->
+  <!--                    variant="danger"-->
+  <!--                    class="btn btn-sm"-->
+  <!--                    data-cy="entityDeleteButton"-->
+  <!--                    v-b-modal.removeEntity-->
+  <!--                  >-->
+  <!--                    <font-awesome-icon icon="times"></font-awesome-icon>-->
+  <!--                    <span class="d-none d-md-inline" v-text="t$('entity.action.delete')"></span>-->
+  <!--                  </b-button>-->
+  <!--                </div>-->
+  <!--              </td>-->
+  <!--            </tr>-->
+  <!--          </tbody>-->
+  <!--        </table>-->
   <!--    </div>-->
   <!--    <b-modal ref="removeEntity" id="removeEntity">-->
   <!--      <template #modal-title>-->
