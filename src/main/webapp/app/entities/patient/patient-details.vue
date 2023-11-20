@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <div class="col-12 py-1">
+    <div class="col-md-11 py-1">
       <font-awesome-icon icon="user"></font-awesome-icon>
       <span class="h3">
         {{ patient.prenom }}
@@ -11,6 +11,13 @@
           {{ patient.nom }}
         </strong>
       </span>
+    </div>
+    <div class="col-md-1">
+      <router-link v-if="patient.id" :to="{ name: 'PatientEdit', params: { patientId: patient.id } }" custom v-slot="{ navigate }">
+        <button @click="navigate" class="btn btn-primary">
+          <font-awesome-icon icon="pencil-alt"></font-awesome-icon>&nbsp;<span v-text="t$('entity.action.edit')"></span>
+        </button>
+      </router-link>
     </div>
     <div class="col-6 py-1">
       <font-awesome-icon :icon="['fas', 'cake-candles']" />
@@ -47,27 +54,27 @@
     </div>
   </div>
   <div class="row justify-content-center text-center mt-5">
-    <div class="col-4">
+    <div class="col-4" v-if="poidsPatient.length > 0">
       <div class="card">
-        <h5 class="card-header">Poids</h5>
+        <h6 class="card-header">Poids (kg)</h6>
         <div class="card-body">
-          <h4>{{ poidsPatient[poidsPatient.length - 1].valeur }}kg</h4>
+          <h5>{{ poidsPatient[poidsPatient.length - 1].valeur }}</h5>
+        </div>
+      </div>
+    </div>
+    <div class="col-4" v-if="EPAPatient.length > 0">
+      <div class="card">
+        <h6 class="card-header">EPA</h6>
+        <div class="card-body">
+          <h5>{{ EPAPatient[EPAPatient.length - 1].valeur }}</h5>
         </div>
       </div>
     </div>
     <div class="col-4">
       <div class="card">
-        <h5 class="card-header">EPA</h5>
+        <h6 class="card-header">IMC</h6>
         <div class="card-body">
-          <h4>{{ EPAPatient[EPAPatient.length - 1].valeur }}</h4>
-        </div>
-      </div>
-    </div>
-    <div class="col-4">
-      <div class="card">
-        <h5 class="card-header">IMC</h5>
-        <div class="card-body">
-          <h4>{{ patientIMC }}</h4>
+          <h5>{{ patientIMC }}</h5>
         </div>
       </div>
     </div>
@@ -156,11 +163,11 @@
   <!--        <button type="submit" v-on:click.prevent="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">-->
   <!--          <font-awesome-icon icon="arrow-left"></font-awesome-icon>&nbsp;<span v-text="t$('entity.action.back')"></span>-->
   <!--        </button>-->
-  <!--        <router-link v-if="patient.id" :to="{ name: 'PatientEdit', params: { patientId: patient.id } }" custom v-slot="{ navigate }">-->
-  <!--          <button @click="navigate" class="btn btn-primary">-->
-  <!--            <font-awesome-icon icon="pencil-alt"></font-awesome-icon>&nbsp;<span v-text="t$('entity.action.edit')"></span>-->
-  <!--          </button>-->
-  <!--        </router-link>-->
+  <!--          <router-link v-if="patient.id" :to="{ name: 'PatientEdit', params: { patientId: patient.id } }" custom v-slot="{ navigate }">-->
+  <!--            <button @click="navigate" class="btn btn-primary">-->
+  <!--              <font-awesome-icon icon="pencil-alt"></font-awesome-icon>&nbsp;<span v-text="t$('entity.action.edit')"></span>-->
+  <!--            </button>-->
+  <!--          </router-link>-->
   <!--      </div>-->
   <!--    </div>-->
 </template>
