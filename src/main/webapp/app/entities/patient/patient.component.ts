@@ -3,6 +3,8 @@ import { useI18n } from 'vue-i18n';
 
 import PatientService from './patient.service';
 import { type IPatient } from '@/shared/model/patient.model';
+import EtablissementService from "../etablissement/etablissement.service";
+import { IEtablissement } from '@/shared/model/etablissement.model';
 import useDataUtils from '@/shared/data/data-utils.service';
 import { useAlertService } from '@/shared/alert/alert.service';
 
@@ -13,14 +15,29 @@ export default defineComponent({
     const { t: t$ } = useI18n();
     const dataUtils = useDataUtils();
     const patientService = inject('patientService', () => new PatientService());
+    const etablissementService = inject('etablissementService', () => new EtablissementService());
     const alertService = inject('alertService', () => useAlertService(), true);
 
     const patients: Ref<IPatient[]> = ref([]);
+    const etablissements: Ref<IEtablissement[]> = ref([]);
 
     const isFetching = ref(false);
 
     const clear = () => {};
 
+
+
+    const retrieveEtablissements = async () => {
+      isFetching.value = true;
+      try {
+        const res = await etablissementService().retrieve();
+        etablissements.value = res.data;
+      } catch (err) {
+        alertService.showHttpError(err.response);
+      } finally {
+        isFetching.value = false;
+      }
+    }
     const retrievePatients = async () => {
       isFetching.value = true;
       try {
@@ -39,6 +56,7 @@ export default defineComponent({
 
     onMounted(async () => {
       await retrievePatients();
+      await retrieveEtablissements(); //FIXME : à supprimer ???
     });
 
     const removeId: Ref<number> = ref(null);
@@ -65,6 +83,7 @@ export default defineComponent({
 
     return {
       patients,
+      etablissements,
       handleSyncList,
       isFetching,
       retrievePatients,

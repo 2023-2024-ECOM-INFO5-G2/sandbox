@@ -3,6 +3,12 @@
     <div class="col">
       <div class="card">
         <h6 class="card-header" v-text="'Etablissement 1'"></h6>
+            <select v-model="selected">
+              <option v-for="etablissement in etablissements" v-bind:value="etablissement.value">
+                {{ etablissement.nom }}
+              </option>
+            </select>
+            <span>Sélectionné : {{ selected }}</span>
         <div class="card-body">
           <h5>12 rue du caca</h5>
         </div>
