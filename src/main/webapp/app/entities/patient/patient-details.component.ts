@@ -3,7 +3,7 @@ import { useI18n } from 'vue-i18n';
 import { useRoute, useRouter } from 'vue-router';
 
 import { Line } from 'vue-chartjs';
-import { BarElement, CategoryScale, Chart as ChartJS, Legend, LinearScale, Title, Tooltip, PointElement, LineElement } from 'chart.js';
+import { BarElement, CategoryScale, Chart as ChartJS, Legend, LinearScale, LineElement, PointElement, Title, Tooltip } from 'chart.js';
 import PatientService from './patient.service';
 import MesureService from '../mesure/mesure.service';
 import useDataUtils from '@/shared/data/data-utils.service';
@@ -38,6 +38,13 @@ export default defineComponent({
     const poidsPatient: Ref<Array<Object>> = ref([]);
     const EPAPatient: Ref<Array<Object>> = ref([]);
     const patientIMC: Ref<Number> = ref(0);
+    const weightChartData: Ref<Object> = ref({});
+    const EPAChartData: Ref<Object> = ref({});
+    const chartOptions: Ref<Object> = ref({
+      responsive: true,
+    });
+    const weightChartLoaded: Ref<Boolean> = ref(false);
+    const EPAChartLoaded: Ref<Boolean> = ref(false);
 
     const retrievePatient = async patientId => {
       try {
@@ -52,12 +59,13 @@ export default defineComponent({
       return Math.round(Number(patientWeight) / (((Number(patientHeight) / 100) * Number(patientHeight)) / 100));
     };
 
-    const retrievePatientWeights = async patientId => {
+    const retrievePatientMesures = async patientId => {
       try {
         const res = await mesureService().retrieve();
         const patientMesures = res.data.filter(o => o.patient !== null && o.patient.id === Number(patientId));
 
         poidsPatient.value = patientMesures.filter(o => o.nomValeur === 'poids');
+        poidsPatient.value.sort((a, b) => new Date(a.date) - new Date(b.date));
         EPAPatient.value = patientMesures.filter(o => o.nomValeur === 'EPA');
       } catch (error) {
         alertService.showHttpError(error.response);
@@ -66,8 +74,42 @@ export default defineComponent({
 
     if (route.params?.patientId) {
       retrievePatient(route.params.patientId).then(() =>
-        retrievePatientWeights(route.params.patientId).then(() => {
+        retrievePatientMesures(route.params.patientId).then(() => {
           patientIMC.value = calculIMC(patient.value.taille, poidsPatient.value[poidsPatient.value.length - 1].valeur);
+          const weightValues = [];
+          const EPAValues = [];
+          for (const weightEntry of poidsPatient.value) {
+            weightValues.push({
+              x: weightEntry.date,
+              y: weightEntry.valeur,
+            });
+          }
+          for (const EPAEntry of EPAPatient.value) {
+            EPAValues.push({
+              x: EPAEntry.date,
+              y: EPAEntry.valeur,
+            });
+          }
+          weightChartData.value = {
+            datasets: [
+              {
+                label: 'poids (kg)',
+                data: weightValues,
+                borderColor: 'rgb(255, 125, 100)',
+              },
+            ],
+          };
+          EPAChartData.value = {
+            datasets: [
+              {
+                label: 'EPA',
+                data: EPAValues,
+                borderColor: 'rgb(45, 80, 255)',
+              },
+            ],
+          };
+          weightChartLoaded.value = true;
+          EPAChartLoaded.value = true;
         }),
       );
     }
@@ -78,13 +120,11 @@ export default defineComponent({
       poidsPatient,
       EPAPatient,
       patientIMC,
-      chartData: {
-        labels: ['January', 'February', 'March'],
-        datasets: [{ data: [40, 20, 12] }],
-      },
-      chartOptions: {
-        responsive: true,
-      },
+      weightChartData,
+      EPAChartData,
+      chartOptions,
+      weightChartLoaded,
+      EPAChartLoaded,
 
       ...dataUtils,
 

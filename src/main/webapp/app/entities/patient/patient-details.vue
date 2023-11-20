@@ -73,11 +73,11 @@
     </div>
   </div>
   <div class="row justify-content-center text-center mt-5">
-    <div class="col">
-      <Line id="my-chart-id" :options="chartOptions" :data="chartData" />
+    <div class="col" v-if="weightChartLoaded">
+      <Line id="my-chart-id" :options="chartOptions" :data="weightChartData" />
     </div>
-    <div class="col">
-      <Line id="my-chart-id" :options="chartOptions" :data="chartData" />
+    <div class="col" v-if="EPAChartLoaded">
+      <Line id="my-chart-id" :options="chartOptions" :data="EPAChartData" />
     </div>
   </div>
   <!--    <div class="col-8">-->
