@@ -3,12 +3,12 @@
     <div class="col">
       <div class="card">
         <h6 class="card-header" v-text="'Etablissement 1'"></h6>
-            <select v-model="selected">
+            <select v-model="selectedetablissement">
               <option v-for="etablissement in etablissements" v-bind:value="etablissement.value">
                 {{ etablissement.nom }}
               </option>
             </select>
-            <span>Sélectionné : {{ selected }}</span>
+            <span>Sélectionné : {{ selectedetablissement }}</span>
         <div class="card-body">
           <h5>12 rue du caca</h5>
         </div>
@@ -48,22 +48,24 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="patient in patients" :key="patient.id" data-cy="entityTable">
-            <!--          <td>-->
-            <!--            <router-link :to="{ name: 'PatientView', params: { patientId: patient.id } }">{{ patient.id }}</router-link>-->
-            <!--          </td>-->
-            <td>{{ patient.prenom }}</td>
-            <td>{{ patient.nom }}</td>
-            <td>{{ patient.numChambre }}</td>
-            <td>
-              <router-link :to="{ name: 'PatientView', params: { patientId: patient.id } }" custom v-slot="{ navigate }">
-                <button @click="navigate" class="btn btn-info btn-sm details" data-cy="entityDetailsButton">
-                  <font-awesome-icon icon="eye"></font-awesome-icon>
-                  <span class="d-none d-md-inline" v-text="t$('entity.action.view')"></span>
-                </button>
-              </router-link>
-            </td>
-          </tr>
+        <template v-for="patient in patients">
+          <tr v-if="patient.etablissement && patient.etablissement == selectedetablissement" :key="patient.id" data-cy="entityTable">
+              <!--          <td>-->
+              <!--            <router-link :to="{ name: 'PatientView', params: { patientId: patient.id } }">{{ patient.id }}</router-link>-->
+              <!--          </td>-->
+              <td>{{ patient.prenom }}</td>
+              <td>{{ patient.nom }}</td>
+              <td>{{ patient.numChambre }}</td>
+              <td>
+                <router-link :to="{ name: 'PatientView', params: { patientId: patient.id } }" custom v-slot="{ navigate }">
+                  <button @click="navigate" class="btn btn-info btn-sm details" data-cy="entityDetailsButton">
+                    <font-awesome-icon icon="eye"></font-awesome-icon>
+                    <span class="d-none d-md-inline" v-text="t$('entity.action.view')"></span>
+                  </button>
+                </router-link>
+              </td>
+            </tr>
+          </template>
         </tbody>
       </table>
     </div>
