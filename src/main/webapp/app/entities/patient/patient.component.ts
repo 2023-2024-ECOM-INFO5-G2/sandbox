@@ -3,8 +3,7 @@ import { useI18n } from 'vue-i18n';
 
 import PatientService from './patient.service';
 import { type IPatient } from '@/shared/model/patient.model';
-import EtablissementService from "../etablissement/etablissement.service";
-import { IEtablissement } from '@/shared/model/etablissement.model';
+import EtablissementService from '../etablissement/etablissement.service';
 import useDataUtils from '@/shared/data/data-utils.service';
 import { useAlertService } from '@/shared/alert/alert.service';
 
@@ -17,7 +16,7 @@ export default defineComponent({
     const patientService = inject('patientService', () => new PatientService());
     const etablissementService = inject('etablissementService', () => new EtablissementService());
     const alertService = inject('alertService', () => useAlertService(), true);
-    const selectedetablissement : Ref<IEtablissement> = ref({});
+    const selectedetablissement = ref({});
 
     const patients: Ref<IPatient[]> = ref([]);
     const etablissements: Ref<IEtablissement[]> = ref([]);
@@ -26,21 +25,19 @@ export default defineComponent({
 
     const clear = () => {};
 
-
-
     const retrieveEtablissements = async () => {
       isFetching.value = true;
       try {
         const res = await etablissementService().retrieve();
         etablissements.value = res.data;
-        selectedetablissement.value = etablissements.value[0]
-        console.log(selectedetablissement.value)
+        selectedetablissement.value = etablissements.value[0];
+        console.log(selectedetablissement.value);
       } catch (err) {
         alertService.showHttpError(err.response);
       } finally {
         isFetching.value = false;
       }
-    }
+    };
     const retrievePatients = async () => {
       isFetching.value = true;
       try {
