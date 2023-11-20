@@ -56,7 +56,7 @@
   <div class="row justify-content-center text-center mt-5">
     <div class="col-4" v-if="poidsPatient.length > 0">
       <div class="card">
-        <h6 class="card-header">Poids (kg)</h6>
+        <h6 class="card-header" v-text="t$('g2EcomApp.patient.poids')"></h6>
         <div class="card-body">
           <h5>{{ poidsPatient[poidsPatient.length - 1].valeur }}</h5>
         </div>
@@ -64,7 +64,7 @@
     </div>
     <div class="col-4" v-if="EPAPatient.length > 0">
       <div class="card">
-        <h6 class="card-header">EPA</h6>
+        <h6 class="card-header" v-text="t$('g2EcomApp.patient.EPA')"></h6>
         <div class="card-body">
           <h5>{{ EPAPatient[EPAPatient.length - 1].valeur }}</h5>
         </div>
@@ -72,7 +72,7 @@
     </div>
     <div class="col-4">
       <div class="card">
-        <h6 class="card-header">IMC</h6>
+        <h6 class="card-header" v-text="t$('g2EcomApp.patient.IMC')"></h6>
         <div class="card-body">
           <h5>{{ patientIMC }}</h5>
         </div>

@@ -22,10 +22,10 @@
       "nom": "Nom",
       "sexe": "Sexe",
       "dateDeNaissance": "Date De Naissance",
-      "numChambre": "Num Chambre",
+      "numChambre": "Numéro Chambre",
       "taille": "Taille",
       "dateArrivee": "Date Arrivee",
-      "infoComplementaires": "Info Complementaires",
+      "infoComplementaires": "Informations Complementaires",
       "mesure": "Mesure",
       "rappel": "Rappel",
       "medecin": "Medecin",
@@ -33,7 +33,10 @@
       "aideSoignant": "Aide Soignant",
       "infirmiere": "Infirmiere",
       "repas": "Repas",
-      "alerte": "Alerte"
+      "alerte": "Alerte",
+      "poids": "Poids (kg)",
+      "EPA": "EPA",
+      "IMC": "IMC"
     }
   }
 }
