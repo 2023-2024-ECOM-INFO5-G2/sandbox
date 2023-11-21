@@ -2,15 +2,15 @@
   <div class="row">
     <div class="col">
       <div class="card">
-        <h6 class="card-header" v-text="'Etablissement 1'"></h6>
+        <h6 class="card-header">Etablissement</h6>
         <select v-model="selectedetablissement">
           <option v-for="etablissement in etablissements" :value="etablissement">
             {{ etablissement.nom }}
           </option>
         </select>
-        <span>Sélectionné : {{ selectedetablissement }}</span>
         <div class="card-body">
-          <h5>12 rue du caca</h5>
+          <h5>{{ selectedetablissement.nom }}</h5>
+          <h5>{{ selectedetablissement.adresse + ' ' + selectedetablissement.ville }}</h5>
         </div>
       </div>
     </div>
@@ -48,8 +48,11 @@
           </tr>
         </thead>
         <tbody>
-          <template v-for="patient in patients">
-            <tr v-if="patient.etablissement && patient.etablissement == selectedetablissement" :key="patient.id" data-cy="entityTable">
+          <template
+            v-for="patient in patients.filter(p => p.etablissement && p.etablissement.id === selectedetablissement.id)"
+            :key="patient.id"
+          >
+            <tr data-cy="entityTable">
               <!--          <td>-->
               <!--            <router-link :to="{ name: 'PatientView', params: { patientId: patient.id } }">{{ patient.id }}</router-link>-->
               <!--          </td>-->

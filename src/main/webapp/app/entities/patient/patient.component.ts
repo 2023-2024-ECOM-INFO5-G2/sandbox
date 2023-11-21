@@ -31,7 +31,6 @@ export default defineComponent({
         const res = await etablissementService().retrieve();
         etablissements.value = res.data;
         selectedetablissement.value = etablissements.value[0];
-        console.log(selectedetablissement.value);
       } catch (err) {
         alertService.showHttpError(err.response);
       } finally {
