@@ -57,6 +57,7 @@
     <div class="col-4" v-if="poidsPatient.length > 0">
       <div class="card">
         <h6 class="card-header" v-text="t$('g2EcomApp.patient.poids')"></h6>
+        <a href="#" class="btn btn-primary" @click="addPoidsValue">+</a>
         <div class="card-body">
           <h5>{{ poidsPatient[poidsPatient.length - 1].valeur }}</h5>
         </div>
@@ -65,6 +66,7 @@
     <div class="col-4" v-if="EPAPatient.length > 0">
       <div class="card">
         <h6 class="card-header" v-text="t$('g2EcomApp.patient.EPA')"></h6>
+        <a href="#" class="btn btn-primary" @click="addEPAValue">+</a>
         <div class="card-body">
           <h5>{{ EPAPatient[EPAPatient.length - 1].valeur }}</h5>
         </div>
