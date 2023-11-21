@@ -3,7 +3,7 @@
     <div class="col">
       <div class="card">
         <h6 class="card-header">Etablissement</h6>
-        <select v-model="selectedetablissement">
+        <select v-model="selectedetablissement" class="form-select">
           <option v-for="etablissement in etablissements" :value="etablissement">
             {{ etablissement.nom }}
           </option>
@@ -26,7 +26,7 @@
   <div class="row mt-5">
     <div class="col">
       <h2 id="page-heading" data-cy="PatientHeading">
-        <span v-text="t$('g2EcomApp.patient.home.title')" id="patient-heading"></span>
+        <span id="patient-heading" v-text="t$('g2EcomApp.patient.home.title')"></span>
         <!--        <div class="d-flex justify-content-end">-->
         <!--          <button class="btn btn-info mr-2" v-on:click="handleSyncList" :disabled="isFetching">-->
         <!--            <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon>-->
@@ -38,7 +38,7 @@
   </div>
   <div class="row mt-5">
     <div class="col">
-      <table class="table table-striped table-hover" aria-describedby="patients">
+      <table aria-describedby="patients" class="table table-striped table-hover">
         <thead>
           <tr>
             <th scope="row"><span v-text="t$('g2EcomApp.patient.prenom')"></span></th>
@@ -60,8 +60,8 @@
               <td>{{ patient.nom }}</td>
               <td>{{ patient.numChambre }}</td>
               <td>
-                <router-link :to="{ name: 'PatientView', params: { patientId: patient.id } }" custom v-slot="{ navigate }">
-                  <button @click="navigate" class="btn btn-info btn-sm details" data-cy="entityDetailsButton">
+                <router-link v-slot="{ navigate }" :to="{ name: 'PatientView', params: { patientId: patient.id } }" custom>
+                  <button class="btn btn-info btn-sm details" data-cy="entityDetailsButton" @click="navigate">
                     <font-awesome-icon icon="eye"></font-awesome-icon>
                     <span class="d-none d-md-inline" v-text="t$('entity.action.view')"></span>
                   </button>
