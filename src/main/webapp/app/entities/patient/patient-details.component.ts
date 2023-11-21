@@ -55,6 +55,54 @@ export default defineComponent({
       }
     };
 
+    const addPoidsValue = async () => {
+      try {
+        const newPoidsValue = prompt('Entrez la nouvelle valeur du Poids (kg):');
+
+        if (newPoidsValue !== null) {
+          // Create a new Poids entry object
+          const newPoidsEntry = {
+            date: new Date().toISOString(),
+            valeur: Number(newPoidsValue),
+            nomValeur: 'poids',
+            patient: patient.value,
+          };
+
+          // Add the new Poids entry to the poidsPatient array
+          poidsPatient.value.push(newPoidsEntry);
+
+          // Save the new Poids entry to the server
+          await mesureService().create(newPoidsEntry);
+        }
+      } catch (error) {
+        alertService.showHttpError(error.response);
+      }
+    };
+
+    const addEPAValue = async () => {
+      try {
+        const newEPAValue = prompt('Entrez la nouvelle valeur EPA:');
+
+        if (newEPAValue !== null) {
+          // Create a new EPA entry object
+          const newEPAEntry = {
+            date: new Date().toISOString(),
+            valeur: Number(newEPAValue),
+            nomValeur: 'EPA',
+            patient: patient.value,
+          };
+
+          // Add the new EPA entry to the EPAPatient array
+          EPAPatient.value.push(newEPAEntry);
+
+          // Save the new EPA entry to the server
+          await mesureService().create(newEPAEntry);
+        }
+      } catch (error) {
+        alertService.showHttpError(error.response);
+      }
+    };
+
     const calculIMC = (patientHeight: string, patientWeight: string) => {
       return Math.round(Number(patientWeight) / (((Number(patientHeight) / 100) * Number(patientHeight)) / 100));
     };
@@ -130,6 +178,8 @@ export default defineComponent({
 
       previousState,
       t$: useI18n().t,
+      addEPAValue,
+      addPoidsValue,
     };
   },
 });
