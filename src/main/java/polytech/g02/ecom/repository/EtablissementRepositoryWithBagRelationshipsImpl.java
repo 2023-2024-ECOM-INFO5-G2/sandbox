@@ -6,10 +6,12 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.IntStream;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import polytech.g02.ecom.domain.Etablissement;
+import polytech.g02.ecom.domain.Patient;
 
 /**
  * Utility repository to load bag relationships based on https://vladmihalcea.com/hibernate-multiplebagfetchexception/
@@ -61,4 +63,15 @@ public class EtablissementRepositoryWithBagRelationshipsImpl implements Etabliss
         Collections.sort(result, (o1, o2) -> Integer.compare(order.get(o1.getId()), order.get(o2.getId())));
         return result;
     }
+    //récuperer la liste des patients d'un établissement -- passer par la methode getPatient dans la classe etablissement
+    //    public List<Patient> getPatientEtablissement(long id){
+    //        return entityManager
+    //            .createQuery(
+    //                "select patient from Patient where etablissement_id = :id",
+    //                Patient.class
+    //            )
+    //            .setParameter("id",id)
+    //            .getResultList();
+    //    }
+
 }

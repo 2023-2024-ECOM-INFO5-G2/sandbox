@@ -7,6 +7,7 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import polytech.g02.ecom.domain.Etablissement;
+import polytech.g02.ecom.domain.Patient;
 import polytech.g02.ecom.repository.EtablissementRepository;
 import polytech.g02.ecom.web.rest.errors.BadRequestAlertException;
 import tech.jhipster.web.util.HeaderUtil;
@@ -175,6 +177,20 @@ public class EtablissementResource {
         log.debug("REST request to get Etablissement : {}", id);
         Optional<Etablissement> etablissement = etablissementRepository.findOneWithEagerRelationships(id);
         return ResponseUtil.wrapOrNotFound(etablissement);
+    }
+
+    @GetMapping("/{id}/patients")
+    public Set<Patient> getPatientEtablissement(@PathVariable Long id) {
+        //        log.debug("request to get the patient of the etablissement {}",id);
+        //        List<Patient> patients = etablissementRepository.getPatientEtablissement(id);
+        //        return patients;
+        Optional<Etablissement> et = etablissementRepository.findOneWithEagerRelationships(id);
+        if (et.isPresent()) {
+            Set<Patient> p = et.get().getPatients();
+            return p;
+        } else {
+            return null;
+        }
     }
 
     /**

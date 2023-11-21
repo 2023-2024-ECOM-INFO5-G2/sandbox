@@ -48,6 +48,7 @@
             <td>{{ etablissement.adresse }}</td>
             <td>{{ etablissement.ville }}</td>
             <td>{{ etablissement.codePostal }}</td>
+            <td><button>nombre cas</button></td>
             <td>
               <span v-for="(user, i) in etablissement.users" :key="user.id"
                 >{{ i > 0 ? ', ' : '' }}
