@@ -4,6 +4,7 @@ import { useRoute, useRouter } from 'vue-router';
 
 import EtablissementService from './etablissement.service';
 import { type IEtablissement } from '@/shared/model/etablissement.model';
+import { type IPatient } from '@/shared/model/patient.model';
 import { useAlertService } from '@/shared/alert/alert.service';
 
 export default defineComponent({
@@ -28,8 +29,29 @@ export default defineComponent({
       }
     };
 
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    const listPatient: Ref<IPatient[]> = ref([]);
+
+    // const prepareListPatient = (instance : IEtalissement) => {
+    //   etablissementId.value = instance.id;
+    //   //etEntity.value.show()
+    // };
+    const retrievePatientEtablissement = async etablissementId => {
+      isFetching.value = true;
+      try {
+        const res = await etablissementService().getPatientsEtablissement(etablissementId);
+        listPatient.value = res.data;
+        etablissementId.value = null;
+      } catch (error) {
+        alertService.showHttpError(error.response);
+      }
+      isFetching.value = false;
+    };
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     if (route.params?.etablissementId) {
       retrieveEtablissement(route.params.etablissementId);
+      retrievePatientEtablissement(route.params.etablissementId);
     }
 
     return {

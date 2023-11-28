@@ -18,6 +18,18 @@ export default class EtablissementService {
     });
   }
 
+  public getPatientsEtblissement(id: number): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      axios
+        .get(`${baseApiUrl}/${id}/patients`)
+        .then(res => {
+          resolve(res);
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
+  }
   public retrieve(): Promise<any> {
     return new Promise<any>((resolve, reject) => {
       axios

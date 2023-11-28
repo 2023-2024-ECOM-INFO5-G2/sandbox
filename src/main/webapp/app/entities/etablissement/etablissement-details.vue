@@ -40,6 +40,16 @@
             </span>
           </dd>
         </dl>
+        <table>
+          <tr>
+            <th scope="row"><span v-text="t$('g2EcomApp.patient.nom')"></span></th>
+            <th scope="row"><span v-text="t$('g2EcomApp.patient.prenom')"></span></th>
+          </tr>
+          <tr v-for="patient in listPatient" :key="patient.id">
+            <td>{{ patient.nom }}</td>
+            <td>{{ patient.prenom }}</td>
+          </tr>
+        </table>
         <button type="submit" v-on:click.prevent="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
           <font-awesome-icon icon="arrow-left"></font-awesome-icon>&nbsp;<span v-text="t$('entity.action.back')"></span>
         </button>
