@@ -56,11 +56,19 @@
   <div class="row justify-content-center text-center mt-5">
     <div v-if="poidsPatient.length > 0" class="col-4">
       <div class="card">
-        <h6 class="card-header" v-text="t$('g2EcomApp.patient.poids')"></h6>
-        <b-button v-b-modal.modal-poids variant="primary">Ajouter une mesure</b-button>
-
+        <div class="card-header">
+          <div class="row align-items-center text-center">
+            <div class="col"></div>
+            <div class="col">
+              <span>{{ t$('g2EcomApp.patient.poids') }}</span>
+            </div>
+            <div class="col">
+              <b-button v-b-modal.modal-poids variant="primary">+</b-button>
+            </div>
+          </div>
+        </div>
         <b-modal id="modal-poids" title="Ajouter une mesure de Poids" @ok="addPoidsValue">
-          <b-form-input v-model="newWeightValue" placeholder="Valeur mesurée (kg)"></b-form-input>
+          <b-form-input v-model="newWeightValue" placeholder="Valeur mesurée (kg)" type="number"></b-form-input>
         </b-modal>
         <div class="card-body">
           <h5>{{ poidsPatient[poidsPatient.length - 1].valeur }}</h5>
@@ -69,11 +77,20 @@
     </div>
     <div v-if="EPAPatient.length > 0" class="col-4">
       <div class="card">
-        <h6 class="card-header" v-text="t$('g2EcomApp.patient.EPA')"></h6>
-        <b-button v-b-modal.modal-epa variant="primary">Ajouter une mesure</b-button>
+        <div class="card-header">
+          <div class="row align-items-center">
+            <div class="col"></div>
+            <div class="col">
+              <span>{{ t$('g2EcomApp.patient.EPA') }}</span>
+            </div>
+            <div class="col">
+              <b-button v-b-modal.modal-epa variant="primary">+</b-button>
+            </div>
+          </div>
+        </div>
 
         <b-modal id="modal-epa" title="Ajouter une mesure EPA" @ok="addEPAValue">
-          <b-form-input v-model="newEPAValue" placeholder="Valeur mesurée"></b-form-input>
+          <b-form-input v-model="newEPAValue" placeholder="Valeur mesurée" type="number"></b-form-input>
         </b-modal>
         <div class="card-body">
           <h5>{{ EPAPatient[EPAPatient.length - 1].valeur }}</h5>
@@ -82,7 +99,9 @@
     </div>
     <div class="col-4">
       <div class="card">
-        <h6 class="card-header" v-text="t$('g2EcomApp.patient.IMC')"></h6>
+        <div class="card-header py-3">
+          <span>{{ t$('g2EcomApp.patient.IMC') }}</span>
+        </div>
         <div class="card-body">
           <h5>{{ patientIMC }}</h5>
         </div>

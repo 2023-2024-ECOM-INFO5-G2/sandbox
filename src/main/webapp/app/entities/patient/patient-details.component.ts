@@ -45,8 +45,8 @@ export default defineComponent({
     });
     const weightChartLoaded: Ref<Boolean> = ref(false);
     const EPAChartLoaded: Ref<Boolean> = ref(false);
-    const newEPAValue: Ref<String> = ref('');
-    const newWeightValue: Ref<String> = ref('');
+    const newEPAValue: Ref<Number> = ref(0);
+    const newWeightValue: Ref<Number> = ref(0);
 
     const retrievePatient = async patientId => {
       try {
@@ -59,7 +59,8 @@ export default defineComponent({
 
     const addPoidsValue = async () => {
       try {
-        if (newWeightValue.value !== null) {
+        if (Number(newWeightValue.value) <= 0 || newWeightValue.value === null) alertService.showError('Donnée incorrecte');
+        else {
           // Create a new Poids entry object
           const newPoidsEntry = {
             date: new Date().toISOString(),
@@ -82,7 +83,8 @@ export default defineComponent({
 
     const addEPAValue = async () => {
       try {
-        if (newEPAValue.value !== null && newEPAValue.value !== '') {
+        if (Number(newEPAValue.value) <= 0 || newEPAValue.value === null) alertService.showError('Donnée incorrecte');
+        else {
           // Create a new EPA entry object
           const newEPAEntry = {
             date: new Date().toISOString(),
