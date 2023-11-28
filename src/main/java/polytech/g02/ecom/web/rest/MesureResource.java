@@ -4,16 +4,24 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import polytech.g02.ecom.domain.Alerte;
 import polytech.g02.ecom.domain.Mesure;
+import polytech.g02.ecom.domain.Patient;
+import polytech.g02.ecom.repository.AlerteRepository;
 import polytech.g02.ecom.repository.MesureRepository;
 import polytech.g02.ecom.web.rest.errors.BadRequestAlertException;
 import tech.jhipster.web.util.HeaderUtil;
@@ -88,6 +96,14 @@ public class MesureResource {
         }
 
         Mesure result = mesureRepository.save(mesure);
+
+        String nameValue = mesure.getNomValeur();
+        Float value = mesure.getValeur();
+        Patient patient = mesure.getPatient();
+        Float taille = patient.getTaille();
+        LocalDate date = mesure.getDate();
+        detectionAlgo(nameValue, value, patient, taille, date);
+
         return ResponseEntity
             .ok()
             .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, mesure.getId().toString()))
@@ -183,5 +199,152 @@ public class MesureResource {
             .noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))
             .build();
+    }
+
+    public class DateMesureComparator implements Comparator<Mesure> {
+
+        @Override
+        public int compare(Mesure m1, Mesure m2) {
+            return m1.getDate().compareTo(m2.getDate());
+        }
+    }
+
+    private final DateMesureComparator DateMesureComparator = new DateMesureComparator();
+
+    /**
+     *
+     * @param nameValue : Nom de la valeur de la mesure
+     * @param value : Valeur de la mesure
+     * @param patient : Patient concerné par la mesure
+     * @param taille : Taille du patient (pour le calcul de l'IMC
+     *
+     * Créer une alerte si la mesure comporte une valeur anormale ou inquiétante en suivant
+     * les règles suivantes :
+     *
+     * Variation de poids :
+     *               * Severe :
+     *                  * >=10% en 1 mois
+     *                  * >=15% en 6 mois ou >=15% depuis début hospitalisation
+     *                  *
+     *               * Moderate :
+     *                  * >=5% en 1 mois
+     *                  * >=10% en 6 mois ou >=10% depuis début hospitalisation
+     * IMC :
+     *               * Severe :
+     *                  * <=17
+     *               * Moderate :
+     *                  * >17 et <=18.5
+     * Albumine :
+     *               * Severe :
+     *                  * <=30g/L
+     *               * Moderate :
+     *                  * >30g/L et <=35g/L
+     * EPA :
+     *               * Severe : <7
+     *
+     * Dans le cas ou une alerte est identifié on ajoute au message d'alerte la valeur qui l'as déclenché
+     * précédé de la mention "ALERTE" ou "ATTENTION" selon la gravité de l'alerte.
+     * Couvre uniquement les cas phénotypiques.
+     * */
+    private void detectionAlgo(String nameValue, float value, Patient patient, float taille, LocalDate date) {
+        String alerteMessage = "";
+
+        switch (nameValue) {
+            case "Poids":
+                //IMC
+                float IMC = IMC(taille, value);
+                if (IMC <= 17) {
+                    alerteMessage += "ALERTE : IMC très faible : " + IMC + "\n";
+                } else if (IMC > 17 && IMC <= 18.5) {
+                    alerteMessage += "ATTENTION : IMC faible : " + IMC + "\n";
+                }
+
+                //PERTE DE POIDS
+                /*
+                 * Version Beta :
+                 * dateMinusSix = date - 6 mois
+                 * dateMinusOne = date - 1 mois
+                 *
+                 * sixMonthsMesures = Toutes les mesures de poids du patient des 6 derniers mois
+                 * oneMonthMesures = Toutes les mesures de poids du patient du dernier mois
+                 *
+                 * sixMonthsMesure = Mesure de poids la plus ancienne des 6 derniers mois
+                 * oneMonthMesure = Mesure de poids la plus ancienne du dernier mois
+                 * oldestMesure = Mesure de poids la plus ancienne du patient
+                 * */
+                LocalDate dateMinusSix = date.plusMonths(-6);
+                LocalDate dateMinusOne = date.plusMonths(-1);
+
+                Set<Mesure> sixMonthsMesures = patient
+                    .getMesures()
+                    .stream()
+                    .filter(element -> element.getDate().compareTo(dateMinusSix) > 0 && element.getNomValeur() == "Poids")
+                    .collect(Collectors.toSet());
+                Set<Mesure> oneMonthsMesures = sixMonthsMesures
+                    .stream()
+                    .filter(element -> element.getDate().compareTo(dateMinusOne) > 0)
+                    .collect(Collectors.toSet());
+
+                //<condition> ? <expression_if_true> : <expression_if_false>;
+                Mesure sixMonthsMesure = sixMonthsMesures.stream().min(DateMesureComparator).get();
+                Mesure oneMonthMesure = oneMonthsMesures.stream().min(DateMesureComparator).get();
+                Mesure oldestMesure = patient.getMesures().stream().min(DateMesureComparator).get();
+
+                float percentageOneMonth;
+                if (oneMonthMesure != null) percentageOneMonth = (oneMonthMesure.getValeur() - value) / value; else percentageOneMonth = 1;
+
+                float percentageSixMonths;
+                if (sixMonthsMesure != null) percentageSixMonths = (sixMonthsMesure.getValeur() - value) / value; else percentageSixMonths =
+                    1;
+                float percentageOldest;
+                if (oldestMesure != null) percentageOldest = (oldestMesure.getValeur() - value) / value; else percentageOldest = 1;
+
+                if (percentageOneMonth <= -0.1 || percentageSixMonths <= -0.15 || percentageOldest <= -0.15) {
+                    alerteMessage +=
+                    "ALERTE : Perte de poids sévère : " +
+                    percentageOneMonth +
+                    "% en 1 mois, " +
+                    percentageSixMonths +
+                    "% en 6 mois, " +
+                    percentageOldest +
+                    "% depuis le début de l'hospitalisation\n";
+                } else if (percentageOneMonth <= -0.05 || percentageSixMonths <= -0.1 || percentageOldest <= -0.1) {
+                    alerteMessage +=
+                    "ATTENTION : Perte de poids modérée : " +
+                    percentageOneMonth +
+                    "% en 1 mois, " +
+                    percentageSixMonths +
+                    "% en 6 mois, " +
+                    percentageOldest +
+                    "% depuis le début de l'hospitalisation\n";
+                }
+                break;
+            case "Albumine":
+                if (value <= 30) {
+                    alerteMessage += "ALERTE : Albumine très faible : " + value + "g/L\n";
+                } else if (value > 35 && value <= 35) {
+                    alerteMessage += "ATTENTION : Albumine faible : " + value + "g/L\n";
+                }
+                break;
+            case "EPA":
+                if (value <= 7) {
+                    alerteMessage += "ALERTE : EPA très faible : " + value + "\n";
+                }
+                break;
+            default:
+                break;
+        }
+        if (alerteMessage != "") {
+            Alerte alerte = new Alerte();
+            Set<Patient> patients = new Set<Patient>();
+            patients.add(patient);
+            alerte.setPatients(patients);
+            alerte.setMessage(alerteMessage);
+            alerteRepository.save(alerte);
+        }
+    }
+
+    private float IMC(float taille, float poids) {
+        return poids / (taille * taille);
     }
 }
