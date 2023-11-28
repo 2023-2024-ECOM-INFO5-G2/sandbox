@@ -37,6 +37,7 @@ export default defineComponent({
     const patient: Ref<IPatient> = ref({});
     const poidsPatient: Ref<Array<Object>> = ref([]);
     const EPAPatient: Ref<Array<Object>> = ref([]);
+    const albuPatient: Ref<Array<Object>> = ref([]);
     const patientIMC: Ref<Number> = ref(0);
     const weightChartData: Ref<Object> = ref({});
     const EPAChartData: Ref<Object> = ref({});
@@ -45,6 +46,8 @@ export default defineComponent({
     });
     const weightChartLoaded: Ref<Boolean> = ref(false);
     const EPAChartLoaded: Ref<Boolean> = ref(false);
+    const newEPAValue: Ref<Number> = ref(0);
+    const newWeightValue: Ref<Number> = ref(0);
 
     const retrievePatient = async patientId => {
       try {
@@ -55,15 +58,38 @@ export default defineComponent({
       }
     };
 
+    const addAlbuValue = async () => {
+      try {
+        const newAlbuValue = prompt("Entrez la nouvelle concentration d'albumine (g/L):");
+
+        if (newAlbuValue !== null) {
+          // Create a new Albu entry object
+          const newAlbuEntry = {
+            date: new Date().toISOString(),
+            valeur: Number(newAlbuValue),
+            nomValeur: 'albumine',
+            patient: patient.value,
+          };
+
+          // Add the new Albu entry to the albuPatient array
+          albuPatient.value.push(newAlbuEntry);
+
+          // Save the new Albu entry to the server
+          await mesureService().create(newAlbuEntry);
+        }
+      } catch (error) {
+        alertService.showHttpError(error.response);
+      }
+    };
+
     const addPoidsValue = async () => {
       try {
-        const newPoidsValue = prompt('Entrez la nouvelle valeur du Poids (kg):');
-
-        if (newPoidsValue !== null) {
+        if (Number(newWeightValue.value) <= 0 || newWeightValue.value === null) alertService.showError('Donnée incorrecte');
+        else {
           // Create a new Poids entry object
           const newPoidsEntry = {
             date: new Date().toISOString(),
-            valeur: Number(newPoidsValue),
+            valeur: Number(newWeightValue.value),
             nomValeur: 'poids',
             patient: patient.value,
           };
@@ -73,6 +99,7 @@ export default defineComponent({
 
           // Save the new Poids entry to the server
           await mesureService().create(newPoidsEntry);
+          await retrievePatientMesures(patient.value.id);
         }
       } catch (error) {
         alertService.showHttpError(error.response);
@@ -81,13 +108,12 @@ export default defineComponent({
 
     const addEPAValue = async () => {
       try {
-        const newEPAValue = prompt('Entrez la nouvelle valeur EPA:');
-
-        if (newEPAValue !== null) {
+        if (Number(newEPAValue.value) <= 0 || newEPAValue.value === null) alertService.showError('Donnée incorrecte');
+        else {
           // Create a new EPA entry object
           const newEPAEntry = {
             date: new Date().toISOString(),
-            valeur: Number(newEPAValue),
+            valeur: Number(newEPAValue.value),
             nomValeur: 'EPA',
             patient: patient.value,
           };
@@ -97,6 +123,7 @@ export default defineComponent({
 
           // Save the new EPA entry to the server
           await mesureService().create(newEPAEntry);
+          await retrievePatientMesures(patient.value.id);
         }
       } catch (error) {
         alertService.showHttpError(error.response);
@@ -115,6 +142,7 @@ export default defineComponent({
         poidsPatient.value = patientMesures.filter(o => o.nomValeur === 'poids');
         poidsPatient.value.sort((a, b) => new Date(a.date) - new Date(b.date));
         EPAPatient.value = patientMesures.filter(o => o.nomValeur === 'EPA');
+        albuPatient.value = patientMesures.filter(o => o.nomValeur === 'albumine');
       } catch (error) {
         alertService.showHttpError(error.response);
       }
@@ -165,6 +193,7 @@ export default defineComponent({
     return {
       alertService,
       patient,
+      albuPatient,
       poidsPatient,
       EPAPatient,
       patientIMC,
@@ -173,6 +202,8 @@ export default defineComponent({
       chartOptions,
       weightChartLoaded,
       EPAChartLoaded,
+      newEPAValue,
+      newWeightValue,
 
       ...dataUtils,
 
@@ -180,6 +211,7 @@ export default defineComponent({
       t$: useI18n().t,
       addEPAValue,
       addPoidsValue,
+      addAlbuValue,
     };
   },
 });
