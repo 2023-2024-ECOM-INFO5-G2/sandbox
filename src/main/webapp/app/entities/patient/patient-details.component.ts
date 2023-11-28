@@ -45,6 +45,8 @@ export default defineComponent({
     });
     const weightChartLoaded: Ref<Boolean> = ref(false);
     const EPAChartLoaded: Ref<Boolean> = ref(false);
+    const newEPAValue: Ref<String> = ref('');
+    const newWeightValue: Ref<String> = ref('');
 
     const retrievePatient = async patientId => {
       try {
@@ -57,13 +59,11 @@ export default defineComponent({
 
     const addPoidsValue = async () => {
       try {
-        const newPoidsValue = prompt('Entrez la nouvelle valeur du Poids (kg):');
-
-        if (newPoidsValue !== null) {
+        if (newWeightValue.value !== null) {
           // Create a new Poids entry object
           const newPoidsEntry = {
             date: new Date().toISOString(),
-            valeur: Number(newPoidsValue),
+            valeur: Number(newWeightValue.value),
             nomValeur: 'poids',
             patient: patient.value,
           };
@@ -73,6 +73,7 @@ export default defineComponent({
 
           // Save the new Poids entry to the server
           await mesureService().create(newPoidsEntry);
+          await retrievePatientMesures(patient.value.id);
         }
       } catch (error) {
         alertService.showHttpError(error.response);
@@ -81,13 +82,11 @@ export default defineComponent({
 
     const addEPAValue = async () => {
       try {
-        const newEPAValue = prompt('Entrez la nouvelle valeur EPA:');
-
-        if (newEPAValue !== null) {
+        if (newEPAValue.value !== null && newEPAValue.value !== '') {
           // Create a new EPA entry object
           const newEPAEntry = {
             date: new Date().toISOString(),
-            valeur: Number(newEPAValue),
+            valeur: Number(newEPAValue.value),
             nomValeur: 'EPA',
             patient: patient.value,
           };
@@ -97,6 +96,7 @@ export default defineComponent({
 
           // Save the new EPA entry to the server
           await mesureService().create(newEPAEntry);
+          await retrievePatientMesures(patient.value.id);
         }
       } catch (error) {
         alertService.showHttpError(error.response);
@@ -173,6 +173,8 @@ export default defineComponent({
       chartOptions,
       weightChartLoaded,
       EPAChartLoaded,
+      newEPAValue,
+      newWeightValue,
 
       ...dataUtils,
 
