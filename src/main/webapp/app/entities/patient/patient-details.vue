@@ -42,17 +42,17 @@
   </div>
 
   <div class="row justify-content-center mt-5">
-    <div class="col-12">
+    <div class="col-12" v-if="albuPatient.length > 0">
       <div class="card">
-        <div class="card-body">
-          <h4 class="card-title" v-text="t$('g2EcomApp.patient.infoComplementaires')"></h4>
-          <p class="card-text">
-            {{ patient.infoComplementaires }}
-          </p>
+        <h3 class="card-header text-center">Albumine (g/L)</h3>
+        <a href="#" class="btn btn-primary" @click="addAlbuValue">+</a>
+        <div class="card-body text-center">
+          <h5>{{ albuPatient[albuPatient.length - 1].valeur }}</h5>
         </div>
       </div>
     </div>
   </div>
+
   <div class="row justify-content-center text-center mt-5">
     <div class="col-4" v-if="poidsPatient.length > 0">
       <div class="card">
@@ -81,6 +81,7 @@
       </div>
     </div>
   </div>
+
   <div class="row justify-content-center text-center mt-5">
     <div class="col" v-if="weightChartLoaded">
       <Line id="my-chart-id" :options="chartOptions" :data="weightChartData" />
@@ -89,6 +90,20 @@
       <Line id="my-chart-id" :options="chartOptions" :data="EPAChartData" />
     </div>
   </div>
+
+  <div class="row justify-content-center mt-5">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title" v-text="t$('g2EcomApp.patient.infoComplementaires')"></h4>
+          <p class="card-text">
+            {{ patient.infoComplementaires }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!--    <div class="col-8">-->
   <!--      <div v-if="patient">-->
   <!--        <h2 class="jh-entity-heading" data-cy="patientDetailsHeading">-->

@@ -37,6 +37,7 @@ export default defineComponent({
     const patient: Ref<IPatient> = ref({});
     const poidsPatient: Ref<Array<Object>> = ref([]);
     const EPAPatient: Ref<Array<Object>> = ref([]);
+    const albuPatient: Ref<Array<Object>> = ref([]);
     const patientIMC: Ref<Number> = ref(0);
     const weightChartData: Ref<Object> = ref({});
     const EPAChartData: Ref<Object> = ref({});
@@ -50,6 +51,30 @@ export default defineComponent({
       try {
         const res = await patientService().find(patientId);
         patient.value = res;
+      } catch (error) {
+        alertService.showHttpError(error.response);
+      }
+    };
+
+    const addAlbuValue = async () => {
+      try {
+        const newAlbuValue = prompt("Entrez la nouvelle concentration d'albumine (g/L):");
+
+        if (newAlbuValue !== null) {
+          // Create a new Albu entry object
+          const newAlbuEntry = {
+            date: new Date().toISOString(),
+            valeur: Number(newAlbuValue),
+            nomValeur: 'albumine',
+            patient: patient.value,
+          };
+
+          // Add the new Albu entry to the albuPatient array
+          albuPatient.value.push(newAlbuEntry);
+
+          // Save the new Albu entry to the server
+          await mesureService().create(newAlbuEntry);
+        }
       } catch (error) {
         alertService.showHttpError(error.response);
       }
@@ -115,6 +140,7 @@ export default defineComponent({
         poidsPatient.value = patientMesures.filter(o => o.nomValeur === 'poids');
         poidsPatient.value.sort((a, b) => new Date(a.date) - new Date(b.date));
         EPAPatient.value = patientMesures.filter(o => o.nomValeur === 'EPA');
+        albuPatient.value = patientMesures.filter(o => o.nomValeur === 'albumine');
       } catch (error) {
         alertService.showHttpError(error.response);
       }
@@ -165,6 +191,7 @@ export default defineComponent({
     return {
       alertService,
       patient,
+      albuPatient,
       poidsPatient,
       EPAPatient,
       patientIMC,
@@ -180,6 +207,7 @@ export default defineComponent({
       t$: useI18n().t,
       addEPAValue,
       addPoidsValue,
+      addAlbuValue,
     };
   },
 });
