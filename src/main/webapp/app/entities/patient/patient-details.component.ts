@@ -6,8 +6,13 @@ import { Line } from 'vue-chartjs';
 import { BarElement, CategoryScale, Chart as ChartJS, Legend, LinearScale, LineElement, PointElement, Title, Tooltip } from 'chart.js';
 import PatientService from './patient.service';
 import MesureService from '../mesure/mesure.service';
+// @ts-ignore
 import useDataUtils from '@/shared/data/data-utils.service';
+// @ts-ignore
 import { type IPatient } from '@/shared/model/patient.model';
+// @ts-ignore
+import { type IMesure } from '@/shared/model/mesure.model';
+// @ts-ignore
 import { useAlertService } from '@/shared/alert/alert.service';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faArrowsUpDown, faCakeCandles, faDoorOpen, faGenderless, faLocationDot } from '@fortawesome/free-solid-svg-icons';
@@ -35,9 +40,9 @@ export default defineComponent({
 
     const previousState = () => router.go(-1);
     const patient: Ref<IPatient> = ref({});
-    const poidsPatient: Ref<Array<Object>> = ref([]);
-    const EPAPatient: Ref<Array<Object>> = ref([]);
-    const albuPatient: Ref<Array<Object>> = ref([]);
+    const poidsPatient: Ref<Array<IMesure>> = ref([]);
+    const EPAPatient: Ref<Array<IMesure>> = ref([]);
+    const albuPatient: Ref<Array<IMesure>> = ref([]);
     const patientIMC: Ref<Number> = ref(0);
     const weightChartData: Ref<Object> = ref({});
     const EPAChartData: Ref<Object> = ref({});
@@ -48,25 +53,25 @@ export default defineComponent({
     const EPAChartLoaded: Ref<Boolean> = ref(false);
     const newEPAValue: Ref<Number> = ref(0);
     const newWeightValue: Ref<Number> = ref(0);
+    const newAlbuValue: Ref<Number> = ref(0);
 
-    const retrievePatient = async patientId => {
+    const retrievePatient = async (patientId: string | string[]) => {
       try {
-        const res = await patientService().find(patientId);
+        const res = await patientService().find(Number(patientId));
         patient.value = res;
-      } catch (error) {
+      } catch (error: any) {
         alertService.showHttpError(error.response);
       }
     };
 
     const addAlbuValue = async () => {
       try {
-        const newAlbuValue = prompt("Entrez la nouvelle concentration d'albumine (g/L):");
-
-        if (newAlbuValue !== null) {
+        if (Number(newAlbuValue.value) <= 0 || newAlbuValue.value === null) alertService.showError('Donnée incorrecte');
+        else {
           // Create a new Albu entry object
           const newAlbuEntry = {
             date: new Date().toISOString(),
-            valeur: Number(newAlbuValue),
+            valeur: Number(newAlbuValue.value),
             nomValeur: 'albumine',
             patient: patient.value,
           };
@@ -76,8 +81,9 @@ export default defineComponent({
 
           // Save the new Albu entry to the server
           await mesureService().create(newAlbuEntry);
+          await retrievePatientMesures(patient.value.id);
         }
-      } catch (error) {
+      } catch (error: any) {
         alertService.showHttpError(error.response);
       }
     };
@@ -101,7 +107,7 @@ export default defineComponent({
           await mesureService().create(newPoidsEntry);
           await retrievePatientMesures(patient.value.id);
         }
-      } catch (error) {
+      } catch (error: any) {
         alertService.showHttpError(error.response);
       }
     };
@@ -125,7 +131,7 @@ export default defineComponent({
           await mesureService().create(newEPAEntry);
           await retrievePatientMesures(patient.value.id);
         }
-      } catch (error) {
+      } catch (error: any) {
         alertService.showHttpError(error.response);
       }
     };
@@ -134,16 +140,16 @@ export default defineComponent({
       return Math.round(Number(patientWeight) / (((Number(patientHeight) / 100) * Number(patientHeight)) / 100));
     };
 
-    const retrievePatientMesures = async patientId => {
+    const retrievePatientMesures = async (patientId: string | string[]) => {
       try {
         const res = await mesureService().retrieve();
-        const patientMesures = res.data.filter(o => o.patient !== null && o.patient.id === Number(patientId));
+        const patientMesures = res.data.filter((o: IMesure) => o.patient !== null && o.patient.id === Number(patientId));
 
-        poidsPatient.value = patientMesures.filter(o => o.nomValeur === 'poids');
-        poidsPatient.value.sort((a, b) => new Date(a.date) - new Date(b.date));
-        EPAPatient.value = patientMesures.filter(o => o.nomValeur === 'EPA');
-        albuPatient.value = patientMesures.filter(o => o.nomValeur === 'albumine');
-      } catch (error) {
+        poidsPatient.value = patientMesures.filter((o: IMesure) => o.nomValeur === 'poids');
+        poidsPatient.value.sort((a: IMesure, b: IMesure) => +new Date(a.date) - +new Date(b.date));
+        EPAPatient.value = patientMesures.filter((o: IMesure) => o.nomValeur === 'EPA');
+        albuPatient.value = patientMesures.filter((o: IMesure) => o.nomValeur === 'albumine');
+      } catch (error: any) {
         alertService.showHttpError(error.response);
       }
     };
@@ -151,7 +157,7 @@ export default defineComponent({
     if (route.params?.patientId) {
       retrievePatient(route.params.patientId).then(() =>
         retrievePatientMesures(route.params.patientId).then(() => {
-          patientIMC.value = calculIMC(patient.value.taille, poidsPatient.value[poidsPatient.value.length - 1].valeur);
+          patientIMC.value = calculIMC(patient.value.taille, poidsPatient.value[poidsPatient.value.length - 1]?.valeur);
           const weightValues = [];
           const EPAValues = [];
           for (const weightEntry of poidsPatient.value) {
@@ -204,6 +210,7 @@ export default defineComponent({
       EPAChartLoaded,
       newEPAValue,
       newWeightValue,
+      newAlbuValue,
 
       ...dataUtils,
 
