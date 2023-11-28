@@ -48,6 +48,7 @@ export default defineComponent({
     const EPAChartLoaded: Ref<Boolean> = ref(false);
     const newEPAValue: Ref<Number> = ref(0);
     const newWeightValue: Ref<Number> = ref(0);
+    const newAlbuValue: Ref<Number> = ref(0);
 
     const retrievePatient = async patientId => {
       try {
@@ -60,13 +61,12 @@ export default defineComponent({
 
     const addAlbuValue = async () => {
       try {
-        const newAlbuValue = prompt("Entrez la nouvelle concentration d'albumine (g/L):");
-
-        if (newAlbuValue !== null) {
+        if (Number(newAlbuValue.value) <= 0 || newAlbuValue.value === null) alertService.showError('Donnée incorrecte');
+        else {
           // Create a new Albu entry object
           const newAlbuEntry = {
             date: new Date().toISOString(),
-            valeur: Number(newAlbuValue),
+            valeur: Number(newAlbuValue.value),
             nomValeur: 'albumine',
             patient: patient.value,
           };
@@ -76,6 +76,7 @@ export default defineComponent({
 
           // Save the new Albu entry to the server
           await mesureService().create(newAlbuEntry);
+          await retrievePatientMesures(patient.value.id);
         }
       } catch (error) {
         alertService.showHttpError(error.response);
@@ -204,6 +205,7 @@ export default defineComponent({
       EPAChartLoaded,
       newEPAValue,
       newWeightValue,
+      newAlbuValue,
 
       ...dataUtils,
 

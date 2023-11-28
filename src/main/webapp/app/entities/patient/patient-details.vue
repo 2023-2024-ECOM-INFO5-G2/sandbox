@@ -44,8 +44,20 @@
   <div class="row justify-content-center mt-5">
     <div class="col-12" v-if="albuPatient.length > 0">
       <div class="card">
-        <h3 class="card-header text-center">Albumine (g/L)</h3>
-        <a href="#" class="btn btn-primary" @click="addAlbuValue">+</a>
+        <div class="card-header">
+          <div class="row align-items-center text-center">
+            <div class="col"></div>
+            <div class="col">
+              <span>Albumine (g/kg)</span>
+            </div>
+            <div class="col">
+              <b-button v-b-modal.modal-albu variant="primary">+</b-button>
+            </div>
+          </div>
+        </div>
+        <b-modal id="modal-albu" title="Ajouter une mesure d'Albumine" @ok="addAlbuValue">
+          <b-form-input v-model="newAlbuValue" placeholder="Valeur mesurée (g/kg)" type="number"></b-form-input>
+        </b-modal>
         <div class="card-body text-center">
           <h5>{{ albuPatient[albuPatient.length - 1].valeur }}</h5>
         </div>
