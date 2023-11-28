@@ -42,13 +42,12 @@
   </div>
 
   <div class="row justify-content-center mt-5">
-    <div class="col-12">
+    <div class="col-12" v-if="albuPatient.length > 0">
       <div class="card">
-        <div class="card-body">
-          <h4 class="card-title" v-text="t$('g2EcomApp.patient.infoComplementaires')"></h4>
-          <p class="card-text">
-            {{ patient.infoComplementaires }}
-          </p>
+        <h3 class="card-header text-center">Albumine (g/L)</h3>
+        <a href="#" class="btn btn-primary" @click="addAlbuValue">+</a>
+        <div class="card-body text-center">
+          <h5>{{ albuPatient[albuPatient.length - 1].valeur }}</h5>
         </div>
       </div>
     </div>
@@ -114,6 +113,19 @@
     </div>
     <div v-if="EPAChartLoaded" class="col">
       <Line id="my-chart-id" :data="EPAChartData" :options="chartOptions" />
+    </div>
+  </div>
+
+  <div class="row justify-content-center mt-5">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title" v-text="t$('g2EcomApp.patient.infoComplementaires')"></h4>
+          <p class="card-text">
+            {{ patient.infoComplementaires }}
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
