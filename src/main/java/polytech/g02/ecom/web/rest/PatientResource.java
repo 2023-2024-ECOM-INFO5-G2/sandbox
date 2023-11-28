@@ -7,6 +7,7 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.StreamSupport;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,6 +15,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import polytech.g02.ecom.domain.Mesure;
 import polytech.g02.ecom.domain.Patient;
 import polytech.g02.ecom.repository.PatientRepository;
 import polytech.g02.ecom.web.rest.errors.BadRequestAlertException;
@@ -191,6 +193,16 @@ public class PatientResource {
         log.debug("REST request to get Patient : {}", id);
         Optional<Patient> patient = patientRepository.findById(id);
         return ResponseUtil.wrapOrNotFound(patient);
+    }
+
+    @GetMapping("/{id}/mesures")
+    public Set<Mesure> getMesuresPatient(@PathVariable Long id) {
+        log.debug("requête pour recup les mesure du path" + id);
+        Optional<Patient> patient = patientRepository.findById(id);
+        if (patient.isPresent()) {
+            return patient.get().getMesures();
+        }
+        return null;
     }
 
     /**

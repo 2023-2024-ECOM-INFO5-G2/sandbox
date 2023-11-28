@@ -1,5 +1,6 @@
 package polytech.g02.ecom.web.rest;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import java.net.URI;
