@@ -23,7 +23,7 @@ export default class EtablissementService {
       axios
         .get(`${baseApiUrl}/${id}/patients`)
         .then(res => {
-          resolve(res);
+          resolve(res.data);
         })
         .catch(err => {
           reject(err);

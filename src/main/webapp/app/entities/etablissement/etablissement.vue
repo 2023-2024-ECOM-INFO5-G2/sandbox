@@ -119,6 +119,25 @@
       </template>
     </b-modal>
   </div>
+
+  <div>
+    <h2>TEST a bouger</h2>
+    <span>nb appel : {{ tmp }} </span>
+    <table>
+      <tr v-for="patient in patientsEtablissement" :key="etablissement.id" data-cy="entityTable">
+        <td>
+          <router-link :to="{ name: 'EtablissementView', params: { etablissementId: etablissement.id } }">{{
+            etablissement.id
+          }}</router-link>
+        </td>
+        <td>{{ patient.nom }}</td>
+        <td>{{ patient.prenom }}</td>
+        <!--        <td>{{ etablissement.ville }}</td>-->
+        <!--        <td>{{ etablissement.codePostal }}</td>-->
+        <!--        <td><button>nombre cas</button></td>-->
+      </tr>
+    </table>
+  </div>
 </template>
 
 <script lang="ts" src="./etablissement.component.ts"></script>

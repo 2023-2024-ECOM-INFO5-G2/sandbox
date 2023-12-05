@@ -3,6 +3,7 @@ import { useI18n } from 'vue-i18n';
 
 import EtablissementService from './etablissement.service';
 import { type IEtablissement } from '@/shared/model/etablissement.model';
+import { type IPatient } from '../../shared/model/patient.model';
 import { useAlertService } from '@/shared/alert/alert.service';
 
 export default defineComponent({
@@ -14,6 +15,7 @@ export default defineComponent({
     const alertService = inject('alertService', () => useAlertService(), true);
 
     const etablissements: Ref<IEtablissement[]> = ref([]);
+    const patientsEtablissement: Ref<IPatient[]> = ref([]);
 
     const isFetching = ref(false);
 
@@ -31,8 +33,24 @@ export default defineComponent({
       }
     };
 
+    const etablissementId: Ref<number> = ref(null);
+    let tmp = 0;
+    const retrievePatientEtablissement = async () => {
+      isFetching.value = true;
+      tmp += 1;
+      try {
+        const res = await etablissementService.getPatientEtablissement(etablissementId);
+        patientsEtablissement.value = res.data;
+      } catch (err) {
+        alertService.showHttpError(err.response);
+      } finally {
+        isFetching.value = false;
+      }
+    };
+
     const handleSyncList = () => {
       retrieveEtablissements();
+      retrievePatientEtablissement();
     };
 
     onMounted(async () => {
@@ -63,15 +81,18 @@ export default defineComponent({
 
     return {
       etablissements,
+      patientsEtablissement,
       handleSyncList,
       isFetching,
       retrieveEtablissements,
+      retrievePatientEtablissement,
       clear,
       removeId,
       removeEntity,
       prepareRemove,
       closeDialog,
       removeEtablissement,
+      tmp,
       t$,
     };
   },

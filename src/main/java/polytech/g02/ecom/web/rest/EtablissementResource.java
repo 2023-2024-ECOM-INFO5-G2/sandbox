@@ -5,6 +5,7 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -188,6 +189,10 @@ public class EtablissementResource {
         Optional<Etablissement> et = etablissementRepository.findOneWithEagerRelationships(id);
         if (et.isPresent()) {
             Set<Patient> p = et.get().getPatients();
+            Iterator<Patient> it = p.iterator();
+            while (it.hasNext()) {
+                System.out.println(it.next());
+            }
             return p;
         } else {
             return null;
