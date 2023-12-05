@@ -10,22 +10,19 @@ import {
   entityConfirmDeleteButtonSelector,
 } from '../../support/entity';
 
-// TODO: find a way to test the patient page with the news views (or move the news views to another page)
-
-/*
-
 describe('Patient e2e test', () => {
   const patientPageUrl = '/patient';
   const patientPageUrlPattern = new RegExp('/patient(\\?.*)?$');
   const username = Cypress.env('E2E_USERNAME') ?? 'user';
   const password = Cypress.env('E2E_PASSWORD') ?? 'user';
   const patientSample = {
-    prenom: 'tsoin-tsoin',
-    nom: 'hier aussitôt que',
-    sexe: 'coudre',
-    dateDeNaissance: '2023-11-07',
-    numChambre: 11975,
-    dateArrivee: '2023-11-06',
+    prenom: 'comme tant que ha ha',
+    nom: 'affecter badaboum',
+    sexe: 'ouf',
+    taille: 19637.03,
+    dateDeNaissance: '2023-12-05',
+    numChambre: 27859,
+    dateArrivee: '2023-12-05T07:24:09.362Z',
   };
 
   let patient;
@@ -168,31 +165,31 @@ describe('Patient e2e test', () => {
     });
 
     it('should create an instance of Patient', () => {
-      cy.get(`[data-cy="prenom"]`).type('secours');
-      cy.get(`[data-cy="prenom"]`).should('have.value', 'secours');
+      cy.get(`[data-cy="prenom"]`).type('triathlète');
+      cy.get(`[data-cy="prenom"]`).should('have.value', 'triathlète');
 
-      cy.get(`[data-cy="nom"]`).type("foule d'avec orange");
-      cy.get(`[data-cy="nom"]`).should('have.value', "foule d'avec orange");
+      cy.get(`[data-cy="nom"]`).type('parce que');
+      cy.get(`[data-cy="nom"]`).should('have.value', 'parce que');
 
-      cy.get(`[data-cy="sexe"]`).type('antique bénéficier');
-      cy.get(`[data-cy="sexe"]`).should('have.value', 'antique bénéficier');
+      cy.get(`[data-cy="sexe"]`).type('adepte ah');
+      cy.get(`[data-cy="sexe"]`).should('have.value', 'adepte ah');
 
-      cy.get(`[data-cy="dateDeNaissance"]`).type('2023-11-07');
+      cy.get(`[data-cy="taille"]`).type('7457.83');
+      cy.get(`[data-cy="taille"]`).should('have.value', '7457.83');
+
+      cy.get(`[data-cy="dateDeNaissance"]`).type('2023-12-05');
       cy.get(`[data-cy="dateDeNaissance"]`).blur();
-      cy.get(`[data-cy="dateDeNaissance"]`).should('have.value', '2023-11-07');
+      cy.get(`[data-cy="dateDeNaissance"]`).should('have.value', '2023-12-05');
 
-      cy.get(`[data-cy="numChambre"]`).type('19945');
-      cy.get(`[data-cy="numChambre"]`).should('have.value', '19945');
+      cy.get(`[data-cy="numChambre"]`).type('781');
+      cy.get(`[data-cy="numChambre"]`).should('have.value', '781');
 
-      cy.get(`[data-cy="taille"]`).type('20978.96');
-      cy.get(`[data-cy="taille"]`).should('have.value', '20978.96');
-
-      cy.get(`[data-cy="dateArrivee"]`).type('2023-11-06');
+      cy.get(`[data-cy="dateArrivee"]`).type('2023-12-04T20:48');
       cy.get(`[data-cy="dateArrivee"]`).blur();
-      cy.get(`[data-cy="dateArrivee"]`).should('have.value', '2023-11-06');
+      cy.get(`[data-cy="dateArrivee"]`).should('have.value', '2023-12-04T20:48');
 
-      cy.get(`[data-cy="infoComplementaires"]`).type('../fake-data/blob/hipster.txt');
-      cy.get(`[data-cy="infoComplementaires"]`).invoke('val').should('match', new RegExp('../fake-data/blob/hipster.txt'));
+      cy.get(`[data-cy="infosComplementaires"]`).type('chef jeune même si');
+      cy.get(`[data-cy="infosComplementaires"]`).should('have.value', 'chef jeune même si');
 
       cy.get(entityCreateSaveButtonSelector).click();
 
@@ -207,5 +204,3 @@ describe('Patient e2e test', () => {
     });
   });
 });
-
-*/

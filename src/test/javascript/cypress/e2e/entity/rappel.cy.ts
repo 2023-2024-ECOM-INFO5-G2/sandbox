@@ -15,7 +15,12 @@ describe('Rappel e2e test', () => {
   const rappelPageUrlPattern = new RegExp('/rappel(\\?.*)?$');
   const username = Cypress.env('E2E_USERNAME') ?? 'user';
   const password = Cypress.env('E2E_PASSWORD') ?? 'user';
-  const rappelSample = { frequence: 'dissoudre', echeance: '2023-11-07', tache: 'au cas où miaou' };
+  const rappelSample = {
+    date: '2023-12-05T11:52:02.861Z',
+    frequenceJour: 4317,
+    echeance: '2023-12-05',
+    tache: 'bien que de façon à à même',
+  };
 
   let rappel;
 
@@ -157,15 +162,19 @@ describe('Rappel e2e test', () => {
     });
 
     it('should create an instance of Rappel', () => {
-      cy.get(`[data-cy="frequence"]`).type('dessous impromptu');
-      cy.get(`[data-cy="frequence"]`).should('have.value', 'dessous impromptu');
+      cy.get(`[data-cy="date"]`).type('2023-12-05T10:42');
+      cy.get(`[data-cy="date"]`).blur();
+      cy.get(`[data-cy="date"]`).should('have.value', '2023-12-05T10:42');
 
-      cy.get(`[data-cy="echeance"]`).type('2023-11-07');
+      cy.get(`[data-cy="frequenceJour"]`).type('29573');
+      cy.get(`[data-cy="frequenceJour"]`).should('have.value', '29573');
+
+      cy.get(`[data-cy="echeance"]`).type('2023-12-05');
       cy.get(`[data-cy="echeance"]`).blur();
-      cy.get(`[data-cy="echeance"]`).should('have.value', '2023-11-07');
+      cy.get(`[data-cy="echeance"]`).should('have.value', '2023-12-05');
 
-      cy.get(`[data-cy="tache"]`).type('trop peu disperser');
-      cy.get(`[data-cy="tache"]`).should('have.value', 'trop peu disperser');
+      cy.get(`[data-cy="tache"]`).type('croâ ramener efficace');
+      cy.get(`[data-cy="tache"]`).should('have.value', 'croâ ramener efficace');
 
       cy.get(entityCreateSaveButtonSelector).click();
 

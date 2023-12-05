@@ -3,9 +3,9 @@
     <div class="col-8">
       <form name="editForm" role="form" novalidate v-on:submit.prevent="save()">
         <h2
-          id="g2EcomApp.etablissement.home.createOrEditLabel"
+          id="ecom02App.etablissement.home.createOrEditLabel"
           data-cy="EtablissementCreateUpdateHeading"
-          v-text="t$('g2EcomApp.etablissement.home.createOrEditLabel')"
+          v-text="t$('ecom02App.etablissement.home.createOrEditLabel')"
         ></h2>
         <div>
           <div class="form-group" v-if="etablissement.id">
@@ -13,7 +13,7 @@
             <input type="text" class="form-control" id="id" name="id" v-model="etablissement.id" readonly />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="t$('g2EcomApp.etablissement.nom')" for="etablissement-nom"></label>
+            <label class="form-control-label" v-text="t$('ecom02App.etablissement.nom')" for="etablissement-nom"></label>
             <input
               type="text"
               class="form-control"
@@ -25,7 +25,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="t$('g2EcomApp.etablissement.adresse')" for="etablissement-adresse"></label>
+            <label class="form-control-label" v-text="t$('ecom02App.etablissement.adresse')" for="etablissement-adresse"></label>
             <input
               type="text"
               class="form-control"
@@ -41,7 +41,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="t$('g2EcomApp.etablissement.ville')" for="etablissement-ville"></label>
+            <label class="form-control-label" v-text="t$('ecom02App.etablissement.ville')" for="etablissement-ville"></label>
             <input
               type="text"
               class="form-control"
@@ -57,15 +57,15 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="t$('g2EcomApp.etablissement.codePostal')" for="etablissement-codePostal"></label>
+            <label class="form-control-label" v-text="t$('ecom02App.etablissement.codePostal')" for="etablissement-codePostal"></label>
             <input
-              type="number"
+              type="text"
               class="form-control"
               name="codePostal"
               id="etablissement-codePostal"
               data-cy="codePostal"
               :class="{ valid: !v$.codePostal.$invalid, invalid: v$.codePostal.$invalid }"
-              v-model.number="v$.codePostal.$model"
+              v-model="v$.codePostal.$model"
               required
             />
             <div v-if="v$.codePostal.$anyDirty && v$.codePostal.$invalid">
@@ -73,7 +73,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label v-text="t$('g2EcomApp.etablissement.user')" for="etablissement-user"></label>
+            <label v-text="t$('ecom02App.etablissement.user')" for="etablissement-user"></label>
             <select
               class="form-control"
               id="etablissement-users"

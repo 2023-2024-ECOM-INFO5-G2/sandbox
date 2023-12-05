@@ -18,7 +18,7 @@ logging:
     ROOT: DEBUG
     tech.jhipster: DEBUG
     org.hibernate.SQL: DEBUG
-    polytech.g02.ecom: DEBUG
+    polytech.ecom.g02: DEBUG
 
 spring:
   devtools:
@@ -32,8 +32,8 @@ spring:
       indent-output: true
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:h2:file:./build/h2db/db/g2ecom;DB_CLOSE_DELAY=-1
-    username: g2ecom
+    url: jdbc:h2:file:./build/h2db/db/ecom02;DB_CLOSE_DELAY=-1
+    username: ecom02
     password:
     hikari:
       poolName: Hikari
@@ -46,16 +46,10 @@ spring:
     # Remove 'faker' if you do not want the sample data to be loaded automatically
     contexts: dev, faker
   mail:
-    host: smtp.gmail.com
-    port: 587
-    username: polytech.ecomg02@gmail.com
-    password: dzbijssfpbqdyyub
-    protocol: smtp
-    tls: true
-    properties.mail.smtp:
-      auth: true
-      starttls.enable: true
-      ssl.trust: smtp.gmail.com
+    host: localhost
+    port: 25
+    username:
+    password:
   messages:
     cache-duration: PT1S # 1 second, see the ISO 8601 standard
   thymeleaf:
@@ -90,7 +84,7 @@ jhipster:
     authentication:
       jwt:
         # This token must be encoded using Base64 and be at least 256 bits long (you can type `openssl rand -base64 64` on your command line to generate a 512 bits one)
-        base64-secret: YTFjZGY2NWMzMWEyZTJkN2JjZmNiNDY1MmVmODkxMWY4Y2JlZDAyNmE5MzEzZDk0ZTRlMGU2MzE1ZWRmYjNlNDEyZjIzMjc5OGY1MzZmNmIzNzBlZmUyNmJmOWM3ZTZmMWY0MTk2YjI2ZGI4MmFlODRlNGI2OTljOWUzZTBmMWU=
+        base64-secret: ODY0ZmY4NzMyOWI5YTBjNzM1NTg2NjQ0ODYxY2ZhYjNlNzU5NmI3NDVmZWE1YmFiOTBkYzkxMjNjMWI0MzhjNDRkNjNjZTVmNjNhOTU2OTlkMGNiYWM2NmFjNmQ4MTc0MjlkYzNhNWVjYTg5YjA2NzU3NTEyMjZjZjJhM2JkMzY=
         # Token is valid 24 hours
         token-validity-in-seconds: 86400
         token-validity-in-seconds-for-remember-me: 2592000

@@ -3,7 +3,6 @@ import { getCurrentInstance } from 'vue';
 import { type Composer, useI18n } from 'vue-i18n';
 
 export const useAlertService = () => {
-  // @ts-ignore
   const bvToast = getCurrentInstance().root.proxy['_bv__toast'];
   if (!bvToast) {
     throw new Error('BootstrapVue toast component was not found');
@@ -57,7 +56,6 @@ export default class AlertService {
 
   public showHttpError(httpErrorResponse: any) {
     let errorMessage: string | null = null;
-    if (httpErrorResponse === undefined) return;
     switch (httpErrorResponse.status) {
       case 0:
         errorMessage = this.i18n.t('error.server.not.reachable').toString();

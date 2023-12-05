@@ -1,5 +1,5 @@
 {
-  "g2EcomApp": {
+  "ecom02App": {
     "patient": {
       "home": {
         "title": "Patients",
@@ -21,22 +21,19 @@
       "prenom": "Prenom",
       "nom": "Nom",
       "sexe": "Sexe",
-      "dateDeNaissance": "Date De Naissance",
-      "numChambre": "Numéro Chambre",
       "taille": "Taille",
+      "dateDeNaissance": "Date De Naissance",
+      "numChambre": "Num Chambre",
       "dateArrivee": "Date Arrivee",
-      "infoComplementaires": "Informations Complementaires",
-      "mesure": "Mesure",
-      "rappel": "Rappel",
-      "medecin": "Medecin",
-      "etablissement": "Etablissement",
-      "aideSoignant": "Aide Soignant",
-      "infirmiere": "Infirmiere",
-      "repas": "Repas",
+      "infosComplementaires": "Infos Complementaires",
       "alerte": "Alerte",
-      "poids": "Poids (kg)",
-      "EPA": "EPA",
-      "IMC": "IMC"
+      "rappel": "Rappel",
+      "mesurePoids": "Mesure Poids",
+      "mesureEPA": "Mesure EPA",
+      "mesureAlbumine": "Mesure Albumine",
+      "repas": "Repas",
+      "user": "User",
+      "etablissement": "Etablissement"
     }
   }
 }

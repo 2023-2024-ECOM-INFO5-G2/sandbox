@@ -15,7 +15,7 @@ describe('Alerte e2e test', () => {
   const alertePageUrlPattern = new RegExp('/alerte(\\?.*)?$');
   const username = Cypress.env('E2E_USERNAME') ?? 'user';
   const password = Cypress.env('E2E_PASSWORD') ?? 'user';
-  const alerteSample = {};
+  const alerteSample = { description: 'dessus', date: '2023-12-05T08:49:59.300Z' };
 
   let alerte;
 
@@ -157,12 +157,12 @@ describe('Alerte e2e test', () => {
     });
 
     it('should create an instance of Alerte', () => {
-      cy.get(`[data-cy="description"]`).type('maintenant pour que');
-      cy.get(`[data-cy="description"]`).should('have.value', 'maintenant pour que');
+      cy.get(`[data-cy="description"]`).type('présidence');
+      cy.get(`[data-cy="description"]`).should('have.value', 'présidence');
 
-      cy.get(`[data-cy="date"]`).type('2023-11-06');
+      cy.get(`[data-cy="date"]`).type('2023-12-05T13:40');
       cy.get(`[data-cy="date"]`).blur();
-      cy.get(`[data-cy="date"]`).should('have.value', '2023-11-06');
+      cy.get(`[data-cy="date"]`).should('have.value', '2023-12-05T13:40');
 
       cy.get(entityCreateSaveButtonSelector).click();
 
