@@ -33,24 +33,28 @@ export default defineComponent({
       }
     };
 
-    const etablissementId: Ref<number> = ref(null);
+    const etablissementId: Ref<number> = ref(1); // valeur qu'il faudra mettre à jour
     let tmp = 0;
     const retrievePatientEtablissement = async () => {
+      console.log('wesh');
       isFetching.value = true;
       tmp += 1;
       try {
-        const res = await etablissementService.getPatientEtablissement(etablissementId);
+        console.log('avant requete dans le try');
+        const res = await etablissementService().getPatientEtablissement(etablissementId.value);
+        console.log('apres la requête');
         patientsEtablissement.value = res.data;
       } catch (err) {
+        console.log(err);
         alertService.showHttpError(err.response);
       } finally {
         isFetching.value = false;
       }
     };
 
-    const handleSyncList = () => {
-      retrieveEtablissements();
-      retrievePatientEtablissement();
+    const handleSyncList = async () => {
+      await retrieveEtablissements();
+      await retrievePatientEtablissement();
     };
 
     onMounted(async () => {

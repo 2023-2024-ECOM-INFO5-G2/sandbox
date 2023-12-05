@@ -18,7 +18,7 @@ export default class EtablissementService {
     });
   }
 
-  public getPatientsEtblissement(id: number): Promise<any> {
+  public getPatientEtablissement(id: number): Promise<any> {
     return new Promise<any>((resolve, reject) => {
       axios
         .get(`${baseApiUrl}/${id}/patients`)
