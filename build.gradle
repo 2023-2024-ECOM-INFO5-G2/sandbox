@@ -18,7 +18,7 @@ plugins {
 }
 
 group = "polytech.g02.ecom"
-version = "0.1.0"
+version = "0.1.1"
 
 description = ""
 
