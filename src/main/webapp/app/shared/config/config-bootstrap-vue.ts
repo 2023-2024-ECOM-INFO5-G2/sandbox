@@ -25,6 +25,9 @@ import {
   BInputGroup,
   BInputGroupPrepend,
   ToastPlugin,
+  BTable,
+  BTh,
+  BTr,
 } from 'bootstrap-vue';
 
 export function initBootstrapVue(vue) {
@@ -55,4 +58,7 @@ export function initBootstrapVue(vue) {
   vue.component('b-form-datepicker', BFormDatepicker);
   vue.component('b-input-group', BInputGroup);
   vue.component('b-input-group-prepend', BInputGroupPrepend);
+  vue.component('b-table', BTable);
+  vue.component('b-tr', BTr);
+  vue.component('b-th', BTh);
 }
