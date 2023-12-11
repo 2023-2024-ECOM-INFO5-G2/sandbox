@@ -42,81 +42,68 @@
   </div>
 
   <div class="row justify-content-center mt-5">
-    <div v-if="albuPatient.length > 0" class="col-12">
-      <div class="card">
-        <div class="card-header">
-          <div class="row align-items-center text-center">
-            <div class="col"></div>
-            <div class="col">
-              <span>Albumine (g/kg)</span>
-            </div>
-            <div class="col">
-              <b-button v-b-modal.modal-albu variant="primary">+</b-button>
-            </div>
-          </div>
-        </div>
-        <b-modal id="modal-albu" title="Ajouter une mesure d'Albumine" @ok="addAlbuValue">
-          <b-form-input v-model="newAlbuValue" placeholder="Valeur mesurée (g/kg)" type="number"></b-form-input>
-        </b-modal>
-        <div class="card-body text-center">
-          <h5>{{ albuPatient[albuPatient.length - 1].valeur }}</h5>
-        </div>
-      </div>
+    <div class="col-12">
+      <b-card :header="t$('g2EcomApp.patient.IMC')" align="center">
+        <b-card-title>
+          {{ patientIMC || 'Aucune donnée' }}
+        </b-card-title>
+      </b-card>
     </div>
   </div>
-  <div class="row justify-content-center text-center mt-5">
-    <div v-if="poidsPatient.length > 0" class="col-4">
-      <div class="card">
-        <div class="card-header">
-          <div class="row align-items-center text-center">
-            <div class="col"></div>
-            <div class="col">
-              <span>{{ t$('g2EcomApp.patient.poids') }}</span>
-            </div>
-            <div class="col">
-              <b-button v-b-modal.modal-poids variant="primary">+</b-button>
-            </div>
-          </div>
-        </div>
-        <b-modal id="modal-poids" title="Ajouter une mesure de Poids" @ok="addPoidsValue">
-          <b-form-input v-model="newWeightValue" placeholder="Valeur mesurée (kg)" type="number"></b-form-input>
-        </b-modal>
-        <div class="card-body">
-          <h5>{{ poidsPatient[poidsPatient.length - 1].valeur }}</h5>
-        </div>
-      </div>
-    </div>
-    <div v-if="EPAPatient.length > 0" class="col-4">
-      <div class="card">
-        <div class="card-header">
-          <div class="row align-items-center">
-            <div class="col"></div>
-            <div class="col">
-              <span>{{ t$('g2EcomApp.patient.EPA') }}</span>
-            </div>
-            <div class="col">
-              <b-button v-b-modal.modal-epa variant="primary">+</b-button>
-            </div>
-          </div>
-        </div>
+  <div class="row justify-content-center mt-5">
+    <div v-if="poidsPatient" class="col-4">
+      <b-card
+        :border-variant="dangerWeight ? 'danger' : ''"
+        :header="t$('g2EcomApp.patient.poids')"
+        :header-bg-variant="dangerWeight ? 'danger' : ''"
+        :header-text-variant="dangerWeight ? 'white' : ''"
+        align="center"
+      >
+        <b-card-title>
+          {{ poidsPatient[poidsPatient.length - 1]?.valeur || 'Aucune donnée' }}
+        </b-card-title>
 
-        <b-modal id="modal-epa" title="Ajouter une mesure EPA" @ok="addEPAValue">
-          <b-form-input v-model="newEPAValue" placeholder="Valeur mesurée" type="number"></b-form-input>
-        </b-modal>
-        <div class="card-body">
-          <h5>{{ EPAPatient[EPAPatient.length - 1].valeur }}</h5>
-        </div>
-      </div>
+        <template #footer>
+          <b-button v-b-modal.modal-poids variant="outline-primary">Ajouter une valeur</b-button>
+          <b-modal id="modal-poids" title="Ajouter une mesure de Poids" @ok="addPoidsValue">
+            <b-form-input v-model="newWeightValue" placeholder="Valeur mesurée (kg)" type="number"></b-form-input>
+          </b-modal>
+        </template>
+      </b-card>
     </div>
-    <div class="col-4">
-      <div class="card">
-        <div class="card-header py-3">
-          <span>{{ t$('g2EcomApp.patient.IMC') }}</span>
-        </div>
-        <div class="card-body">
-          <h5>{{ patientIMC }}</h5>
-        </div>
-      </div>
+    <div v-if="EPAPatient" class="col-4">
+      <b-card
+        :border-variant="dangerEPA ? 'danger' : ''"
+        :header="t$('g2EcomApp.patient.EPA')"
+        :header-bg-variant="dangerEPA ? 'danger' : ''"
+        :header-text-variant="dangerEPA ? 'white' : ''"
+        align="center"
+      >
+        <b-card-title>
+          {{ EPAPatient[EPAPatient.length - 1]?.valeur || 'Aucune donnée' }}
+        </b-card-title>
+
+        <template #footer>
+          <b-button v-b-modal.modal-epa variant="outline-primary">Ajouter une valeur</b-button>
+          <b-modal id="modal-epa" title="Ajouter une mesure EPA" @ok="addEPAValue">
+            <b-form-input v-model="newEPAValue" placeholder="Valeur mesurée" type="number"></b-form-input>
+          </b-modal>
+        </template>
+      </b-card>
+    </div>
+    <div v-if="albuPatient" class="col-4">
+      <b-card align="center" header="Albumine (g/kg)">
+        <b-card-title>
+          {{ albuPatient[albuPatient.length - 1]?.valeur || 'Aucune donnée' }}
+        </b-card-title>
+
+        <template #footer>
+          <b-button v-b-modal.modal-albu variant="outline-primary">Ajouter une valeur</b-button>
+          <b-modal id="modal-albu" title="Ajouter une mesure d'Albumine" @ok="addAlbuValue">
+            <b-form-input v-model="newAlbuValue" placeholder="Valeur mesurée (g/kg)" type="number"></b-form-input>
+          </b-modal>
+        </template>
+      </b-card>
     </div>
   </div>
   <div class="row justify-content-center text-center mt-5">

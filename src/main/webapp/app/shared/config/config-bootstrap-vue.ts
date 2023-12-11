@@ -25,6 +25,13 @@ import {
   BInputGroup,
   BInputGroupPrepend,
   ToastPlugin,
+  BCard,
+  BCardHeader,
+  BCardBody,
+  BCardText,
+  BCardTitle,
+  BToaster,
+  BToast,
   BTable,
   BTh,
   BTr,
@@ -33,6 +40,11 @@ import {
 export function initBootstrapVue(vue) {
   vue.use(ToastPlugin);
 
+  vue.component('b-card', BCard);
+  vue.component('b-card-header', BCardHeader);
+  vue.component('b-card-body', BCardBody);
+  vue.component('b-card-text', BCardText);
+  vue.component('b-card-title', BCardTitle);
   vue.component('b-badge', BBadge);
   vue.component('b-dropdown', BDropdown);
   vue.component('b-dropdown-item', BDropdownItem);
@@ -61,4 +73,6 @@ export function initBootstrapVue(vue) {
   vue.component('b-table', BTable);
   vue.component('b-tr', BTr);
   vue.component('b-th', BTh);
+  vue.component('b-toaster', BToaster);
+  vue.component('b-toast', BToast);
 }

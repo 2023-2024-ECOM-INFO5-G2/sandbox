@@ -1,4 +1,4 @@
-import { defineComponent, inject, ref, type Ref } from 'vue';
+import { defineComponent, inject, ref, provide, type Ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useRoute, useRouter } from 'vue-router';
 
@@ -60,6 +60,11 @@ export default defineComponent({
     const newWeightValue: Ref<Number> = ref(0);
     const newAlbuValue: Ref<Number> = ref(0);
 
+    const dangerEPA: Ref<Boolean> = ref(false);
+    const dangerWeight: Ref<Boolean> = ref(false);
+
+    const toasts: Ref<Array<Object>> = ref([]);
+
     const patientMeals: Ref<Array<Object>> = ref([]);
     const tableCurrentPage: Ref<Number> = ref(0);
     const itemsPerPageTable: Ref<Number> = ref(5);
@@ -94,6 +99,9 @@ export default defineComponent({
           // Save the new Albu entry to the server
           await mesureService().create(newAlbuEntry);
           await retrievePatientMesures(patient.value.id);
+          patientIMC.value = calculIMC(patient.value.taille, poidsPatient.value[poidsPatient.value.length - 1]?.valeur);
+          refreshCharts();
+          updateDanger();
         }
       } catch (error: any) {
         alertService.showHttpError(error.response);
@@ -119,6 +127,8 @@ export default defineComponent({
           await mesureService().create(newPoidsEntry);
           await retrievePatientMesures(patient.value.id);
           patientIMC.value = calculIMC(patient.value.taille, poidsPatient.value[poidsPatient.value.length - 1]?.valeur);
+          refreshCharts();
+          updateDanger();
         }
       } catch (error: any) {
         alertService.showHttpError(error.response);
@@ -143,6 +153,9 @@ export default defineComponent({
           // Save the new EPA entry to the server
           await mesureService().create(newEPAEntry);
           await retrievePatientMesures(patient.value.id);
+          patientIMC.value = calculIMC(patient.value.taille, poidsPatient.value[poidsPatient.value.length - 1]?.valeur);
+          refreshCharts();
+          updateDanger();
         }
       } catch (error: any) {
         alertService.showHttpError(error.response);
@@ -171,6 +184,50 @@ export default defineComponent({
 
     const calculIMC = (patientHeight: string, patientWeight: string) => {
       return Math.round(Number(patientWeight) / (((Number(patientHeight) / 100) * Number(patientHeight)) / 100));
+    };
+
+    const updateDanger = () => {
+      dangerEPA.value = EPAPatient.value[EPAPatient.value.length - 1]?.valeur < 7;
+      if (+new Date() - +new Date(patient.value.dateArrivee) >= 2 && poidsPatient.value?.length === 0) {
+        dangerWeight.value = true;
+      }
+    };
+
+    const refreshCharts = () => {
+      const weightValues = [];
+      const EPAValues = [];
+      for (const weightEntry of poidsPatient.value) {
+        weightValues.push({
+          x: weightEntry.date,
+          y: weightEntry.valeur,
+        });
+      }
+      for (const EPAEntry of EPAPatient.value) {
+        EPAValues.push({
+          x: EPAEntry.date,
+          y: EPAEntry.valeur,
+        });
+      }
+      weightChartData.value = {
+        datasets: [
+          {
+            label: 'poids (kg)',
+            data: weightValues,
+            borderColor: 'rgb(255, 125, 100)',
+          },
+        ],
+      };
+      EPAChartData.value = {
+        datasets: [
+          {
+            label: 'EPA',
+            data: EPAValues,
+            borderColor: 'rgb(45, 80, 255)',
+          },
+        ],
+      };
+      weightChartLoaded.value = true;
+      EPAChartLoaded.value = true;
     };
 
     const retrievePatientMesures = async (patientId: string | string[]) => {
@@ -205,40 +262,8 @@ export default defineComponent({
       retrievePatient(route.params.patientId).then(() =>
         retrievePatientMesures(route.params.patientId).then(() => {
           patientIMC.value = calculIMC(patient.value.taille, poidsPatient.value[poidsPatient.value.length - 1]?.valeur);
-          const weightValues = [];
-          const EPAValues = [];
-          for (const weightEntry of poidsPatient.value) {
-            weightValues.push({
-              x: weightEntry.date,
-              y: weightEntry.valeur,
-            });
-          }
-          for (const EPAEntry of EPAPatient.value) {
-            EPAValues.push({
-              x: EPAEntry.date,
-              y: EPAEntry.valeur,
-            });
-          }
-          weightChartData.value = {
-            datasets: [
-              {
-                label: 'poids (kg)',
-                data: weightValues,
-                borderColor: 'rgb(255, 125, 100)',
-              },
-            ],
-          };
-          EPAChartData.value = {
-            datasets: [
-              {
-                label: 'EPA',
-                data: EPAValues,
-                borderColor: 'rgb(45, 80, 255)',
-              },
-            ],
-          };
-          weightChartLoaded.value = true;
-          EPAChartLoaded.value = true;
+          refreshCharts();
+          updateDanger();
         }),
       );
       retrievePatientMeals(route.params.patientId);
@@ -259,6 +284,9 @@ export default defineComponent({
       newEPAValue,
       newWeightValue,
       newAlbuValue,
+      dangerEPA,
+      dangerWeight,
+      toasts,
 
       patientMeals,
       tableCurrentPage,
