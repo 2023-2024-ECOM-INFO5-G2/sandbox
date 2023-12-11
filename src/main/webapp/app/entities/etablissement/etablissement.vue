@@ -120,22 +120,25 @@
     </b-modal>
   </div>
 
-  <div>
-    <h2>TEST a bouger</h2>
-    <span>nb appel : {{ tmp }} </span>
+  <div id="liste-patient établissement">
+    <!--    attention pas au bon enroit-->
     <table>
-      <tr v-for="patient in patientsEtablissement" :key="etablissement.id" data-cy="entityTable">
-        <td>
-          <router-link :to="{ name: 'EtablissementView', params: { etablissementId: etablissement.id } }">{{
-            etablissement.id
-          }}</router-link>
-        </td>
-        <td>{{ patient.nom }}</td>
-        <td>{{ patient.prenom }}</td>
-        <!--        <td>{{ etablissement.ville }}</td>-->
-        <!--        <td>{{ etablissement.codePostal }}</td>-->
-        <!--        <td><button>nombre cas</button></td>-->
-      </tr>
+      <thead>
+        <tr>
+          <th scope="row"><span v-text="t$('g2EcomApp.patient.id')"></span></th>
+          <th scope="row"><span v-text="t$('g2EcomApp.patient.nom')"></span></th>
+          <th scope="row"><span v-text="t$('g2EcomApp.patient.prénom')"></span></th>
+          <th scope="row">ajouter les champs manquants</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="patient in patientsEtablissement" :key="patient.id">
+          <td>{{ patient.id }}</td>
+          <td>{{ patient.nom }}</td>
+          <td>{{ patient.prenom }}</td>
+          <td>...</td>
+        </tr>
+      </tbody>
     </table>
   </div>
 </template>

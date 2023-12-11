@@ -44,6 +44,7 @@ export default defineComponent({
         const res = await etablissementService().getPatientEtablissement(etablissementId.value);
         console.log('apres la requête');
         patientsEtablissement.value = res.data;
+        console.log(res.data);
       } catch (err) {
         console.log(err);
         alertService.showHttpError(err.response);
