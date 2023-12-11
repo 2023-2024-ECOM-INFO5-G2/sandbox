@@ -1,4 +1,4 @@
-import { defineComponent, inject, ref, type Ref } from 'vue';
+import { defineComponent, inject, ref, provide, type Ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useRoute, useRouter } from 'vue-router';
 
@@ -54,6 +54,11 @@ export default defineComponent({
     const newEPAValue: Ref<Number> = ref(0);
     const newWeightValue: Ref<Number> = ref(0);
     const newAlbuValue: Ref<Number> = ref(0);
+
+    const dangerEPA: Ref<Boolean> = ref(false);
+    const dangerWeight: Ref<Boolean> = ref(false);
+
+    const toasts: Ref<Array<Object>> = ref([]);
 
     const retrievePatient = async (patientId: string | string[]) => {
       try {
@@ -192,6 +197,11 @@ export default defineComponent({
           };
           weightChartLoaded.value = true;
           EPAChartLoaded.value = true;
+
+          dangerEPA.value = EPAPatient.value[EPAPatient.value.length - 1]?.valeur < 7;
+          if (+new Date() - +new Date(patient.value.dateArrivee) >= 2 && poidsPatient.value?.length === 0) {
+            dangerWeight.value = true;
+          }
         }),
       );
     }
@@ -211,6 +221,9 @@ export default defineComponent({
       newEPAValue,
       newWeightValue,
       newAlbuValue,
+      dangerEPA,
+      dangerWeight,
+      toasts,
 
       ...dataUtils,
 
