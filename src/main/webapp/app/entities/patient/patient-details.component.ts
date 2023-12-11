@@ -6,12 +6,15 @@ import { Line } from 'vue-chartjs';
 import { BarElement, CategoryScale, Chart as ChartJS, Legend, LinearScale, LineElement, PointElement, Title, Tooltip } from 'chart.js';
 import PatientService from './patient.service';
 import MesureService from '../mesure/mesure.service';
+import RepasService from '../repas/repas.service';
 // @ts-ignore
 import useDataUtils from '@/shared/data/data-utils.service';
 // @ts-ignore
 import { type IPatient } from '@/shared/model/patient.model';
 // @ts-ignore
 import { type IMesure } from '@/shared/model/mesure.model';
+// @ts-ignore
+import { type IRepas } from '@/shared/model/repas.model';
 // @ts-ignore
 import { useAlertService } from '@/shared/alert/alert.service';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -29,8 +32,10 @@ export default defineComponent({
     library.add(faGenderless);
     library.add(faArrowsUpDown);
     library.add(faDoorOpen);
+
     const patientService = inject('patientService', () => new PatientService());
     const mesureService = inject('mesureService', () => new MesureService());
+    const repasService = inject('repasService', () => new RepasService());
     const alertService = inject('alertService', () => useAlertService(), true);
 
     const dataUtils = useDataUtils();
@@ -54,6 +59,13 @@ export default defineComponent({
     const newEPAValue: Ref<Number> = ref(0);
     const newWeightValue: Ref<Number> = ref(0);
     const newAlbuValue: Ref<Number> = ref(0);
+
+    const patientMeals: Ref<Array<Object>> = ref([]);
+    const tableCurrentPage: Ref<Number> = ref(0);
+    const itemsPerPageTable: Ref<Number> = ref(5);
+    const mealName: Ref<String> = ref('');
+    const mealDesc: Ref<String> = ref('');
+    const mealCal: Ref<Number> = ref(0);
 
     const retrievePatient = async (patientId: string | string[]) => {
       try {
@@ -106,6 +118,7 @@ export default defineComponent({
           // Save the new Poids entry to the server
           await mesureService().create(newPoidsEntry);
           await retrievePatientMesures(patient.value.id);
+          patientIMC.value = calculIMC(patient.value.taille, poidsPatient.value[poidsPatient.value.length - 1]?.valeur);
         }
       } catch (error: any) {
         alertService.showHttpError(error.response);
@@ -136,6 +149,26 @@ export default defineComponent({
       }
     };
 
+    const addMeal = async () => {
+      try {
+        if (Number(mealCal.value) <= 0) alertService.showError('Donnée incorrecte, calories doit être positif');
+        else {
+          // Create a new EPA entry object
+          const newMeal = {
+            nom: mealName.value,
+            description: mealDesc.value,
+            apportCalorique: mealCal.value,
+            patients: [patient.value],
+          };
+
+          await repasService().create(newMeal);
+          await retrievePatientMeals(patient.value.id);
+        }
+      } catch (error: any) {
+        alertService.showHttpError(error.response);
+      }
+    };
+
     const calculIMC = (patientHeight: string, patientWeight: string) => {
       return Math.round(Number(patientWeight) / (((Number(patientHeight) / 100) * Number(patientHeight)) / 100));
     };
@@ -149,6 +182,20 @@ export default defineComponent({
         poidsPatient.value.sort((a: IMesure, b: IMesure) => +new Date(a.date) - +new Date(b.date));
         EPAPatient.value = patientMesures.filter((o: IMesure) => o.nomValeur === 'EPA');
         albuPatient.value = patientMesures.filter((o: IMesure) => o.nomValeur === 'albumine');
+      } catch (error: any) {
+        alertService.showHttpError(error.response);
+      }
+    };
+
+    const retrievePatientMeals = async (patientId: string | string[]) => {
+      try {
+        const res = await repasService().retrieve();
+        patientMeals.value = [];
+        for (const meal of res.data) {
+          if (meal.patients.filter((patient: IPatient) => patient.id === Number(patientId)).length === 0) continue;
+          delete meal.patients;
+          patientMeals.value.push(meal);
+        }
       } catch (error: any) {
         alertService.showHttpError(error.response);
       }
@@ -194,6 +241,7 @@ export default defineComponent({
           EPAChartLoaded.value = true;
         }),
       );
+      retrievePatientMeals(route.params.patientId);
     }
 
     return {
@@ -212,6 +260,13 @@ export default defineComponent({
       newWeightValue,
       newAlbuValue,
 
+      patientMeals,
+      tableCurrentPage,
+      itemsPerPageTable,
+      mealName,
+      mealDesc,
+      mealCal,
+
       ...dataUtils,
 
       previousState,
@@ -219,6 +274,7 @@ export default defineComponent({
       addEPAValue,
       addPoidsValue,
       addAlbuValue,
+      addMeal,
     };
   },
 });
