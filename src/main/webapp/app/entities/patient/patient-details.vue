@@ -115,6 +115,32 @@
     </div>
   </div>
 
+  <div class="row mt-5">
+    <div class="col-12">
+      <h2>Repas</h2>
+    </div>
+    <div class="col-12">
+      <b-table id="my-table" :current-page="tableCurrentPage" :items="patientMeals" :per-page="itemsPerPageTable" hover striped> </b-table>
+    </div>
+    <div class="col-12">
+      <b-pagination
+        v-if="patientMeals.length > itemsPerPageTable"
+        v-model="tableCurrentPage"
+        :per-page="itemsPerPageTable"
+        :total-rows="patientMeals.length"
+        aria-controls="my-table"
+      ></b-pagination>
+    </div>
+    <div class="col-12">
+      <b-button v-b-modal.modal-repas variant="primary">Ajouter un repas</b-button>
+      <b-modal id="modal-repas" title="Ajouter un repas" @ok="addMeal">
+        <b-form-input v-model="mealName" placeholder="Repas" type="text"></b-form-input>
+        <b-form-input v-model="mealDesc" class="mt-2" placeholder="Description" type="text"></b-form-input>
+        <b-form-input v-model="mealCal" class="mt-2" placeholder="Calories (kcal)" type="number"></b-form-input>
+      </b-modal>
+    </div>
+  </div>
+
   <div class="row justify-content-center mt-5">
     <div class="col-12">
       <div class="card">
