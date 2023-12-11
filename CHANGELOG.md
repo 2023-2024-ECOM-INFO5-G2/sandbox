@@ -9,6 +9,7 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   - [\[Unreleased\]](#unreleased)
   - [\[1.0\] - 2023-06-05](#10---2023-11-29)
     - [Added](#added)
+  - [\[0.1.0\] - 2023-12-11](#010---2023-12-11)
 
 ## [Unreleased]
 
@@ -26,3 +27,13 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - [#11 - Creation of different users](https://github.com/2023-2024-ECOM-INFO5-G2/app/issues/11)
 - [#9 - Allow to add a new patient data](https://github.com/2023-2024-ECOM-INFO5-G2/app/issues/9)
 - [#8 - Add continuous integration](https://github.com/2023-2024-ECOM-INFO5-G2/app/issues/8)
+
+## [[0.1.0] - 2023-12-11
+
+### Added
+
+- [#34 - Add meals for a patient](https://github.com/2023-2024-ECOM-INFO5-G2/app/issues/34)
+
+### Fixed
+
+- IMC "NaN" value when no weight data
