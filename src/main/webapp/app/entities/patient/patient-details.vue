@@ -43,7 +43,7 @@
 
   <div class="row justify-content-center mt-5">
     <div class="col-12">
-      <b-card :header="t$('ecom02App.patient.IMC')" align="center">
+      <b-card header="IMC" align="center">
         <b-card-title>
           {{ patientIMC || 'Aucune donnée' }}
         </b-card-title>
@@ -54,7 +54,7 @@
     <div v-if="poidsPatient" class="col-4">
       <b-card
         :border-variant="dangerWeight ? 'danger' : ''"
-        :header="t$('ecom02App.patient.poids')"
+        header="Poids (kg)"
         :header-bg-variant="dangerWeight ? 'danger' : ''"
         :header-text-variant="dangerWeight ? 'white' : ''"
         align="center"
@@ -74,7 +74,7 @@
     <div v-if="EPAPatient" class="col-4">
       <b-card
         :border-variant="dangerEPA ? 'danger' : ''"
-        :header="t$('ecom02App.patient.EPA')"
+        header="EPA"
         :header-bg-variant="dangerEPA ? 'danger' : ''"
         :header-text-variant="dangerEPA ? 'white' : ''"
         align="center"
