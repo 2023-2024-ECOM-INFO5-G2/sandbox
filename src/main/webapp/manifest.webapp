@@ -1,6 +1,6 @@
 {
-  "name": "G2Ecom",
-  "short_name": "G2Ecom",
+  "name": "ecom02",
+  "short_name": "ecom02",
   "icons": [
     {
       "src": "./content/images/jhipster_family_member_2_head-192.png",

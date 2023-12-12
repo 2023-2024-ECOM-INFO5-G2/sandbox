@@ -179,11 +179,11 @@
             ></label>
             <textarea
               class="form-control"
-              name="infoComplementaires"
-              id="patient-infoComplementaires"
-              data-cy="infoComplementaires"
-              :class="{ valid: !v$.infoComplementaires.$invalid, invalid: v$.infoComplementaires.$invalid }"
-              v-model="v$.infoComplementaires.$model"
+              name="infosComplementaires"
+              id="patient-infosComplementaires"
+              data-cy="infosComplementaires"
+              :class="{ valid: !v$.infosComplementaires.$invalid, invalid: v$.infosComplementaires.$invalid }"
+              v-model="v$.infosComplementaires.$model"
             ></textarea>
           </div>
           <div class="form-group">
