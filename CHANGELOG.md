@@ -37,6 +37,7 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 - [#36 - Display alerts for a patient](https://github.com/2023-2024-ECOM-INFO5-G2/app/issues/36)
 - Hot-update when editing a patient
+
 ## [[0.1.0] - 2023-12-11
 
 ### Added

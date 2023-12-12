@@ -4,7 +4,7 @@ import sinon from 'sinon';
 import dayjs from 'dayjs';
 
 import RappelService from './rappel.service';
-import { DATE_FORMAT } from '@/shared/composables/date-format';
+import { DATE_FORMAT, DATE_TIME_FORMAT } from '@/shared/composables/date-format';
 import { Rappel } from '@/shared/model/rappel.model';
 
 const error = {
@@ -33,13 +33,14 @@ describe('Service Tests', () => {
     beforeEach(() => {
       service = new RappelService();
       currentDate = new Date();
-      elemDefault = new Rappel(123, 'AAAAAAA', currentDate, 'AAAAAAA');
+      elemDefault = new Rappel(123, currentDate, 0, currentDate, 'AAAAAAA');
     });
 
     describe('Service methods', () => {
       it('should find an element', async () => {
         const returnedFromService = Object.assign(
           {
+            date: dayjs(currentDate).format(DATE_TIME_FORMAT),
             echeance: dayjs(currentDate).format(DATE_FORMAT),
           },
           elemDefault,
@@ -65,12 +66,14 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             id: 123,
+            date: dayjs(currentDate).format(DATE_TIME_FORMAT),
             echeance: dayjs(currentDate).format(DATE_FORMAT),
           },
           elemDefault,
         );
         const expected = Object.assign(
           {
+            date: currentDate,
             echeance: currentDate,
           },
           returnedFromService,
@@ -96,7 +99,8 @@ describe('Service Tests', () => {
       it('should update a Rappel', async () => {
         const returnedFromService = Object.assign(
           {
-            frequence: 'BBBBBB',
+            date: dayjs(currentDate).format(DATE_TIME_FORMAT),
+            frequenceJour: 1,
             echeance: dayjs(currentDate).format(DATE_FORMAT),
             tache: 'BBBBBB',
           },
@@ -105,6 +109,7 @@ describe('Service Tests', () => {
 
         const expected = Object.assign(
           {
+            date: currentDate,
             echeance: currentDate,
           },
           returnedFromService,
@@ -130,7 +135,7 @@ describe('Service Tests', () => {
       it('should partial update a Rappel', async () => {
         const patchObject = Object.assign(
           {
-            echeance: dayjs(currentDate).format(DATE_FORMAT),
+            frequenceJour: 1,
             tache: 'BBBBBB',
           },
           new Rappel(),
@@ -139,6 +144,7 @@ describe('Service Tests', () => {
 
         const expected = Object.assign(
           {
+            date: currentDate,
             echeance: currentDate,
           },
           returnedFromService,
@@ -164,7 +170,8 @@ describe('Service Tests', () => {
       it('should return a list of Rappel', async () => {
         const returnedFromService = Object.assign(
           {
-            frequence: 'BBBBBB',
+            date: dayjs(currentDate).format(DATE_TIME_FORMAT),
+            frequenceJour: 1,
             echeance: dayjs(currentDate).format(DATE_FORMAT),
             tache: 'BBBBBB',
           },
@@ -172,6 +179,7 @@ describe('Service Tests', () => {
         );
         const expected = Object.assign(
           {
+            date: currentDate,
             echeance: currentDate,
           },
           returnedFromService,

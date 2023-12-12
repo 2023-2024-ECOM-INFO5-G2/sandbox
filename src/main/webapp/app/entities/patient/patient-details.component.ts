@@ -5,14 +5,21 @@ import { useRoute, useRouter } from 'vue-router';
 import { Line } from 'vue-chartjs';
 import { BarElement, CategoryScale, Chart as ChartJS, Legend, LinearScale, LineElement, PointElement, Title, Tooltip } from 'chart.js';
 import PatientService from './patient.service';
-import MesureService from '../mesure/mesure.service';
+import MesureEPAService from '../mesure-epa/mesure-epa.service';
+import MesurePoidsService from '../mesure-poids/mesure-poids.service';
+import MesureAlbumineService from '../mesure-albumine/mesure-albumine.service';
+import { useDateFormat } from '@/shared/composables';
 import RepasService from '../repas/repas.service';
 // @ts-ignore
 import useDataUtils from '@/shared/data/data-utils.service';
 // @ts-ignore
 import { type IPatient } from '@/shared/model/patient.model';
 // @ts-ignore
-import { type IMesure } from '@/shared/model/mesure.model';
+import { type IMesureEPA } from '@/shared/model/mesure-epa.model';
+// @ts-ignore
+import { type IMesurePoids } from '@/shared/model/mesure-poids.model';
+// @ts-ignore
+import { type IMesureAlbumine } from '@/shared/model/mesure-albumine.model';
 // @ts-ignore
 import { type IRepas } from '@/shared/model/repas.model';
 // @ts-ignore
@@ -32,9 +39,11 @@ export default defineComponent({
     library.add(faGenderless);
     library.add(faArrowsUpDown);
     library.add(faDoorOpen);
-
+    const dateFormat = useDateFormat();
     const patientService = inject('patientService', () => new PatientService());
-    const mesureService = inject('mesureService', () => new MesureService());
+    const mesureEPAService = inject('mesureEPAService', () => new MesureEPAService());
+    const mesurePoidsService = inject('mesurePoidsService', () => new MesurePoidsService());
+    const mesureAlbumineService = inject('mesureAlbumineService', () => new MesureAlbumineService());
     const repasService = inject('repasService', () => new RepasService());
     const alertService = inject('alertService', () => useAlertService(), true);
 
@@ -76,7 +85,7 @@ export default defineComponent({
       try {
         const res = await patientService().find(Number(patientId));
         patient.value = res;
-      } catch (error: any) {
+      } catch (error) {
         alertService.showHttpError(error.response);
       }
     };
@@ -97,7 +106,7 @@ export default defineComponent({
           albuPatient.value.push(newAlbuEntry);
 
           // Save the new Albu entry to the server
-          await mesureService().create(newAlbuEntry);
+          await mesureAlbumineService().create(newAlbuEntry);
           await retrievePatientMesures(patient.value.id);
           patientIMC.value = calculIMC(patient.value.taille, poidsPatient.value[poidsPatient.value.length - 1]?.valeur);
           refreshCharts();
@@ -116,7 +125,6 @@ export default defineComponent({
           const newPoidsEntry = {
             date: new Date().toISOString(),
             valeur: Number(newWeightValue.value),
-            nomValeur: 'poids',
             patient: patient.value,
           };
 
@@ -124,7 +132,7 @@ export default defineComponent({
           poidsPatient.value.push(newPoidsEntry);
 
           // Save the new Poids entry to the server
-          await mesureService().create(newPoidsEntry);
+          await mesurePoidsService().create(newPoidsEntry);
           await retrievePatientMesures(patient.value.id);
           patientIMC.value = calculIMC(patient.value.taille, poidsPatient.value[poidsPatient.value.length - 1]?.valeur);
           refreshCharts();
@@ -143,7 +151,6 @@ export default defineComponent({
           const newEPAEntry = {
             date: new Date().toISOString(),
             valeur: Number(newEPAValue.value),
-            nomValeur: 'EPA',
             patient: patient.value,
           };
 
@@ -151,7 +158,7 @@ export default defineComponent({
           EPAPatient.value.push(newEPAEntry);
 
           // Save the new EPA entry to the server
-          await mesureService().create(newEPAEntry);
+          await mesureEPAService().create(newEPAEntry);
           await retrievePatientMesures(patient.value.id);
           patientIMC.value = calculIMC(patient.value.taille, poidsPatient.value[poidsPatient.value.length - 1]?.valeur);
           refreshCharts();
@@ -232,13 +239,16 @@ export default defineComponent({
 
     const retrievePatientMesures = async (patientId: string | string[]) => {
       try {
-        const res = await mesureService().retrieve();
-        const patientMesures = res.data.filter((o: IMesure) => o.patient !== null && o.patient.id === Number(patientId));
+        const resAlbu = await mesureAlbumineService().retrieve();
+        const resPoids = await mesurePoidsService().retrieve();
+        const resEPA = await mesureEPAService().retrieve();
 
-        poidsPatient.value = patientMesures.filter((o: IMesure) => o.nomValeur === 'poids');
-        poidsPatient.value.sort((a: IMesure, b: IMesure) => +new Date(a.date) - +new Date(b.date));
-        EPAPatient.value = patientMesures.filter((o: IMesure) => o.nomValeur === 'EPA');
-        albuPatient.value = patientMesures.filter((o: IMesure) => o.nomValeur === 'albumine');
+        poidsPatient.value = resAlbu.data.filter((o: IMesurePoids) => o.patient !== null && o.patient.id === Number(patientId));
+        albuPatient.value = resPoids.data.filter((o: IMesureAlbumine) => o.patient !== null && o.patient.id === Number(patientId));
+        EPAPatient.value = resEPA.data.filter((o: IMesureEPA) => o.patient !== null && o.patient.id === Number(patientId));
+
+        poidsPatient.value.sort((a: IMesurePoids, b: IMesurePoids) => +new Date(a.date) - +new Date(b.date));
+        EPAPatient.value.sort((a: IMesureEPA, b: IMesureEPA) => +new Date(a.date) - +new Date(b.date));
       } catch (error: any) {
         alertService.showHttpError(error.response);
       }
@@ -270,6 +280,7 @@ export default defineComponent({
     }
 
     return {
+      ...dateFormat,
       alertService,
       patient,
       albuPatient,

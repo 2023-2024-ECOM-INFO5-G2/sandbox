@@ -43,7 +43,7 @@
 
   <div class="row justify-content-center mt-5">
     <div class="col-12">
-      <b-card :header="t$('g2EcomApp.patient.IMC')" align="center">
+      <b-card header="IMC" align="center">
         <b-card-title>
           {{ patientIMC || 'Aucune donnée' }}
         </b-card-title>
@@ -54,7 +54,7 @@
     <div v-if="poidsPatient" class="col-4">
       <b-card
         :border-variant="dangerWeight ? 'danger' : ''"
-        :header="t$('g2EcomApp.patient.poids')"
+        header="Poids (kg)"
         :header-bg-variant="dangerWeight ? 'danger' : ''"
         :header-text-variant="dangerWeight ? 'white' : ''"
         align="center"
@@ -74,7 +74,7 @@
     <div v-if="EPAPatient" class="col-4">
       <b-card
         :border-variant="dangerEPA ? 'danger' : ''"
-        :header="t$('g2EcomApp.patient.EPA')"
+        header="EPA"
         :header-bg-variant="dangerEPA ? 'danger' : ''"
         :header-text-variant="dangerEPA ? 'white' : ''"
         align="center"
@@ -145,9 +145,9 @@
     <div class="col-12">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title" v-text="t$('g2EcomApp.patient.infoComplementaires')"></h4>
+          <h4 class="card-title" v-text="t$('ecom02App.patient.infosComplementaires')"></h4>
           <p class="card-text">
-            {{ patient.infoComplementaires }}
+            {{ patient.infosComplementaires }}
           </p>
         </div>
       </div>

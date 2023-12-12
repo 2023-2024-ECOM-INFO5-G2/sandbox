@@ -9,14 +9,13 @@
         "main": "Entities",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
         "patient": "Patient",
-        "aideSoignant": "Aide Soignant",
-        "infirmiere": "Infirmiere",
-        "medecin": "Medecin",
         "etablissement": "Etablissement",
         "repas": "Repas",
         "rappel": "Rappel",
         "alerte": "Alerte",
-        "mesure": "Mesure"
+        "mesurePoids": "Mesure Poids",
+        "mesureEpa": "Mesure EPA",
+        "mesureAlbumine": "Mesure Albumine"
       },
       "account": {
         "main": "Account",

@@ -4,7 +4,7 @@ import { useRoute, useRouter } from 'vue-router';
 import { useVuelidate } from '@vuelidate/core';
 
 import RepasService from './repas.service';
-import { useValidation } from '@/shared/composables';
+import { useValidation, useDateFormat } from '@/shared/composables';
 import { useAlertService } from '@/shared/alert/alert.service';
 
 import PatientService from '@/entities/patient/patient.service';
@@ -34,6 +34,7 @@ export default defineComponent({
     const retrieveRepas = async repasId => {
       try {
         const res = await repasService().find(repasId);
+        res.date = new Date(res.date);
         repas.value = res;
       } catch (error) {
         alertService.showHttpError(error.response);
@@ -60,14 +61,13 @@ export default defineComponent({
       nom: {
         required: validations.required(t$('entity.validation.required').toString()),
       },
-      description: {
+      date: {
         required: validations.required(t$('entity.validation.required').toString()),
       },
-      apportCalorique: {
-        required: validations.required(t$('entity.validation.required').toString()),
-        numeric: validations.numeric(t$('entity.validation.number').toString()),
-      },
-      patients: {},
+      apportCalorique: {},
+      poidsConsomme: {},
+      description: {},
+      patient: {},
     };
     const v$ = useVuelidate(validationRules, repas as any);
     v$.value.$validate();
@@ -81,6 +81,7 @@ export default defineComponent({
       currentLanguage,
       patients,
       v$,
+      ...useDateFormat({ entityRef: repas }),
       t$,
     };
   },
@@ -96,7 +97,7 @@ export default defineComponent({
           .then(param => {
             this.isSaving = false;
             this.previousState();
-            this.alertService.showInfo(this.t$('g2EcomApp.repas.updated', { param: param.id }));
+            this.alertService.showInfo(this.t$('ecom02App.repas.updated', { param: param.id }));
           })
           .catch(error => {
             this.isSaving = false;
@@ -108,7 +109,7 @@ export default defineComponent({
           .then(param => {
             this.isSaving = false;
             this.previousState();
-            this.alertService.showSuccess(this.t$('g2EcomApp.repas.created', { param: param.id }).toString());
+            this.alertService.showSuccess(this.t$('ecom02App.repas.created', { param: param.id }).toString());
           })
           .catch(error => {
             this.isSaving = false;

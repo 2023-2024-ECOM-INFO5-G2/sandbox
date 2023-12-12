@@ -63,7 +63,6 @@ export default defineComponent({
       },
       codePostal: {
         required: validations.required(t$('entity.validation.required').toString()),
-        numeric: validations.numeric(t$('entity.validation.number').toString()),
       },
       patients: {},
       users: {},
@@ -95,7 +94,7 @@ export default defineComponent({
           .then(param => {
             this.isSaving = false;
             this.previousState();
-            this.alertService.showInfo(this.t$('g2EcomApp.etablissement.updated', { param: param.id }));
+            this.alertService.showInfo(this.t$('ecom02App.etablissement.updated', { param: param.id }));
           })
           .catch(error => {
             this.isSaving = false;
@@ -107,7 +106,7 @@ export default defineComponent({
           .then(param => {
             this.isSaving = false;
             this.previousState();
-            this.alertService.showSuccess(this.t$('g2EcomApp.etablissement.created', { param: param.id }).toString());
+            this.alertService.showSuccess(this.t$('ecom02App.etablissement.created', { param: param.id }).toString());
           })
           .catch(error => {
             this.isSaving = false;

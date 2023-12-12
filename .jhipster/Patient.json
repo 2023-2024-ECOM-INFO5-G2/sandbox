@@ -1,13 +1,8 @@
 {
   "applications": "*",
-  "changelogDate": "20230926122453",
+  "changelogDate": "20231205144130",
   "entityTableName": "patient",
   "fields": [
-    {
-      "fieldName": "idPatient",
-      "fieldType": "Integer",
-      "fieldValidateRules": ["unique", "required"]
-    },
     {
       "fieldName": "prenom",
       "fieldType": "String",
@@ -24,54 +19,88 @@
       "fieldValidateRules": ["required"]
     },
     {
+      "fieldName": "taille",
+      "fieldType": "Float",
+      "fieldValidateRules": ["required"]
+    },
+    {
       "fieldName": "dateDeNaissance",
       "fieldType": "LocalDate",
       "fieldValidateRules": ["required"]
     },
     {
-      "fieldName": "chambre",
+      "fieldName": "numChambre",
       "fieldType": "Integer",
       "fieldValidateRules": ["required"]
     },
     {
-      "fieldName": "poids",
-      "fieldType": "Float"
+      "fieldName": "dateArrivee",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": ["required"]
     },
     {
-      "fieldName": "dateArrivee",
-      "fieldType": "LocalDate",
-      "fieldValidateRules": ["required"]
+      "fieldName": "infosComplementaires",
+      "fieldType": "String"
     }
   ],
   "name": "Patient",
   "relationships": [
     {
-      "otherEntityName": "medecin",
-      "otherEntityRelationshipName": "idMedecin",
-      "relationshipName": "idMedecin",
-      "relationshipSide": "right",
-      "relationshipType": "many-to-one"
+      "otherEntityName": "alerte",
+      "otherEntityRelationshipName": "patient",
+      "relationshipName": "alerte",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
     },
     {
-      "otherEntityName": "aideSoignant",
-      "otherEntityRelationshipName": "idSoignant",
-      "relationshipName": "idPatient",
-      "relationshipSide": "right",
-      "relationshipType": "many-to-many"
+      "otherEntityName": "rappel",
+      "otherEntityRelationshipName": "patient",
+      "relationshipName": "rappel",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
     },
     {
-      "otherEntityName": "infirmiere",
-      "otherEntityRelationshipName": "idInfirmiere",
-      "relationshipName": "idPatient",
-      "relationshipSide": "right",
-      "relationshipType": "many-to-many"
+      "otherEntityName": "mesurePoids",
+      "otherEntityRelationshipName": "patient",
+      "relationshipName": "mesurePoids",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "mesureEPA",
+      "otherEntityRelationshipName": "patient",
+      "relationshipName": "mesureEPA",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "mesureAlbumine",
+      "otherEntityRelationshipName": "patient",
+      "relationshipName": "mesureAlbumine",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
     },
     {
       "otherEntityName": "repas",
-      "otherEntityRelationshipName": "idRepas",
-      "relationshipName": "idPatient",
+      "otherEntityRelationshipName": "patient",
+      "relationshipName": "repas",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "patient",
+      "relationshipName": "user",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-many",
+      "relationshipWithBuiltInEntity": true
+    },
+    {
+      "otherEntityName": "etablissement",
+      "otherEntityRelationshipName": "patient",
+      "relationshipName": "etablissement",
       "relationshipSide": "right",
-      "relationshipType": "many-to-many"
+      "relationshipType": "many-to-one"
     }
   ],
   "searchEngine": "no"

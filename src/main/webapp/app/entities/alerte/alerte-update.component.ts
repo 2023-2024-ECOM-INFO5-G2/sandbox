@@ -4,7 +4,7 @@ import { useRoute, useRouter } from 'vue-router';
 import { useVuelidate } from '@vuelidate/core';
 
 import AlerteService from './alerte.service';
-import { useValidation } from '@/shared/composables';
+import { useValidation, useDateFormat } from '@/shared/composables';
 import { useAlertService } from '@/shared/alert/alert.service';
 
 import PatientService from '@/entities/patient/patient.service';
@@ -34,6 +34,7 @@ export default defineComponent({
     const retrieveAlerte = async alerteId => {
       try {
         const res = await alerteService().find(alerteId);
+        res.date = new Date(res.date);
         alerte.value = res;
       } catch (error) {
         alertService.showHttpError(error.response);
@@ -57,10 +58,13 @@ export default defineComponent({
     const { t: t$ } = useI18n();
     const validations = useValidation();
     const validationRules = {
-      description: {},
-      date: {},
-      patients: {},
-      medecins: {},
+      description: {
+        required: validations.required(t$('entity.validation.required').toString()),
+      },
+      date: {
+        required: validations.required(t$('entity.validation.required').toString()),
+      },
+      patient: {},
     };
     const v$ = useVuelidate(validationRules, alerte as any);
     v$.value.$validate();
@@ -74,6 +78,7 @@ export default defineComponent({
       currentLanguage,
       patients,
       v$,
+      ...useDateFormat({ entityRef: alerte }),
       t$,
     };
   },
@@ -89,7 +94,7 @@ export default defineComponent({
           .then(param => {
             this.isSaving = false;
             this.previousState();
-            this.alertService.showInfo(this.t$('g2EcomApp.alerte.updated', { param: param.id }));
+            this.alertService.showInfo(this.t$('ecom02App.alerte.updated', { param: param.id }));
           })
           .catch(error => {
             this.isSaving = false;
@@ -101,7 +106,7 @@ export default defineComponent({
           .then(param => {
             this.isSaving = false;
             this.previousState();
-            this.alertService.showSuccess(this.t$('g2EcomApp.alerte.created', { param: param.id }).toString());
+            this.alertService.showSuccess(this.t$('ecom02App.alerte.created', { param: param.id }).toString());
           })
           .catch(error => {
             this.isSaving = false;

@@ -4,7 +4,7 @@ import sinon from 'sinon';
 import dayjs from 'dayjs';
 
 import AlerteService from './alerte.service';
-import { DATE_FORMAT } from '@/shared/composables/date-format';
+import { DATE_TIME_FORMAT } from '@/shared/composables/date-format';
 import { Alerte } from '@/shared/model/alerte.model';
 
 const error = {
@@ -40,7 +40,7 @@ describe('Service Tests', () => {
       it('should find an element', async () => {
         const returnedFromService = Object.assign(
           {
-            date: dayjs(currentDate).format(DATE_FORMAT),
+            date: dayjs(currentDate).format(DATE_TIME_FORMAT),
           },
           elemDefault,
         );
@@ -65,7 +65,7 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             id: 123,
-            date: dayjs(currentDate).format(DATE_FORMAT),
+            date: dayjs(currentDate).format(DATE_TIME_FORMAT),
           },
           elemDefault,
         );
@@ -97,7 +97,7 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             description: 'BBBBBB',
-            date: dayjs(currentDate).format(DATE_FORMAT),
+            date: dayjs(currentDate).format(DATE_TIME_FORMAT),
           },
           elemDefault,
         );
@@ -129,8 +129,7 @@ describe('Service Tests', () => {
       it('should partial update a Alerte', async () => {
         const patchObject = Object.assign(
           {
-            description: 'BBBBBB',
-            date: dayjs(currentDate).format(DATE_FORMAT),
+            date: dayjs(currentDate).format(DATE_TIME_FORMAT),
           },
           new Alerte(),
         );
@@ -164,7 +163,7 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             description: 'BBBBBB',
-            date: dayjs(currentDate).format(DATE_FORMAT),
+            date: dayjs(currentDate).format(DATE_TIME_FORMAT),
           },
           elemDefault,
         );
