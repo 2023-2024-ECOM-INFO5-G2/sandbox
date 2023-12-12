@@ -127,9 +127,35 @@
             </div>
           </div>
           <div class="form-group">
+            <label class="form-control-label" v-text="t$('ecom02App.patient.taille')" for="patient-taille"></label>
+            <input
+              type="number"
+              class="form-control"
+              name="taille"
+              id="patient-taille"
+              data-cy="taille"
+              :class="{ valid: !v$.taille.$invalid, invalid: v$.taille.$invalid }"
+              v-model.number="v$.taille.$model"
+            />
+          </div>
+          <div class="form-group">
             <label class="form-control-label" v-text="t$('ecom02App.patient.dateArrivee')" for="patient-dateArrivee"></label>
-            <div class="d-flex">
-              <input
+            <b-input-group class="mb-3">
+              <b-input-group-prepend>
+                <b-form-datepicker
+                  aria-controls="patient-dateArrivee"
+                  v-model="v$.dateArrivee.$model"
+                  name="dateArrivee"
+                  class="form-control"
+                  :locale="currentLanguage"
+                  button-only
+                  today-button
+                  reset-button
+                  close-button
+                >
+                </b-form-datepicker>
+              </b-input-group-prepend>
+              <b-form-input
                 id="patient-dateArrivee"
                 data-cy="dateArrivee"
                 type="datetime-local"
@@ -140,7 +166,7 @@
                 :value="convertDateTimeFromServer(v$.dateArrivee.$model)"
                 @change="updateZonedDateTimeField('dateArrivee', $event)"
               />
-            </div>
+            </b-input-group>
             <div v-if="v$.dateArrivee.$anyDirty && v$.dateArrivee.$invalid">
               <small class="form-text text-danger" v-for="error of v$.dateArrivee.$errors" :key="error.$uid">{{ error.$message }}</small>
             </div>
@@ -151,15 +177,14 @@
               v-text="t$('ecom02App.patient.infosComplementaires')"
               for="patient-infosComplementaires"
             ></label>
-            <input
-              type="text"
+            <textarea
               class="form-control"
-              name="infosComplementaires"
-              id="patient-infosComplementaires"
-              data-cy="infosComplementaires"
-              :class="{ valid: !v$.infosComplementaires.$invalid, invalid: v$.infosComplementaires.$invalid }"
-              v-model="v$.infosComplementaires.$model"
-            />
+              name="infoComplementaires"
+              id="patient-infoComplementaires"
+              data-cy="infoComplementaires"
+              :class="{ valid: !v$.infoComplementaires.$invalid, invalid: v$.infoComplementaires.$invalid }"
+              v-model="v$.infoComplementaires.$model"
+            ></textarea>
           </div>
           <div class="form-group">
             <label v-text="t$('ecom02App.patient.user')" for="patient-user"></label>

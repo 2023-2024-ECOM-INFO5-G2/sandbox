@@ -85,7 +85,9 @@ export default defineComponent({
       t$,
     };
   },
-  created(): void {},
+  created(): void {
+    this.repas.patients = [];
+  },
   methods: {
     save(): void {
       this.isSaving = true;
@@ -114,6 +116,13 @@ export default defineComponent({
             this.alertService.showHttpError(error.response);
           });
       }
+    },
+
+    getSelected(selectedVals, option): any {
+      if (selectedVals) {
+        return selectedVals.find(value => option.id === value.id) ?? option;
+      }
+      return option;
     },
   },
 });
