@@ -43,7 +43,7 @@
         </thead>
         <tbody>
           <template
-            v-for="patient in patients.filter(p => p.etablissement && p.etablissement.id === selectedetablissement.id)"
+            v-for="patient in patients?.filter(p => p.etablissement && p.etablissement.id === selectedetablissement.id)"
             :key="patient.id"
           >
             <tr data-cy="entityTable">

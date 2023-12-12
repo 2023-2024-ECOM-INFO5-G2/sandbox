@@ -84,7 +84,7 @@ export default class AlertService {
         break;
 
       default:
-        errorMessage = this.i18n.t(httpErrorResponse.data.message).toString();
+        errorMessage = this.i18n.t(httpErrorResponse?.data.message)?.toString();
     }
     this.showError(errorMessage);
   }
