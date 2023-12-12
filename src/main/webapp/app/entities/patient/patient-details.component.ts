@@ -10,6 +10,7 @@ import MesurePoidsService from '../mesure-poids/mesure-poids.service';
 import MesureAlbumineService from '../mesure-albumine/mesure-albumine.service';
 import RepasService from '../repas/repas.service';
 import { useDateFormat } from '@/shared/composables';
+import RepasService from '../repas/repas.service';
 // @ts-ignore
 import useDataUtils from '@/shared/data/data-utils.service';
 // @ts-ignore
