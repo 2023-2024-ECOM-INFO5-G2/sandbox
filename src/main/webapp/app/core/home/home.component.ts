@@ -36,6 +36,9 @@ export default defineComponent({
     const openLogin = () => {
       loginService.openLogin();
     };
+    const selectEtablissement = (etablissement: IEtablissement) => {
+      selectedetablissement.value = etablissement;
+    };
 
     return {
       authenticated,
@@ -43,6 +46,7 @@ export default defineComponent({
       etablissements,
       isFetching,
       selectedetablissement,
+      selectEtablissement,
       openLogin,
       t$: useI18n().t,
     };
