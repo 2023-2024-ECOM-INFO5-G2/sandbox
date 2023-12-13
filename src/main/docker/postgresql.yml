@@ -7,7 +7,7 @@ services:
     #   - ~/volumes/jhipster/g2ecom/postgresql/:/var/lib/postgresql/data/
     environment:
       - POSTGRES_USER=g2ecom
-      - POSTGRES_PASSWORD=
+      - POSTGRES_PASSWORD=g2ecom
       - POSTGRES_HOST_AUTH_METHOD=trust
     healthcheck:
       test: ['CMD-SHELL', 'pg_isready -U $${POSTGRES_USER}']
