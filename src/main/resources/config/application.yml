@@ -138,13 +138,13 @@ spring:
       enabled: true
   task:
     execution:
-      thread-name-prefix: ecom-02-task-
+      thread-name-prefix: g-2-ecom-task-
       pool:
         core-size: 2
         max-size: 50
         queue-capacity: 10000
     scheduling:
-      thread-name-prefix: ecom-02-scheduling-
+      thread-name-prefix: g-2-ecom-scheduling-
       pool:
         size: 2
   thymeleaf:

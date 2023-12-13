@@ -4,7 +4,7 @@ services:
   postgresql:
     image: postgres:16.0
     # volumes:
-    #   - ~/volumes/jhipster/ecom02/postgresql/:/var/lib/postgresql/data/
+    #   - ~/volumes/jhipster/g2ecom/postgresql/:/var/lib/postgresql/data/
     environment:
       - POSTGRES_USER=ecom02
       - POSTGRES_PASSWORD=
