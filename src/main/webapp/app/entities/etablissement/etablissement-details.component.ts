@@ -19,7 +19,7 @@ export default defineComponent({
 
     const previousState = () => router.go(-1);
     const etablissement: Ref<IEtablissement> = ref({});
-
+    const patientsEtablissement: ref<IPatient[]> = ref({});
     const retrieveEtablissement = async etablissementId => {
       try {
         const res = await etablissementService().find(etablissementId);
@@ -29,35 +29,31 @@ export default defineComponent({
       }
     };
 
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    const listPatient: Ref<IPatient[]> = ref([]);
-
-    // const prepareListPatient = (instance : IEtalissement) => {
-    //   etablissementId.value = instance.id;
-    //   //etEntity.value.show()
-    // };
     const retrievePatientEtablissement = async etablissementId => {
-      isFetching.value = true;
       try {
-        const res = await etablissementService().getPatientsEtablissement(etablissementId);
-        listPatient.value = res.data;
-        etablissementId.value = null;
-      } catch (error) {
-        alertService.showHttpError(error.response);
+        console.log('avant requete dans le try');
+        const res = await etablissementService().getPatientEtablissement(etablissementId);
+        console.log('apres la requête');
+        console.log(res);
+        patientsEtablissement.value = res;
+      } catch (err) {
+        console.log(err);
+        alertService.showHttpError(err.response);
       }
-      isFetching.value = false;
     };
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     if (route.params?.etablissementId) {
       retrieveEtablissement(route.params.etablissementId);
+      console.log('avant');
       retrievePatientEtablissement(route.params.etablissementId);
+      console.log('après');
     }
 
     return {
       alertService,
       etablissement,
-
+      retrievePatientEtablissement,
+      patientsEtablissement,
       previousState,
       t$: useI18n().t,
     };

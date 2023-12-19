@@ -93,6 +93,27 @@
         </tbody>
       </table>
     </div>
+    <!--    <div id="liste-patient établissement" v-if="patientsEtablissement && patientsEtablissement.length>0">
+      <table>
+        <thead>
+        <tr>
+          <th scope="row"><span v-text="t$('g2EcomApp.patient.id')"></span></th>
+          <th scope="row"><span v-text="t$('g2EcomApp.patient.nom')"></span></th>
+          <th scope="row"><span v-text="t$('g2EcomApp.patient.prénom')"></span></th>
+          <th scope="row">ajouter les champs manquants</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="patient in patientsEtablissement" :key="patient.id">
+          <td>{{ patient.id }}</td>
+          <td>{{ patient.nom }}</td>
+          <td>{{ patient.prenom }}</td>
+          <td>...</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>-->
+
     <b-modal ref="removeEntity" id="removeEntity">
       <template #modal-title>
         <span
@@ -118,28 +139,6 @@
         </div>
       </template>
     </b-modal>
-  </div>
-
-  <div id="liste-patient établissement">
-    <!--    attention pas au bon enroit-->
-    <table>
-      <thead>
-        <tr>
-          <th scope="row"><span v-text="t$('g2EcomApp.patient.id')"></span></th>
-          <th scope="row"><span v-text="t$('g2EcomApp.patient.nom')"></span></th>
-          <th scope="row"><span v-text="t$('g2EcomApp.patient.prénom')"></span></th>
-          <th scope="row">ajouter les champs manquants</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="patient in patientsEtablissement" :key="patient.id">
-          <td>{{ patient.id }}</td>
-          <td>{{ patient.nom }}</td>
-          <td>{{ patient.prenom }}</td>
-          <td>...</td>
-        </tr>
-      </tbody>
-    </table>
   </div>
 </template>
 

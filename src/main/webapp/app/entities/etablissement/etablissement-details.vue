@@ -40,16 +40,6 @@
             </span>
           </dd>
         </dl>
-        <table>
-          <tr>
-            <th scope="row"><span v-text="t$('g2EcomApp.patient.nom')"></span></th>
-            <th scope="row"><span v-text="t$('g2EcomApp.patient.prenom')"></span></th>
-          </tr>
-          <tr v-for="patient in listPatient" :key="patient.id">
-            <td>{{ patient.nom }}</td>
-            <td>{{ patient.prenom }}</td>
-          </tr>
-        </table>
         <button type="submit" v-on:click.prevent="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
           <font-awesome-icon icon="arrow-left"></font-awesome-icon>&nbsp;<span v-text="t$('entity.action.back')"></span>
         </button>
@@ -65,6 +55,28 @@
         </router-link>
       </div>
     </div>
+  </div>
+  <div id="liste-patient établissement" v-if="patientsEtablissement && patientsEtablissement.length > 0">
+    <table>
+      <thead>
+        <tr>
+          <th scope="row"><span v-text="t$('g2EcomApp.patient.id')"></span></th>
+          <th scope="row"><span v-text="t$('g2EcomApp.patient.nom')"></span></th>
+          <th scope="row"><span v-text="t$('g2EcomApp.patient.prénom')"></span></th>
+          <th scope="row"><span v-text="t$('g2EcomApp.patient.prénom')"></span></th>
+          <th scope="row"><span v-text="t$('g2EcomApp.patient.prénom')"></span></th>
+          <th scope="row">ajouter les champs manquants</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="patient in patientsEtablissement" :key="patient.id">
+          <td>{{ patient.id }}</td>
+          <td>{{ patient.nom }}</td>
+          <td>{{ patient.prenom }}</td>
+          <td>...</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 

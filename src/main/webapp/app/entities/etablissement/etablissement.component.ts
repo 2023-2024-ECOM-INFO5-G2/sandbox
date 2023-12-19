@@ -36,15 +36,12 @@ export default defineComponent({
     const etablissementId: Ref<number> = ref(1); // valeur qu'il faudra mettre à jour
     let tmp = 0;
     const retrievePatientEtablissement = async () => {
-      console.log('wesh');
       isFetching.value = true;
-      tmp += 1;
       try {
         console.log('avant requete dans le try');
         const res = await etablissementService().getPatientEtablissement(etablissementId.value);
         console.log('apres la requête');
-        patientsEtablissement.value = res.data;
-        console.log(res.data);
+        patientsEtablissement.value = res;
       } catch (err) {
         console.log(err);
         alertService.showHttpError(err.response);
@@ -60,6 +57,7 @@ export default defineComponent({
 
     onMounted(async () => {
       await retrieveEtablissements();
+      await retrievePatientEtablissement();
     });
 
     const removeId: Ref<number> = ref(null);

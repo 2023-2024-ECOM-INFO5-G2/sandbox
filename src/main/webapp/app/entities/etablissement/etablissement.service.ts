@@ -20,6 +20,7 @@ export default class EtablissementService {
 
   public getPatientEtablissement(id: number): Promise<any> {
     return new Promise<any>((resolve, reject) => {
+      console.log(id);
       axios
         .get(`${baseApiUrl}/${id}/patients`)
         .then(res => {
